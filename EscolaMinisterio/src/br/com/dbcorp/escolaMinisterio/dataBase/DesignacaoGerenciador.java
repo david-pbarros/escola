@@ -83,7 +83,7 @@ public class DesignacaoGerenciador extends Gerenciador {
 	public List<String> listaEstudantes(Genero genero) {
 		List<String> nomes = new ArrayList<String>();
 		
-		Query query = DataBaseHelper.createQuery("SELECT e.nome FROM Estudante e WHERE e.genero = :genero ORDER BY e.ultimaDesignacao")
+		Query query = DataBaseHelper.createQuery("SELECT e.nome FROM Estudante e WHERE (e.excluido = false OR e.excluido IS NULL) AND e.genero = :genero ORDER BY e.ultimaDesignacao")
 				.setParameter("genero", genero);
 		
 		nomes.add("Selecione...");
@@ -102,10 +102,11 @@ public class DesignacaoGerenciador extends Gerenciador {
 		Query query = null;
 		
 		if (genero == Genero.MASCULINO) {
-			query = DataBaseHelper.createQuery("SELECT a.nome FROM Ajudante a");
+			query = DataBaseHelper.createQuery("SELECT a.nome FROM Ajudante a WHERE a.excluido = false OR a.excluido IS NULL");
 			
 		} else {
-			query = DataBaseHelper.createQuery("SELECT e.nome FROM Estudante e WHERE (e.naoAjudante = false OR e.naoAjudante IS NULL) AND e.genero = :genero")
+			query = DataBaseHelper.createQuery("SELECT e.nome FROM Estudante e WHERE (e.excluido = false OR e.excluido IS NULL) AND "
+			+ "(e.naoAjudante = false OR e.naoAjudante IS NULL) AND e.genero = :genero")
 				.setParameter("genero", genero);
 		}
 		
@@ -119,14 +120,14 @@ public class DesignacaoGerenciador extends Gerenciador {
 	}
 	
 	public Ajudante ajudantePorNome(String nome) {
-		Query query = DataBaseHelper.createQuery("FROM Ajudante a WHERE a.nome = :nome")
+		Query query = DataBaseHelper.createQuery("FROM Ajudante a WHERE (a.excluido = false OR a.excluido IS NULL ) AND a.nome = :nome")
 				.setParameter("nome", nome);
 		
 		return (Ajudante)query.getSingleResult();
 	}
 	
 	public Estudante estudantePorNome(String nome) {
-		Query query = DataBaseHelper.createQuery("FROM Estudante e WHERE e.nome = :nome")
+		Query query = DataBaseHelper.createQuery("FROM Estudante e WHERE (e.excluido = false OR e.excluido IS NULL) AND e.nome = :nome")
 				.setParameter("nome", nome);
 		
 		return (Estudante) query.getSingleResult();
@@ -138,7 +139,7 @@ public class DesignacaoGerenciador extends Gerenciador {
 	
 	@SuppressWarnings("unchecked")
 	public List<Estudo> listarEstudos() {
-		Query query = DataBaseHelper.createQuery("FROM Estudo e");
+		Query query = DataBaseHelper.createQuery("FROM Estudo e WHERE e.excluido = false OR e.excluido IS NULL ORDER BY e.nrEstudo");
 		
 		return query.getResultList();
 	}

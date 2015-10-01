@@ -25,6 +25,7 @@ public abstract class Pessoa implements Entidade {
 	private String nome;
 	private Date ultimaDesignacao;
 	private Genero genero;
+	private boolean excluido;
 	protected String idOnline;
 	protected Date dtUltimaAtualiza;
 	
@@ -72,6 +73,13 @@ public abstract class Pessoa implements Entidade {
 	}
 	public void setGenero(Genero genero) {
 		this.genero = genero;
+	}
+	
+	public boolean isExcluido() {
+		return excluido;
+	}
+	public void setExcluido(boolean excluido) {
+		this.excluido = excluido;
 	}
 	
 	@PrePersist

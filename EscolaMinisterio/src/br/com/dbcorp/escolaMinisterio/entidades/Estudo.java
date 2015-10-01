@@ -21,6 +21,7 @@ public class Estudo {
 	private boolean leitura;
 	private boolean demonstracao;
 	private boolean discurso;
+	private boolean excluido;
 	private Date dtUltimaAtualiza;
 	
 	@Id @GeneratedValue
@@ -65,6 +66,13 @@ public class Estudo {
 	}
 	public void setDiscurso(boolean discurso) {
 		this.discurso = discurso;
+	}
+	
+	public boolean isExcluido() {
+		return excluido;
+	}
+	public void setExcluido(boolean excluido) {
+		this.excluido = excluido;
 	}
 	
 	@PrePersist

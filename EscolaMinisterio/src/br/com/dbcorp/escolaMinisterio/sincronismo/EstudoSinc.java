@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import br.com.dbcorp.escolaMinisterio.dataBase.EstudoGerenciador;
 import br.com.dbcorp.escolaMinisterio.dataBase.SincGerenciador;
 import br.com.dbcorp.escolaMinisterio.entidades.Estudo;
 import br.com.dbcorp.escolaMinisterio.entidades.RemoveLog;
@@ -163,13 +164,15 @@ public class EstudoSinc {
 			if ("ok".equalsIgnoreCase(obj.getString("response"))) {
 				JSONArray array = obj.getJSONArray("itens");
 				
+				EstudoGerenciador estGerenciador = new EstudoGerenciador();
+				
 				for (int i = 0; i < array.length(); i++) {
 					JSONObject item = array.getJSONObject(i);
 					
 					Estudo estudo = this.gerenciador.obterEstudo(item.getInt("nrestudo"));
 					
 					if (estudo != null) {
-						this.gerenciador.remover(estudo);
+						estGerenciador.remover(estudo);
 					}
 				}
 			} else if ("ERRO".equalsIgnoreCase(obj.getString("response"))) {

@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import br.com.dbcorp.escolaMinisterio.dataBase.AjudanteGerenciador;
 import br.com.dbcorp.escolaMinisterio.dataBase.SincGerenciador;
 import br.com.dbcorp.escolaMinisterio.entidades.Ajudante;
 import br.com.dbcorp.escolaMinisterio.entidades.Genero;
@@ -218,13 +219,15 @@ public class AjudanteSinc {
 			if ("ok".equalsIgnoreCase(obj.getString("response"))) {
 				JSONArray array = obj.getJSONArray("itens");
 				
+				AjudanteGerenciador ajuGerenciador = new AjudanteGerenciador();
+				
 				for (int i = 0; i < array.length(); i++) {
 					JSONObject item = array.getJSONObject(i);
 					
 					Ajudante ajudante = this.gerenciador.obterAjudante(item.getString("id"));
 					
 					if (ajudante != null) {
-						this.gerenciador.remover(ajudante);;
+						ajuGerenciador.remover(ajudante);;
 					}
 				}
 			} else if ("ERRO".equalsIgnoreCase(obj.getString("response"))) {

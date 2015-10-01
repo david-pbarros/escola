@@ -33,6 +33,14 @@ public class DataBaseHelper {
 		}
 	}
 	
+	public static void beginTX() {
+		DataBaseHelper.inicialize(true);
+		DataBaseHelper.tx.begin();
+	}
+	
+	public static void commitTX() {
+		DataBaseHelper.tx.commit();
+	}
 	
 	public static <T> void persist(T entity) {
 		DataBaseHelper.inicialize(true);
@@ -52,6 +60,12 @@ public class DataBaseHelper {
 		DataBaseHelper.tx.begin();
 		entity = DataBaseHelper.em.merge(entity);
 		DataBaseHelper.tx.commit();
+		
+		return entity;
+	}
+	
+	public static <T> T mergeWTX(T entity) {
+		entity = DataBaseHelper.em.merge(entity);
 		
 		return entity;
 	}
