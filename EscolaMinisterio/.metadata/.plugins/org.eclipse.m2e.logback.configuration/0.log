@@ -1,0 +1,465 @@
+2014-08-18 10:19:35,404 [Worker-22] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: EscolaMinisterio:EscolaMinisterio:1.0.0-SNAPSHOT @ C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\pom.xml.
+2014-08-18 10:23:11,105 [Worker-3] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2014-08-18 10:23:11,247 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:23:11,851 [New I/O client worker #1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-resources-plugin/2.5/maven-resources-plugin-2.5.jar
+2014-08-18 10:23:12,053 [New I/O client worker #1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-resources-plugin/2.5/maven-resources-plugin-2.5.jar
+2014-08-18 10:23:12,251 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:23:12,324 [New I/O client worker #2-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-compiler-plugin/3.1/maven-compiler-plugin-3.1.jar
+2014-08-18 10:23:12,562 [New I/O client worker #2-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-compiler-plugin/3.1/maven-compiler-plugin-3.1.jar
+2014-08-18 10:23:12,732 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:23:12,830 [New I/O client worker #3-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-surefire-plugin/2.10/maven-surefire-plugin-2.10.jar
+2014-08-18 10:23:12,931 [New I/O client worker #3-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-surefire-plugin/2.10/maven-surefire-plugin-2.10.jar
+2014-08-18 10:23:13,119 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:23:13,500 [New I/O client worker #4-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-deploy-plugin/2.7/maven-deploy-plugin-2.7.jar
+2014-08-18 10:23:13,850 [New I/O client worker #4-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-deploy-plugin/2.7/maven-deploy-plugin-2.7.jar
+2014-08-18 10:23:14,107 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:23:14,661 [New I/O client worker #5-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-site-plugin/3.0/maven-site-plugin-3.0.jar
+2014-08-18 10:23:20,719 [New I/O client worker #5-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-site-plugin/3.0/maven-site-plugin-3.0.jar
+2014-08-18 10:23:20,880 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:23:22,416 [New I/O client worker #6-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-compiler-plugin/3.1/maven-compiler-plugin-3.1.pom
+2014-08-18 10:23:24,011 [New I/O client worker #6-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-compiler-plugin/3.1/maven-compiler-plugin-3.1.pom
+2014-08-18 10:23:24,160 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:23:42,074 [New I/O client worker #7-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-plugins/24/maven-plugins-24.pom
+2014-08-18 10:23:42,129 [New I/O client worker #7-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-plugins/24/maven-plugins-24.pom
+2014-08-18 10:24:02,091 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:24:02,395 [New I/O client worker #8-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-parent/23/maven-parent-23.pom
+2014-08-18 10:24:02,684 [New I/O client worker #8-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-parent/23/maven-parent-23.pom
+2014-08-18 10:24:02,853 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:24:03,014 [New I/O client worker #9-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/apache/13/apache-13.pom
+2014-08-18 10:24:03,200 [New I/O client worker #9-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/apache/13/apache-13.pom
+2014-08-18 10:24:03,611 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:24:04,022 [New I/O client worker #10-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-plugin-api/2.0.9/maven-plugin-api-2.0.9.pom
+2014-08-18 10:24:04,025 [New I/O client worker #10-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-plugin-api/2.0.9/maven-plugin-api-2.0.9.pom
+2014-08-18 10:24:04,163 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:24:13,925 [New I/O client worker #11-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven/2.0.9/maven-2.0.9.pom
+2014-08-18 10:24:14,052 [New I/O client worker #11-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven/2.0.9/maven-2.0.9.pom
+2014-08-18 10:24:14,117 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:24:15,453 [New I/O client worker #12-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-parent/8/maven-parent-8.pom
+2014-08-18 10:24:16,455 [New I/O client worker #12-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-parent/8/maven-parent-8.pom
+2014-08-18 10:24:20,197 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:24:20,309 [New I/O client worker #13-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-artifact/2.0.9/maven-artifact-2.0.9.pom
+2014-08-18 10:24:20,311 [New I/O client worker #13-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-artifact/2.0.9/maven-artifact-2.0.9.pom
+2014-08-18 10:24:20,363 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:24:20,727 [New I/O client worker #14-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-utils/1.5.1/plexus-utils-1.5.1.pom
+2014-08-18 10:24:20,729 [New I/O client worker #14-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-utils/1.5.1/plexus-utils-1.5.1.pom
+2014-08-18 10:24:23,523 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:24:23,957 [New I/O client worker #15-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-core/2.0.9/maven-core-2.0.9.pom
+2014-08-18 10:24:23,959 [New I/O client worker #15-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-core/2.0.9/maven-core-2.0.9.pom
+2014-08-18 10:24:24,095 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:24:26,461 [New I/O client worker #16-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-settings/2.0.9/maven-settings-2.0.9.pom
+2014-08-18 10:24:26,464 [New I/O client worker #16-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-settings/2.0.9/maven-settings-2.0.9.pom
+2014-08-18 10:24:26,546 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:24:28,723 [New I/O client worker #17-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-model/2.0.9/maven-model-2.0.9.pom
+2014-08-18 10:24:28,725 [New I/O client worker #17-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-model/2.0.9/maven-model-2.0.9.pom
+2014-08-18 10:24:28,802 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:24:28,963 [New I/O client worker #18-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-plugin-parameter-documenter/2.0.9/maven-plugin-parameter-documenter-2.0.9.pom
+2014-08-18 10:24:28,964 [New I/O client worker #18-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-plugin-parameter-documenter/2.0.9/maven-plugin-parameter-documenter-2.0.9.pom
+2014-08-18 10:24:29,031 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:24:29,129 [New I/O client worker #19-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-profile/2.0.9/maven-profile-2.0.9.pom
+2014-08-18 10:24:29,131 [New I/O client worker #19-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-profile/2.0.9/maven-profile-2.0.9.pom
+2014-08-18 10:24:29,241 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:24:29,948 [New I/O client worker #20-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-repository-metadata/2.0.9/maven-repository-metadata-2.0.9.pom
+2014-08-18 10:24:29,949 [New I/O client worker #20-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-repository-metadata/2.0.9/maven-repository-metadata-2.0.9.pom
+2014-08-18 10:24:30,051 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:24:30,498 [New I/O client worker #21-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-error-diagnostics/2.0.9/maven-error-diagnostics-2.0.9.pom
+2014-08-18 10:24:30,501 [New I/O client worker #21-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-error-diagnostics/2.0.9/maven-error-diagnostics-2.0.9.pom
+2014-08-18 10:24:30,679 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:24:31,235 [New I/O client worker #22-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-project/2.0.9/maven-project-2.0.9.pom
+2014-08-18 10:24:31,237 [New I/O client worker #22-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-project/2.0.9/maven-project-2.0.9.pom
+2014-08-18 10:24:31,463 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:24:31,630 [New I/O client worker #23-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-artifact-manager/2.0.9/maven-artifact-manager-2.0.9.pom
+2014-08-18 10:24:31,632 [New I/O client worker #23-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-artifact-manager/2.0.9/maven-artifact-manager-2.0.9.pom
+2014-08-18 10:24:31,744 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:24:31,850 [New I/O client worker #24-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-plugin-registry/2.0.9/maven-plugin-registry-2.0.9.pom
+2014-08-18 10:24:31,852 [New I/O client worker #24-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-plugin-registry/2.0.9/maven-plugin-registry-2.0.9.pom
+2014-08-18 10:24:31,930 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:24:33,004 [New I/O client worker #25-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-plugin-descriptor/2.0.9/maven-plugin-descriptor-2.0.9.pom
+2014-08-18 10:24:33,007 [New I/O client worker #25-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-plugin-descriptor/2.0.9/maven-plugin-descriptor-2.0.9.pom
+2014-08-18 10:24:33,133 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:24:43,152 [New I/O client boss #26] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-monitor/2.0.9/maven-monitor-2.0.9.pom
+2014-08-18 10:24:43,350 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:25:02,855 [New I/O client worker #27-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/shared/maven-shared-utils/0.1/maven-shared-utils-0.1.pom
+2014-08-18 10:25:02,858 [New I/O client worker #27-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/shared/maven-shared-utils/0.1/maven-shared-utils-0.1.pom
+2014-08-18 10:25:03,590 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:25:10,107 [New I/O client worker #28-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/shared/maven-shared-components/18/maven-shared-components-18.pom
+2014-08-18 10:25:10,110 [New I/O client worker #28-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/shared/maven-shared-components/18/maven-shared-components-18.pom
+2014-08-18 10:25:30,547 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:25:31,595 [New I/O client worker #29-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-parent/22/maven-parent-22.pom
+2014-08-18 10:25:32,218 [New I/O client worker #29-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-parent/22/maven-parent-22.pom
+2014-08-18 10:25:33,147 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:25:33,310 [New I/O client worker #30-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/apache/11/apache-11.pom
+2014-08-18 10:25:33,438 [New I/O client worker #30-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/apache/11/apache-11.pom
+2014-08-18 10:25:33,713 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:25:50,494 [New I/O client worker #31-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.pom
+2014-08-18 10:25:50,496 [New I/O client worker #31-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.pom
+2014-08-18 10:26:43,520 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:26:43,689 [New I/O client worker #32-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.pom
+2014-08-18 10:26:43,692 [New I/O client worker #32-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.pom
+2014-08-18 10:26:43,770 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:26:43,876 [New I/O client worker #33-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/shared/maven-shared-components/19/maven-shared-components-19.pom
+2014-08-18 10:26:43,879 [New I/O client worker #33-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/shared/maven-shared-components/19/maven-shared-components-19.pom
+2014-08-18 10:26:43,958 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:26:47,977 [New I/O client worker #34-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.pom
+2014-08-18 10:26:47,979 [New I/O client worker #34-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.pom
+2014-08-18 10:26:48,119 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:26:48,588 [New I/O client worker #35-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven/2.2.1/maven-2.2.1.pom
+2014-08-18 10:26:48,718 [New I/O client worker #35-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven/2.2.1/maven-2.2.1.pom
+2014-08-18 10:26:48,928 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:26:49,261 [New I/O client worker #36-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-parent/11/maven-parent-11.pom
+2014-08-18 10:26:49,400 [New I/O client worker #36-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-parent/11/maven-parent-11.pom
+2014-08-18 10:26:49,579 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:26:52,836 [New I/O client worker #37-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/apache/5/apache-5.pom
+2014-08-18 10:26:52,839 [New I/O client worker #37-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/apache/5/apache-5.pom
+2014-08-18 10:26:53,140 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:26:53,247 [New I/O client worker #38-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-core/2.2.1/maven-core-2.2.1.pom
+2014-08-18 10:26:53,291 [New I/O client worker #38-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-core/2.2.1/maven-core-2.2.1.pom
+2014-08-18 10:26:53,434 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:26:53,694 [New I/O client worker #39-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-settings/2.2.1/maven-settings-2.2.1.pom
+2014-08-18 10:26:53,697 [New I/O client worker #39-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-settings/2.2.1/maven-settings-2.2.1.pom
+2014-08-18 10:26:53,949 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:26:54,006 [New I/O client worker #40-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-model/2.2.1/maven-model-2.2.1.pom
+2014-08-18 10:26:54,007 [New I/O client worker #40-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-model/2.2.1/maven-model-2.2.1.pom
+2014-08-18 10:26:54,078 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:26:54,126 [New I/O client worker #41-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-interpolation/1.11/plexus-interpolation-1.11.pom
+2014-08-18 10:26:54,128 [New I/O client worker #41-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-interpolation/1.11/plexus-interpolation-1.11.pom
+2014-08-18 10:26:54,177 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:26:54,319 [New I/O client worker #42-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-plugin-parameter-documenter/2.2.1/maven-plugin-parameter-documenter-2.2.1.pom
+2014-08-18 10:26:54,321 [New I/O client worker #42-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-plugin-parameter-documenter/2.2.1/maven-plugin-parameter-documenter-2.2.1.pom
+2014-08-18 10:26:54,692 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:26:54,756 [New I/O client worker #43-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/slf4j/slf4j-jdk14/1.5.6/slf4j-jdk14-1.5.6.pom
+2014-08-18 10:26:54,760 [New I/O client worker #43-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/slf4j/slf4j-jdk14/1.5.6/slf4j-jdk14-1.5.6.pom
+2014-08-18 10:26:54,827 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:26:55,060 [New I/O client worker #44-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/slf4j/slf4j-parent/1.5.6/slf4j-parent-1.5.6.pom
+2014-08-18 10:26:55,062 [New I/O client worker #44-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/slf4j/slf4j-parent/1.5.6/slf4j-parent-1.5.6.pom
+2014-08-18 10:26:55,180 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:26:55,442 [New I/O client worker #45-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/slf4j/slf4j-api/1.5.6/slf4j-api-1.5.6.pom
+2014-08-18 10:26:55,443 [New I/O client worker #45-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/slf4j/slf4j-api/1.5.6/slf4j-api-1.5.6.pom
+2014-08-18 10:26:55,477 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:26:55,547 [New I/O client worker #46-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/slf4j/jcl-over-slf4j/1.5.6/jcl-over-slf4j-1.5.6.pom
+2014-08-18 10:26:55,548 [New I/O client worker #46-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/slf4j/jcl-over-slf4j/1.5.6/jcl-over-slf4j-1.5.6.pom
+2014-08-18 10:26:55,604 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:26:55,750 [New I/O client worker #47-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-profile/2.2.1/maven-profile-2.2.1.pom
+2014-08-18 10:26:55,752 [New I/O client worker #47-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-profile/2.2.1/maven-profile-2.2.1.pom
+2014-08-18 10:26:55,830 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:27:01,395 [New I/O client worker #48-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-artifact/2.2.1/maven-artifact-2.2.1.pom
+2014-08-18 10:27:01,399 [New I/O client worker #48-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-artifact/2.2.1/maven-artifact-2.2.1.pom
+2014-08-18 10:27:07,650 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:27:27,419 [New I/O client worker #49-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-repository-metadata/2.2.1/maven-repository-metadata-2.2.1.pom
+2014-08-18 10:27:27,424 [New I/O client worker #49-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-repository-metadata/2.2.1/maven-repository-metadata-2.2.1.pom
+2014-08-18 10:27:30,768 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:27:33,897 [New I/O client worker #50-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-error-diagnostics/2.2.1/maven-error-diagnostics-2.2.1.pom
+2014-08-18 10:27:33,898 [New I/O client worker #50-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-error-diagnostics/2.2.1/maven-error-diagnostics-2.2.1.pom
+2014-08-18 10:27:34,252 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:27:34,318 [New I/O client worker #51-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-project/2.2.1/maven-project-2.2.1.pom
+2014-08-18 10:27:34,320 [New I/O client worker #51-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-project/2.2.1/maven-project-2.2.1.pom
+2014-08-18 10:27:34,462 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:27:34,577 [New I/O client worker #52-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-artifact-manager/2.2.1/maven-artifact-manager-2.2.1.pom
+2014-08-18 10:27:34,580 [New I/O client worker #52-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-artifact-manager/2.2.1/maven-artifact-manager-2.2.1.pom
+2014-08-18 10:27:34,742 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:27:35,509 [New I/O client worker #53-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.pom
+2014-08-18 10:27:35,512 [New I/O client worker #53-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.pom
+2014-08-18 10:27:35,630 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:27:37,812 [New I/O client worker #54-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-plugin-registry/2.2.1/maven-plugin-registry-2.2.1.pom
+2014-08-18 10:27:37,816 [New I/O client worker #54-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-plugin-registry/2.2.1/maven-plugin-registry-2.2.1.pom
+2014-08-18 10:27:38,099 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:27:38,144 [New I/O client worker #55-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-plugin-descriptor/2.2.1/maven-plugin-descriptor-2.2.1.pom
+2014-08-18 10:27:38,145 [New I/O client worker #55-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-plugin-descriptor/2.2.1/maven-plugin-descriptor-2.2.1.pom
+2014-08-18 10:27:38,191 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:27:38,404 [New I/O client worker #56-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/maven-monitor/2.2.1/maven-monitor-2.2.1.pom
+2014-08-18 10:27:38,408 [New I/O client worker #56-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/maven-monitor/2.2.1/maven-monitor-2.2.1.pom
+2014-08-18 10:27:38,504 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:27:38,652 [New I/O client worker #57-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.pom
+2014-08-18 10:27:38,655 [New I/O client worker #57-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.pom
+2014-08-18 10:27:38,722 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:27:38,772 [New I/O client worker #58-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/sonatype/spice/spice-parent/12/spice-parent-12.pom
+2014-08-18 10:27:38,774 [New I/O client worker #58-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/sonatype/spice/spice-parent/12/spice-parent-12.pom
+2014-08-18 10:27:38,804 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:27:38,833 [New I/O client worker #59-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/sonatype/forge/forge-parent/4/forge-parent-4.pom
+2014-08-18 10:27:38,837 [New I/O client worker #59-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/sonatype/forge/forge-parent/4/forge-parent-4.pom
+2014-08-18 10:27:38,883 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:27:38,983 [New I/O client worker #60-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.pom
+2014-08-18 10:27:38,985 [New I/O client worker #60-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.pom
+2014-08-18 10:27:39,086 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:27:39,658 [New I/O client worker #61-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.pom
+2014-08-18 10:27:39,662 [New I/O client worker #61-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.pom
+2014-08-18 10:27:40,308 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:27:50,319 [New I/O client boss #62] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-containers/1.5.5/plexus-containers-1.5.5.pom
+2014-08-18 10:27:50,342 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:27:52,439 [New I/O client worker #63-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-compiler-api/2.2/plexus-compiler-api-2.2.pom
+2014-08-18 10:27:52,442 [New I/O client worker #63-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-compiler-api/2.2/plexus-compiler-api-2.2.pom
+2014-08-18 10:27:55,649 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:28:26,883 [New I/O client worker #64-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-compiler/2.2/plexus-compiler-2.2.pom
+2014-08-18 10:28:26,887 [New I/O client worker #64-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-compiler/2.2/plexus-compiler-2.2.pom
+2014-08-18 10:28:41,730 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:28:42,217 [New I/O client worker #65-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-components/1.3.1/plexus-components-1.3.1.pom
+2014-08-18 10:28:42,221 [New I/O client worker #65-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-components/1.3.1/plexus-components-1.3.1.pom
+2014-08-18 10:28:42,427 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:29:06,131 [New I/O client worker #66-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus/3.3.1/plexus-3.3.1.pom
+2014-08-18 10:29:13,090 [New I/O client worker #66-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus/3.3.1/plexus-3.3.1.pom
+2014-08-18 10:29:15,119 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:29:18,980 [New I/O client worker #67-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-utils/3.0.8/plexus-utils-3.0.8.pom
+2014-08-18 10:29:18,983 [New I/O client worker #67-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-utils/3.0.8/plexus-utils-3.0.8.pom
+2014-08-18 10:29:22,038 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:29:22,463 [New I/O client worker #68-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus/3.2/plexus-3.2.pom
+2014-08-18 10:29:28,937 [New I/O client worker #68-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus/3.2/plexus-3.2.pom
+2014-08-18 10:29:30,362 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:29:41,375 [New I/O client boss #69] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-compiler-manager/2.2/plexus-compiler-manager-2.2.pom
+2014-08-18 10:29:41,390 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:29:58,149 [New I/O client worker #70-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-compiler-javac/2.2/plexus-compiler-javac-2.2.pom
+2014-08-18 10:29:58,152 [New I/O client worker #70-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-compiler-javac/2.2/plexus-compiler-javac-2.2.pom
+2014-08-18 10:29:58,293 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:29:59,017 [New I/O client worker #71-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-compilers/2.2/plexus-compilers-2.2.pom
+2014-08-18 10:29:59,020 [New I/O client worker #71-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-compilers/2.2/plexus-compilers-2.2.pom
+2014-08-18 10:30:02,120 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:30:02,591 [New I/O client worker #72-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-container-default/1.5.5/plexus-container-default-1.5.5.pom
+2014-08-18 10:30:02,595 [New I/O client worker #72-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-container-default/1.5.5/plexus-container-default-1.5.5.pom
+2014-08-18 10:30:03,890 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:30:06,430 [New I/O client worker #73-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-utils/1.5.1/plexus-utils-1.5.1.jar
+2014-08-18 10:30:06,631 [New I/O client worker #73-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.jar
+2014-08-18 10:30:07,610 [New I/O client worker #73-6] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-compiler-javac/2.2/plexus-compiler-javac-2.2.jar
+2014-08-18 10:30:09,424 [New I/O client worker #73-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.jar
+2014-08-18 10:30:09,563 [New I/O client worker #73-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.jar
+2014-08-18 10:30:10,024 [New I/O client worker #73-6] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-compiler-javac/2.2/plexus-compiler-javac-2.2.jar
+2014-08-18 10:30:16,340 [New I/O client worker #73-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/shared/maven-shared-utils/0.1/maven-shared-utils-0.1.jar
+2014-08-18 10:30:29,519 [New I/O client worker #73-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.jar
+2014-08-18 10:30:31,109 [New I/O client worker #73-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/shared/maven-shared-utils/0.1/maven-shared-utils-0.1.jar
+2014-08-18 10:30:41,251 [New I/O client worker #73-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-utils/1.5.1/plexus-utils-1.5.1.jar
+2014-08-18 10:30:49,975 [New I/O client worker #73-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-compiler-api/2.2/plexus-compiler-api-2.2.jar
+2014-08-18 10:30:50,057 [New I/O client worker #73-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/codehaus/plexus/plexus-compiler-api/2.2/plexus-compiler-api-2.2.jar
+2014-08-18 10:30:50,498 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: EscolaMinisterio:EscolaMinisterio:1.0.0-SNAPSHOT @ C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\pom.xml.
+2014-08-18 10:30:50,511 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:30:50,555 [New I/O client worker #74-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.jpa/2.5.2-M1/org.eclipse.persistence.jpa-2.5.2-M1.pom
+2014-08-18 10:30:50,556 [New I/O client worker #74-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.jpa/2.5.2-M1/org.eclipse.persistence.jpa-2.5.2-M1.pom
+2014-08-18 10:30:50,687 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:30:50,804 [New I/O client worker #75-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/javax.persistence/2.1.0/javax.persistence-2.1.0.pom
+2014-08-18 10:30:50,806 [New I/O client worker #75-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/eclipse/persistence/javax.persistence/2.1.0/javax.persistence-2.1.0.pom
+2014-08-18 10:30:51,033 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:30:52,302 [New I/O client worker #76-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.asm/2.5.2-M1/org.eclipse.persistence.asm-2.5.2-M1.pom
+2014-08-18 10:30:52,306 [New I/O client worker #76-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.asm/2.5.2-M1/org.eclipse.persistence.asm-2.5.2-M1.pom
+2014-08-18 10:30:52,339 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:30:52,378 [New I/O client worker #77-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.antlr/2.5.2-M1/org.eclipse.persistence.antlr-2.5.2-M1.pom
+2014-08-18 10:30:52,380 [New I/O client worker #77-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.antlr/2.5.2-M1/org.eclipse.persistence.antlr-2.5.2-M1.pom
+2014-08-18 10:30:52,718 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:30:53,306 [New I/O client worker #78-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.jpa.jpql/2.5.2-M1/org.eclipse.persistence.jpa.jpql-2.5.2-M1.pom
+2014-08-18 10:30:53,307 [New I/O client worker #78-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.jpa.jpql/2.5.2-M1/org.eclipse.persistence.jpa.jpql-2.5.2-M1.pom
+2014-08-18 10:30:53,373 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:30:53,761 [New I/O client worker #79-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.core/2.5.2-M1/org.eclipse.persistence.core-2.5.2-M1.pom
+2014-08-18 10:30:53,765 [New I/O client worker #79-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.core/2.5.2-M1/org.eclipse.persistence.core-2.5.2-M1.pom
+2014-08-18 10:30:53,923 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:30:54,045 [New I/O client worker #80-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.pom
+2014-08-18 10:30:54,047 [New I/O client worker #80-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.pom
+2014-08-18 10:30:54,313 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:30:54,453 [New I/O client worker #81-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/net/sf/jasperreports/jasperreports/5.0.1/jasperreports-5.0.1.pom
+2014-08-18 10:30:54,477 [New I/O client worker #81-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/net/sf/jasperreports/jasperreports/5.0.1/jasperreports-5.0.1.pom
+2014-08-18 10:30:54,881 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:30:54,955 [New I/O client worker #82-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/commons-collections/commons-collections/2.1/commons-collections-2.1.pom
+2014-08-18 10:30:54,956 [New I/O client worker #82-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/commons-collections/commons-collections/2.1/commons-collections-2.1.pom
+2014-08-18 10:30:55,123 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:30:58,016 [New I/O client worker #83-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/com/lowagie/itext/2.1.7.js1/itext-2.1.7.js1.pom
+2014-08-18 10:30:58,028 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.lowagie:itext:jar:2.1.7.js1 is missing, no dependency information available
+2014-08-18 10:30:58,070 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:30:58,476 [New I/O client worker #84-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/com/fasterxml/jackson/core/jackson-core/2.0.5/jackson-core-2.0.5.pom
+2014-08-18 10:30:58,568 [New I/O client worker #84-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/com/fasterxml/jackson/core/jackson-core/2.0.5/jackson-core-2.0.5.pom
+2014-08-18 10:31:03,953 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:31:09,972 [New I/O client worker #85-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/com/fasterxml/jackson/core/jackson-databind/2.0.5/jackson-databind-2.0.5.pom
+2014-08-18 10:31:43,724 [New I/O client worker #85-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/com/fasterxml/jackson/core/jackson-databind/2.0.5/jackson-databind-2.0.5.pom
+2014-08-18 10:31:44,803 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:31:50,115 [New I/O client worker #86-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/com/fasterxml/jackson/core/jackson-annotations/2.0.5/jackson-annotations-2.0.5.pom
+2014-08-18 10:31:50,119 [New I/O client worker #86-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/com/fasterxml/jackson/core/jackson-annotations/2.0.5/jackson-annotations-2.0.5.pom
+2014-08-18 10:31:50,178 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:31:50,378 [New I/O client worker #87-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/com/fasterxml/oss-parent/2/oss-parent-2.pom
+2014-08-18 10:31:50,672 [New I/O client worker #87-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/com/fasterxml/oss-parent/2/oss-parent-2.pom
+2014-08-18 10:31:50,884 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:31:51,656 [New I/O client worker #88-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.asm/2.5.2-M1/org.eclipse.persistence.asm-2.5.2-M1.jar
+2014-08-18 10:31:51,773 [New I/O client worker #88-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.antlr/2.5.2-M1/org.eclipse.persistence.antlr-2.5.2-M1.jar
+2014-08-18 10:31:51,857 [New I/O client worker #88-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.jpa/2.5.2-M1/org.eclipse.persistence.jpa-2.5.2-M1.jar
+2014-08-18 10:31:52,040 [New I/O client worker #88-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.jpa.jpql/2.5.2-M1/org.eclipse.persistence.jpa.jpql-2.5.2-M1.jar
+2014-08-18 10:31:52,233 [New I/O client worker #88-6] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/javax.persistence/2.1.0/javax.persistence-2.1.0.jar
+2014-08-18 10:31:52,338 [New I/O client worker #88-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.core/2.5.2-M1/org.eclipse.persistence.core-2.5.2-M1.jar
+2014-08-18 10:31:52,475 [New I/O client worker #88-7] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar
+2014-08-18 10:31:52,514 [New I/O client worker #88-8] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/net/sf/jasperreports/jasperreports/5.0.1/jasperreports-5.0.1.jar
+2014-08-18 10:31:52,732 [New I/O client worker #88-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/commons-collections/commons-collections/2.1/commons-collections-2.1.jar
+2014-08-18 10:31:53,309 [New I/O client worker #88-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/com/fasterxml/jackson/core/jackson-databind/2.0.5/jackson-databind-2.0.5.jar
+2014-08-18 10:31:53,505 [New I/O client worker #88-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/com/fasterxml/jackson/core/jackson-annotations/2.0.5/jackson-annotations-2.0.5.jar
+2014-08-18 10:31:53,969 [New I/O client worker #88-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/com/lowagie/itext/2.1.7.js1/itext-2.1.7.js1.jar
+2014-08-18 10:31:54,086 [New I/O client worker #88-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/com/fasterxml/jackson/core/jackson-core/2.0.5/jackson-core-2.0.5.jar
+2014-08-18 10:32:49,595 [New I/O client worker #88-6] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.asm/2.5.2-M1/org.eclipse.persistence.asm-2.5.2-M1.jar
+2014-08-18 10:32:51,348 [New I/O client worker #88-7] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.core/2.5.2-M1/org.eclipse.persistence.core-2.5.2-M1.jar
+2014-08-18 10:33:09,215 [New I/O client worker #88-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/com/fasterxml/jackson/core/jackson-core/2.0.5/jackson-core-2.0.5.jar
+2014-08-18 10:33:13,503 [New I/O client worker #88-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/com/fasterxml/jackson/core/jackson-databind/2.0.5/jackson-databind-2.0.5.jar
+2014-08-18 10:33:22,046 [New I/O client worker #88-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.jpa/2.5.2-M1/org.eclipse.persistence.jpa-2.5.2-M1.jar
+2014-08-18 10:33:28,338 [New I/O client worker #88-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/com/fasterxml/jackson/core/jackson-annotations/2.0.5/jackson-annotations-2.0.5.jar
+2014-08-18 10:33:38,883 [New I/O client worker #88-6] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/commons-collections/commons-collections/2.1/commons-collections-2.1.jar
+2014-08-18 10:33:43,758 [New I/O client worker #88-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/com/fasterxml/jackson/core/jackson-core/2.0.5/jackson-core-2.0.5.jar
+2014-08-18 10:33:46,773 [New I/O client worker #88-6] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/commons-collections/commons-collections/2.1/commons-collections-2.1.jar
+2014-08-18 10:33:50,115 [New I/O client worker #88-7] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.core/2.5.2-M1/org.eclipse.persistence.core-2.5.2-M1.jar
+2014-08-18 10:33:50,210 [New I/O client worker #88-8] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/net/sf/jasperreports/jasperreports/5.0.1/jasperreports-5.0.1.jar
+2014-08-18 10:33:51,204 [AsyncHttpClient-Reaper] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.antlr/2.5.2-M1/org.eclipse.persistence.antlr-2.5.2-M1.jar
+2014-08-18 10:33:51,232 [AsyncHttpClient-Reaper] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar
+2014-08-18 10:34:14,688 [New I/O client worker #88-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/com/fasterxml/jackson/core/jackson-annotations/2.0.5/jackson-annotations-2.0.5.jar
+2014-08-18 10:34:39,285 [New I/O client worker #88-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.asm/2.5.2-M1/org.eclipse.persistence.asm-2.5.2-M1.jar
+2014-08-18 10:34:51,212 [AsyncHttpClient-Reaper] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.jpa.jpql/2.5.2-M1/org.eclipse.persistence.jpa.jpql-2.5.2-M1.jar
+2014-08-18 10:34:51,228 [AsyncHttpClient-Reaper] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/eclipse/persistence/javax.persistence/2.1.0/javax.persistence-2.1.0.jar
+2014-08-18 10:35:12,842 [AsyncHttpClient-Reaper] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/com/fasterxml/jackson/core/jackson-databind/2.0.5/jackson-databind-2.0.5.jar
+2014-08-18 10:35:20,596 [AsyncHttpClient-Reaper] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.jpa/2.5.2-M1/org.eclipse.persistence.jpa-2.5.2-M1.jar
+2014-08-18 10:35:33,093 [New I/O client worker #88-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.core/2.5.2-M1/org.eclipse.persistence.core-2.5.2-M1.jar
+2014-08-18 10:35:39,566 [New I/O client worker #88-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.asm/2.5.2-M1/org.eclipse.persistence.asm-2.5.2-M1.jar
+2014-08-18 10:35:45,608 [AsyncHttpClient-Reaper] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/net/sf/jasperreports/jasperreports/5.0.1/jasperreports-5.0.1.jar
+2014-08-18 10:37:30,850 [AsyncHttpClient-Reaper] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.core/2.5.2-M1/org.eclipse.persistence.core-2.5.2-M1.jar
+2014-08-18 10:37:31,216 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:37:32,080 [New I/O client worker #89-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-resources-plugin/2.5/maven-resources-plugin-2.5.pom
+2014-08-18 10:37:32,084 [New I/O client worker #89-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-resources-plugin/2.5/maven-resources-plugin-2.5.pom
+2014-08-18 10:37:56,589 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:38:57,333 [AsyncHttpClient-Reaper] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-plugins/19/maven-plugins-19.pom
+2014-08-18 10:38:57,471 [Worker-3] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 946 sec
+2014-08-18 10:49:15,207 [Worker-38] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2014-08-18 10:49:15,405 [Worker-38] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: EscolaMinisterio:EscolaMinisterio:1.0.0-SNAPSHOT @ C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\pom.xml.
+2014-08-18 10:49:15,485 [Worker-38] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:49:15,546 [New I/O client worker #91-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/com/lowagie/itext/2.1.7.js1/itext-2.1.7.js1.pom
+2014-08-18 10:49:15,560 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.lowagie:itext:jar:2.1.7.js1 is missing, no dependency information available
+2014-08-18 10:49:15,631 [Worker-38] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:49:15,661 [New I/O client worker #92-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.jpa/2.5.2-M1/org.eclipse.persistence.jpa-2.5.2-M1.jar
+2014-08-18 10:49:15,683 [New I/O client worker #92-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.antlr/2.5.2-M1/org.eclipse.persistence.antlr-2.5.2-M1.jar
+2014-08-18 10:49:15,702 [New I/O client worker #92-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.jpa.jpql/2.5.2-M1/org.eclipse.persistence.jpa.jpql-2.5.2-M1.jar
+2014-08-18 10:49:15,714 [New I/O client worker #92-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.core/2.5.2-M1/org.eclipse.persistence.core-2.5.2-M1.jar
+2014-08-18 10:49:15,760 [New I/O client worker #92-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/eclipse/persistence/javax.persistence/2.1.0/javax.persistence-2.1.0.jar
+2014-08-18 10:49:15,770 [New I/O client worker #92-6] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar
+2014-08-18 10:49:15,819 [New I/O client worker #92-7] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/net/sf/jasperreports/jasperreports/5.0.1/jasperreports-5.0.1.jar
+2014-08-18 10:49:15,842 [New I/O client worker #92-8] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/com/lowagie/itext/2.1.7.js1/itext-2.1.7.js1.jar
+2014-08-18 10:49:15,845 [New I/O client worker #92-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/com/fasterxml/jackson/core/jackson-databind/2.0.5/jackson-databind-2.0.5.jar
+2014-08-18 10:49:16,805 [New I/O client worker #92-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/eclipse/persistence/javax.persistence/2.1.0/javax.persistence-2.1.0.jar
+2014-08-18 10:49:18,051 [New I/O client worker #92-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.antlr/2.5.2-M1/org.eclipse.persistence.antlr-2.5.2-M1.jar
+2014-08-18 10:49:30,028 [New I/O client worker #92-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.jpa.jpql/2.5.2-M1/org.eclipse.persistence.jpa.jpql-2.5.2-M1.jar
+2014-08-18 10:49:32,119 [New I/O client worker #92-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/com/fasterxml/jackson/core/jackson-databind/2.0.5/jackson-databind-2.0.5.jar
+2014-08-18 10:49:32,663 [New I/O client worker #92-6] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar
+2014-08-18 10:49:33,312 [New I/O client worker #92-7] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/net/sf/jasperreports/jasperreports/5.0.1/jasperreports-5.0.1.jar
+2014-08-18 10:49:34,367 [New I/O client worker #92-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.jpa/2.5.2-M1/org.eclipse.persistence.jpa-2.5.2-M1.jar
+2014-08-18 10:49:34,779 [New I/O client worker #92-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/eclipse/persistence/org.eclipse.persistence.core/2.5.2-M1/org.eclipse.persistence.core-2.5.2-M1.jar
+2014-08-18 10:49:35,449 [Worker-38] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:49:35,516 [New I/O client worker #93-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-plugins/19/maven-plugins-19.pom
+2014-08-18 10:49:35,527 [New I/O client worker #93-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-plugins/19/maven-plugins-19.pom
+2014-08-18 10:49:35,759 [Worker-38] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:49:35,791 [New I/O client worker #94-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/shared/maven-filtering/1.0/maven-filtering-1.0.pom
+2014-08-18 10:49:35,792 [New I/O client worker #94-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/shared/maven-filtering/1.0/maven-filtering-1.0.pom
+2014-08-18 10:49:35,883 [Worker-38] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:49:35,909 [New I/O client worker #95-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/shared/maven-filtering/1.0/maven-filtering-1.0.jar
+2014-08-18 10:49:35,944 [New I/O client worker #95-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/shared/maven-filtering/1.0/maven-filtering-1.0.jar
+2014-08-18 10:49:36,047 [Worker-38] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /EscolaMinisterio/src
+2014-08-18 10:49:36,047 [Worker-38] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Resources folder /EscolaMinisterio/resources overlaps with sources folder /EscolaMinisterio/resources
+2014-08-18 10:49:36,048 [Worker-38] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Not adding source folder /EscolaMinisterio/src/test/java because it overlaps with /EscolaMinisterio/src
+2014-08-18 10:49:36,560 [Worker-38] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 21 sec
+2014-08-18 10:49:41,353 [Worker-51] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: EscolaMinisterio:EscolaMinisterio:1.0.0-SNAPSHOT @ C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\pom.xml.
+2014-08-18 10:49:41,404 [Worker-51] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.lowagie:itext:jar:2.1.7.js1 is missing, no dependency information available
+2014-08-18 10:49:41,457 [Worker-51] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:49:41,495 [New I/O client worker #96-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-surefire-plugin/2.10/maven-surefire-plugin-2.10.pom
+2014-08-18 10:49:41,503 [New I/O client worker #96-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/plugins/maven-surefire-plugin/2.10/maven-surefire-plugin-2.10.pom
+2014-08-18 10:49:41,564 [Worker-51] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 10:49:41,623 [New I/O client worker #97-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/apache/maven/surefire/surefire/2.10/surefire-2.10.pom
+2014-08-18 10:49:41,633 [New I/O client worker #97-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/apache/maven/surefire/surefire/2.10/surefire-2.10.pom
+2014-08-18 10:49:42,202 [Worker-51] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 10:49:42,210 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-08-18 10:49:42,252 [Worker-51] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 10:49:42,253 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 11:15:13,126 [Worker-62] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2014-08-18 11:15:13,274 [Worker-62] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: EscolaMinisterio:EscolaMinisterio:1.0.0-SNAPSHOT @ C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\pom.xml.
+2014-08-18 11:15:13,568 [Worker-62] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /EscolaMinisterio/src
+2014-08-18 11:15:13,569 [Worker-62] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Resources folder /EscolaMinisterio/resources overlaps with sources folder /EscolaMinisterio/resources
+2014-08-18 11:15:13,569 [Worker-62] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Not adding source folder /EscolaMinisterio/src/test/java because it overlaps with /EscolaMinisterio/src
+2014-08-18 11:15:13,869 [Worker-62] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 0 sec
+2014-08-18 11:15:16,633 [Worker-64] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:15:16,643 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-08-18 11:15:16,713 [Worker-64] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:15:16,715 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 11:15:47,149 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:15:47,171 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-08-18 11:15:47,175 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:15:47,177 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 11:16:25,153 [Worker-59] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:16:25,158 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-08-18 11:16:25,187 [Worker-59] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:16:25,188 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 11:16:27,577 [Worker-67] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:16:27,579 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2014-08-18 11:16:27,583 [Worker-67] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:16:27,585 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 11:16:50,693 [Worker-65] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:16:50,697 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-08-18 11:16:50,731 [Worker-65] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:16:50,733 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 11:27:07,314 [Worker-76] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:27:07,323 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-08-18 11:27:07,327 [Worker-76] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:27:07,329 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 11:28:18,951 [Worker-80] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:28:18,961 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-08-18 11:28:18,968 [Worker-80] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:28:18,970 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 11:54:32,209 [Worker-119] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:54:32,217 [Worker-119] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-08-18 11:54:32,225 [Worker-119] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:54:32,226 [Worker-119] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 11:55:09,762 [Worker-93] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:55:09,776 [Worker-93] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-08-18 11:55:09,782 [Worker-93] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:55:09,783 [Worker-93] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 11:56:16,862 [Worker-112] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:56:16,875 [Worker-112] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-08-18 11:56:16,885 [Worker-112] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:56:16,888 [Worker-112] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 11:56:55,832 [Worker-89] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:56:55,841 [Worker-89] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-08-18 11:56:55,848 [Worker-89] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:56:55,850 [Worker-89] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 11:57:21,767 [Worker-89] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:57:21,770 [Worker-89] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-08-18 11:57:21,774 [Worker-89] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:57:21,775 [Worker-89] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 11:57:52,411 [Worker-104] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:57:52,420 [Worker-104] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-08-18 11:57:52,426 [Worker-104] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:57:52,428 [Worker-104] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 11:58:58,589 [Worker-98] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:58:58,598 [Worker-98] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-08-18 11:58:58,605 [Worker-98] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:58:58,608 [Worker-98] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 11:59:33,781 [Worker-117] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:59:33,792 [Worker-117] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-08-18 11:59:33,804 [Worker-117] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 11:59:33,807 [Worker-117] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 12:07:57,239 [Worker-116] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 12:07:57,252 [Worker-116] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-08-18 12:07:57,260 [Worker-116] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 12:07:57,262 [Worker-116] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 12:12:47,712 [Worker-116] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: EscolaMinisterio:EscolaMinisterio:1.0.0-SNAPSHOT @ C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\pom.xml.
+2014-08-18 12:12:47,844 [Worker-116] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 12:12:48,001 [New I/O client worker #98-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/xerial/sqlite-jdbc/3.7.2/sqlite-jdbc-3.7.2.pom
+2014-08-18 12:12:48,004 [New I/O client worker #98-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/xerial/sqlite-jdbc/3.7.2/sqlite-jdbc-3.7.2.pom
+2014-08-18 12:12:48,089 [Worker-116] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 12:12:48,275 [New I/O client worker #99-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/xerial/xerial-project/1.1/xerial-project-1.1.pom
+2014-08-18 12:12:48,277 [New I/O client worker #99-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/xerial/xerial-project/1.1/xerial-project-1.1.pom
+2014-08-18 12:12:48,330 [Worker-116] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 12:12:48,430 [New I/O client worker #100-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/xerial/xerial/3/xerial-3.pom
+2014-08-18 12:12:48,431 [New I/O client worker #100-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/xerial/xerial/3/xerial-3.pom
+2014-08-18 12:12:48,650 [Worker-116] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-08-18 12:12:48,793 [New I/O client worker #101-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.fabrica/content/groups/public/org/xerial/sqlite-jdbc/3.7.2/sqlite-jdbc-3.7.2.jar
+2014-08-18 12:13:43,838 [New I/O client worker #101-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.fabrica/content/groups/public/org/xerial/sqlite-jdbc/3.7.2/sqlite-jdbc-3.7.2.jar
+2014-08-18 12:13:44,543 [Worker-116] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 12:13:44,551 [Worker-116] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2014-08-18 12:13:44,553 [Worker-116] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 12:13:44,555 [Worker-116] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 12:13:46,735 [Worker-123] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 12:13:46,740 [Worker-123] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-08-18 12:13:46,774 [Worker-123] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 12:13:46,775 [Worker-123] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 12:15:00,426 [Worker-123] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 12:15:00,431 [Worker-123] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-08-18 12:15:00,435 [Worker-123] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 12:15:00,437 [Worker-123] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 12:16:24,112 [Worker-128] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 12:16:24,116 [Worker-128] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-08-18 12:16:24,120 [Worker-128] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 12:16:24,122 [Worker-128] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
+2014-08-18 12:18:38,821 [Worker-116] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 12:18:38,826 [Worker-116] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-08-18 12:18:38,831 [Worker-116] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-08-18 12:18:38,833 [Worker-116] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\java\projetos\escola\EscolaMinisterio\EscolaMinisterio\src\test\resources
