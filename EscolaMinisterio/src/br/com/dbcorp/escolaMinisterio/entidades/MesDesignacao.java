@@ -27,6 +27,7 @@ public class MesDesignacao implements Entidade {
 	private MesesDom mes;
 	private int ano;
 	private char status;
+	private boolean melhoreMinisterio;
 	private List<SemanaDesignacao> semanas;
 	private String idOnline;
 	private Date dtUltimaAtualiza;
@@ -74,6 +75,13 @@ public class MesDesignacao implements Entidade {
 	}
 	public void setStatus(char status) {
 		this.status = status;
+	}
+	
+	public boolean isMelhoreMinisterio() {
+		return melhoreMinisterio;
+	}
+	public void setMelhoreMinisterio(boolean melhoreMinisterio) {
+		this.melhoreMinisterio = melhoreMinisterio;
 	}
 	
 	@OneToMany(mappedBy="mes", cascade=CascadeType.ALL)

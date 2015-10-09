@@ -2,6 +2,7 @@ package br.com.dbcorp.escolaMinisterio.ui;
 
 import java.awt.Image;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.ImageIcon;
 
@@ -23,6 +24,7 @@ public class Params {
 	private static ImageIcon btRegresso;
 	private static ImageIcon btLupa;
 	
+	private static DateTimeFormatter dateTimeFormatter;
 	
 	public static void setDimensions(MainFrame frame) {
 		WIDTH = frame.getWidth();
@@ -120,5 +122,13 @@ public class Params {
 		}
 		
 		return new ImageIcon(url);
+	}
+	
+	public static DateTimeFormatter dateFormate() {
+		if (dateTimeFormatter == null) {
+			dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		}
+		
+		return dateTimeFormatter;
 	}
 }

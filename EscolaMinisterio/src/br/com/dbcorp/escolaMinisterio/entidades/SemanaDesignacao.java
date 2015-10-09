@@ -1,9 +1,11 @@
 package br.com.dbcorp.escolaMinisterio.entidades;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
@@ -18,12 +20,14 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import br.com.dbcorp.escolaMinisterio.dataBase.MyLocalDateConverter;
+
 @Entity
 @EntityListeners(RemoveListener.class)
 public class SemanaDesignacao implements Comparable<SemanaDesignacao>, Entidade {
 
 	private int id;
-	private Date data;
+	private LocalDate data;
 	private boolean visita;
 	private boolean assebleia;
 	private boolean recapitulacao;
@@ -57,11 +61,12 @@ public class SemanaDesignacao implements Comparable<SemanaDesignacao>, Entidade 
 		this.dtUltimaAtualiza = dtUltimaAtualiza;
 	}
 	
+	@Convert(converter=MyLocalDateConverter.class)
 	@Temporal(TemporalType.DATE)
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 	

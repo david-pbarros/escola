@@ -116,10 +116,7 @@ public class DesignacoesUI extends ADesignacoesUI {
 	private void diaReuniao() {
 		ReuniaoDialog d = new ReuniaoDialog();
 		
-		this.mesDesignacao = this.gerenciador.abrirMes(d.exibir());
-		this.mesDesignacao.setStatus(DesignacaoGerenciador.NOVO);
-		
-		this.mesesDesignacoes.add(this.mesDesignacao);
+		this.mesesDesignacoes.add(this.gerenciador.abrirMes(d.exibir()));
 
 		this.comboMeses();
 		

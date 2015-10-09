@@ -1,12 +1,12 @@
 package br.com.dbcorp.escolaMinisterio.report.dto;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class DesignacaoReport implements Serializable, Comparable<DesignacaoReport> {
 	private static final long serialVersionUID = -8093370049494799241L;
 
-	private Date data;
+	private LocalDate data;
 	private boolean visita;
 	private boolean assebleia;
 	private boolean recapitulacao;
@@ -18,10 +18,10 @@ public class DesignacaoReport implements Serializable, Comparable<DesignacaoRepo
 	private String tema;
 	private String fonte;
 	
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 	

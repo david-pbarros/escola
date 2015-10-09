@@ -1,8 +1,9 @@
 package br.com.dbcorp.escolaMinisterio.sincronismo;
 
 import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import br.com.dbcorp.escolaMinisterio.dataBase.SincGerenciador;
 import br.com.dbcorp.escolaMinisterio.entidades.SemanaDesignacao;
 import br.com.dbcorp.escolaMinisterio.entidades.Sincronismo;
 import br.com.dbcorp.escolaMinisterio.sincronismo.PHPConnection.HTTP_METHOD;
+import br.com.dbcorp.escolaMinisterio.ui.Params;
 
 public class SemanaSinc {
 
@@ -24,7 +26,6 @@ public class SemanaSinc {
 	private String hash;
 	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	private SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MMM/yy");
-	private SimpleDateFormat sdf3 = new SimpleDateFormat("dd/MM/yyyy");
 	
 	private List<SemanaDesignacao> inseridos;
 	private List<SemanaDesignacao> atualizados;
@@ -139,7 +140,7 @@ public class SemanaSinc {
 					}
 					
 					try {
-						semana.setData(this.sdf3.parse(item.getString("data")));
+						semana.setData(LocalDate.parse(item.getString("data"), Params.dateFormate()));
 						semana.setIdOnline(item.getString("id"));
 						semana.setVisita(item.getInt("visita") == 1);
 						semana.setAssebleia(item.getInt("assebleia") == 1);
@@ -153,7 +154,7 @@ public class SemanaSinc {
 						} else {
 							this.gerenciador.atualizar(semana);
 						}
-					} catch (ParseException ex) {
+					} catch (DateTimeParseException ex) {
 						String erro = "Erro inesperado recebendo dias de reunião.";
 						Log.getInstance().debug(erro, ex);
 						

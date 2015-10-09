@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -59,7 +60,7 @@ public class SemanaUI extends ASemanaUI {
 		this.semanaDesignacao = semanaDesignacao;
 		this.editDetalhes = editDetalhes;
 		
-		this.lbData = new JLabel(new SimpleDateFormat("dd/MM/yyyy").format(semanaDesignacao.getData()));
+		this.lbData = new JLabel(semanaDesignacao.getData().format(Params.dateFormate()));
 		
 		setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("10dlu"),

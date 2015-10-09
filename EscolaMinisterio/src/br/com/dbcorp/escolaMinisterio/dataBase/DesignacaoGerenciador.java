@@ -1,5 +1,8 @@
 package br.com.dbcorp.escolaMinisterio.dataBase;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -33,7 +36,8 @@ public class DesignacaoGerenciador extends Gerenciador {
 	public MesDesignacao abrirMes(int diaEscolhido) {
 		MesDesignacao mesDesignacao = new MesDesignacao();
 		
-		Calendar cd = Calendar.getInstance();
+		LocalDate date;
+		Month mesAtual;
 		
 		Query query = DataBaseHelper.createQuery("FROM MesDesignacao d ORDER BY d.ano DESC, d.mes DESC");
 		
@@ -41,40 +45,44 @@ public class DesignacaoGerenciador extends Gerenciador {
 		
 		if (!meses.isEmpty()) {
 			MesDesignacao mesD = meses.get(0);
-			cd.set(Calendar.MONTH, mesD.getMes().ordinal() + 1);
-			cd.set(Calendar.YEAR, mesD.getAno());
+			
+			Month mesAnterior = Month.values()[mesD.getMes().ordinal()];
+			int ano = mesAnterior == Month.DECEMBER ? mesD.getAno() + 1 : mesD.getAno();
+			
+			date = LocalDate.of(ano, mesAnterior.plus(1), 1);
+			
+		} else {
+			date = LocalDate.now().withDayOfMonth(1);
 		}
 		
-		mesDesignacao.setAno(cd.get(Calendar.YEAR));
-		mesDesignacao.setMes(MesesDom.values()[cd.get(Calendar.MONTH)]);
+		mesAtual = date.getMonth();
 		
-		//Seta o mes no primeiro dia
-		cd.set(Calendar.DAY_OF_MONTH, 1);
-		
-		int mes = cd.get(Calendar.MONTH);
+		mesDesignacao.setAno(date.getYear());
+		mesDesignacao.setMes(MesesDom.values()[date.getMonth().ordinal()]);
+		mesDesignacao.setMelhoreMinisterio(date.getYear() > 2015);
 		
 		//pega o primeiro dia da semana escolhido no mes
-		int weekday = cd.get(Calendar.DAY_OF_WEEK);
-		int dayDiff = 7 - (Calendar.SATURDAY - diaEscolhido);
-		int days = (Calendar.SATURDAY - weekday + dayDiff) % 7;
-		cd.add(Calendar.DAY_OF_YEAR, days);
+		int weekday = date.getDayOfWeek().getValue();
+		int dayDiff = 6 - (DayOfWeek.SATURDAY.getValue() - diaEscolhido);
+		int days = (DayOfWeek.SATURDAY.getValue() - weekday + dayDiff) % 7;
+		date = date.plusDays(days);
 		
 		List<SemanaDesignacao> semanas = new ArrayList<SemanaDesignacao>();
 		
-		while (mes == cd.get(Calendar.MONTH)) {
-			Calendar ct = Calendar.getInstance();
-			ct.setTime(cd.getTime());
-			
+		while (mesAtual == date.getMonth()) {
 			SemanaDesignacao semana = new SemanaDesignacao();
-			semana.setData(ct.getTime());
+			//semana.setData(Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+			semana.setData(date);
+			
 			semana.setMes(mesDesignacao);
 
 			semanas.add(semana);
 			
-			cd.add(Calendar.DAY_OF_YEAR, 7);
+			date = date.plusDays(7);
 		}
 		
 		mesDesignacao.setSemanas(semanas);
+		mesDesignacao.setStatus(DesignacaoGerenciador.NOVO);
 		
 		return mesDesignacao;
 	}

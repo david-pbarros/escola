@@ -5,7 +5,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.text.SimpleDateFormat;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -18,6 +20,11 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import com.jgoodies.forms.factories.FormFactory;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.RowSpec;
+
 import br.com.dbcorp.escolaMinisterio.dataBase.DesignacaoGerenciador;
 import br.com.dbcorp.escolaMinisterio.dataBase.EstudanteGerenciador;
 import br.com.dbcorp.escolaMinisterio.entidades.Ajudante;
@@ -29,11 +36,6 @@ import br.com.dbcorp.escolaMinisterio.entidades.SemanaDesignacao;
 import br.com.dbcorp.escolaMinisterio.ui.Params;
 import br.com.dbcorp.escolaMinisterio.ui.designacao.ASemanaUI;
 import br.com.dbcorp.escolaMinisterio.ui.dialog.EscolhaEstudanteDialog;
-
-import com.jgoodies.forms.factories.FormFactory;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.RowSpec;
 
 @SuppressWarnings("rawtypes")
 public class SemanaUI extends ASemanaUI {
@@ -94,7 +96,7 @@ public class SemanaUI extends ASemanaUI {
 		this.semanaDesignacao = semanaDesignacao;
 		
 		this.txData = new JTextField();
-		this.txData.setText(new SimpleDateFormat("dd/MM/yyyy").format(semanaDesignacao.getData()));
+		this.txData.setText(semanaDesignacao.getData().format(Params.dateFormate()));
 		
 		this.estudos = estudos;
 		this.ajudantesHomens = ajudantesHomens;
@@ -286,20 +288,20 @@ public class SemanaUI extends ASemanaUI {
 			if (this.designacao1 != null) {
 				this.designacao1.setEstudo(this.obtemEstudo(this.cbEstudo1));
 				this.designacao1.setAjudante(this.obtemAjudante(this.cbAjudante1));
-				this.designacao1.setData(this.semanaDesignacao.getData());
+				this.designacao1.setData(Date.from(this.semanaDesignacao.getData().atStartOfDay(ZoneId.systemDefault()).toInstant()));
 				
 			} 
 			
 			if (this.designacao2 != null) {
 				this.designacao2.setEstudo(this.obtemEstudo(this.cbEstudo2));
 				this.designacao2.setAjudante(this.obtemPessoa(this.cbAjudante2));
-				this.designacao2.setData(this.semanaDesignacao.getData());
+				this.designacao2.setData(Date.from(this.semanaDesignacao.getData().atStartOfDay(ZoneId.systemDefault()).toInstant()));
 				
 			}
 			
 			if (this.designacao3 != null) {
 				this.designacao3.setEstudo(this.obtemEstudo(this.cbEstudo3));
-				this.designacao3.setData(this.semanaDesignacao.getData());
+				this.designacao3.setData(Date.from(this.semanaDesignacao.getData().atStartOfDay(ZoneId.systemDefault()).toInstant()));
 				
 				if (this.chHomem.isSelected()) {
 					if (this.ajudantesHomens.contains(this.cbAjudante3.getSelectedItem())) {
