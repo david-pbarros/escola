@@ -1,6 +1,6 @@
 package br.com.dbcorp.escolaMinisterio.entidades;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -23,7 +23,7 @@ public class Usuario implements Entidade {
 	private boolean bloqueado;
 	private Profile profile;
 	private String idOnline;
-	private Date dtUltimaAtualiza;
+	private LocalDateTime dtUltimaAtualiza;
 	
 	@Id @GeneratedValue
 	public int getId() {
@@ -41,10 +41,10 @@ public class Usuario implements Entidade {
 	}
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	public Date getDtUltimaAtualiza() {
+	public LocalDateTime getDtUltimaAtualiza() {
 		return dtUltimaAtualiza;
 	}
-	public void setDtUltimaAtualiza(Date dtUltimaAtualiza) {
+	public void setDtUltimaAtualiza(LocalDateTime dtUltimaAtualiza) {
 		this.dtUltimaAtualiza = dtUltimaAtualiza;
 	}
 	
@@ -87,7 +87,7 @@ public class Usuario implements Entidade {
 	@PrePersist
 	@PreUpdate
 	public void dataAtualiza() {
-		this.dtUltimaAtualiza = new Date();
+		this.dtUltimaAtualiza = LocalDateTime.now();
 	}
 	
 	@Override

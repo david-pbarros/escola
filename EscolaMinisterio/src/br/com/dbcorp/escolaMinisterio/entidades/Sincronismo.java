@@ -1,6 +1,6 @@
 package br.com.dbcorp.escolaMinisterio.entidades;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +11,7 @@ import javax.persistence.Transient;
 @Entity
 public class Sincronismo {
 	private int id;
-	private Date data;
+	private LocalDateTime data;
 	private boolean sucesso;
 	private boolean criado;
 	
@@ -23,10 +23,10 @@ public class Sincronismo {
 		this.id = id;
 	}
 	
-	public Date getData() {
+	public LocalDateTime getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
 	

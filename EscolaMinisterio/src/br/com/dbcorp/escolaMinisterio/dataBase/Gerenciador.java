@@ -2,8 +2,9 @@ package br.com.dbcorp.escolaMinisterio.dataBase;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.Base64;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.NoResultException;
@@ -172,12 +173,9 @@ public class Gerenciador {
 		List<Sincronismo> itens = query.getResultList();
 		
 		if (itens.isEmpty() || (tipo == 1 && itens.size() == 1)) {
-			Calendar c = Calendar.getInstance();
-			c.set(Calendar.YEAR, 1900);
-			
 			ultimaSincronia = new Sincronismo();
 			ultimaSincronia.setSucesso(true);
-			ultimaSincronia.setData(c.getTime());
+			ultimaSincronia.setData(LocalDateTime.of(1900, Month.JANUARY, 1, 0, 0));
 			ultimaSincronia.setCriado(true);
 			
 		} else {

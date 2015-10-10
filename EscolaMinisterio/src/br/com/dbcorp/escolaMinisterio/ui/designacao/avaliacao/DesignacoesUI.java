@@ -6,7 +6,6 @@ import java.awt.event.ItemEvent;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -18,9 +17,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import br.com.dbcorp.escolaMinisterio.dataBase.DesignacaoGerenciador;
 import br.com.dbcorp.escolaMinisterio.entidades.Designacao;
 import br.com.dbcorp.escolaMinisterio.entidades.Genero;
+import br.com.dbcorp.escolaMinisterio.entidades.ItemProfile.ItensSeg;
 import br.com.dbcorp.escolaMinisterio.entidades.MesDesignacao;
 import br.com.dbcorp.escolaMinisterio.entidades.SemanaDesignacao;
-import br.com.dbcorp.escolaMinisterio.entidades.ItemProfile.ItensSeg;
 import br.com.dbcorp.escolaMinisterio.ui.Params;
 import br.com.dbcorp.escolaMinisterio.ui.designacao.ADesignacoesUI;
 import br.com.dbcorp.escolaMinisterio.ui.designacao.ASemanaUI;
@@ -155,13 +154,12 @@ public class DesignacoesUI extends ADesignacoesUI {
 	private void fecharDesignacao() {
 		this.setCursor(new Cursor(Cursor.WAIT_CURSOR));
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		String erro = "";
 		
 		for (SemanaDesignacao semana : this.mesDesignacao.getSemanas()) {
 			for (Designacao designacao : semana.getDesignacoes()) {
 				if (designacao.getStatus() == 'A') {
-					erro += "\nDia: " + sdf.format(semana.getData()) + " - Nr.: " + designacao.getNumero();
+					erro += "\nDia: " + semana.getData().format(Params.dateFormate()) + " - Nr.: " + designacao.getNumero();
 				}
 			}
 		}
@@ -211,8 +209,6 @@ public class DesignacoesUI extends ADesignacoesUI {
 	}
 	
 	private void exportFile() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		
 		String fileName = this.mesDesignacao.getMes().toString() + ".csv";
 		
 		JFileChooser fileChooser = new JFileChooser();
@@ -236,7 +232,7 @@ public class DesignacoesUI extends ADesignacoesUI {
 				
 				for (SemanaDesignacao semana : this.mesDesignacao.getSemanas()) {
 					if (!semana.isSemReuniao()) {
-						sb = new StringBuffer(sdf.format(semana.getData())).append(";");
+						sb = new StringBuffer(semana.getData().format(Params.dateFormate())).append(";");
 						
 						if (semana.isAssebleia()) {
 							sb.append("A");

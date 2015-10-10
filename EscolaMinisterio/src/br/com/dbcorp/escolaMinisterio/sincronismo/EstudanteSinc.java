@@ -1,8 +1,7 @@
 package br.com.dbcorp.escolaMinisterio.sincronismo;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +16,7 @@ import br.com.dbcorp.escolaMinisterio.entidades.Genero;
 import br.com.dbcorp.escolaMinisterio.entidades.RemoveLog;
 import br.com.dbcorp.escolaMinisterio.entidades.Sincronismo;
 import br.com.dbcorp.escolaMinisterio.sincronismo.PHPConnection.HTTP_METHOD;
+import br.com.dbcorp.escolaMinisterio.ui.Params;
 
 public class EstudanteSinc {
 
@@ -25,7 +25,6 @@ public class EstudanteSinc {
 	private SincGerenciador gerenciador;
 	private Sincronismo ultimaSincronia;
 	private String hash;
-	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	
 	private List<Estudante> inseridos;
 	private List<Estudante> atualizados;
@@ -53,7 +52,7 @@ public class EstudanteSinc {
 			con.setParameter("naoAjudante", estudante.isNaoAjudante() ? 1 : 0);
 			
 			if (estudante.getUltimaDesignacao() != null) {
-				con.setParameter("ultimadesignacao", sdf.format(estudante.getUltimaDesignacao()));
+				con.setParameter("ultimadesignacao", estudante.getUltimaDesignacao().format(Params.dateFormate()));
 			
 			} else {
 				con.setParameter("ultimadesignacao", "");
@@ -114,7 +113,7 @@ public class EstudanteSinc {
 				con.setParameter("naoAjudante", estudante.isNaoAjudante() ? 1 : 0);
 	
 				if (estudante.getUltimaDesignacao() != null) {
-					con.setParameter("ultimadesignacao", sdf.format(estudante.getUltimaDesignacao()));
+					con.setParameter("ultimadesignacao", estudante.getUltimaDesignacao().format(Params.dateFormate()));
 				}
 				
 				if (estudante.getSalaUltimaDesignacao() != '\u0000') {
@@ -148,7 +147,7 @@ public class EstudanteSinc {
 	public String obterNovos() throws IOException, JSONException {
 		PHPConnection con = new PHPConnection(this.url, HTTP_METHOD.GET, this.hash);
 		
-		con.setParameter("data_ultima", this.sdf.format(this.ultimaSincronia.getData()));
+		con.setParameter("data_ultima", this.ultimaSincronia.getData().format(Params.dateTimeFormate()));
 		con.connect();
 		
 		if (con.getResponseCode() != 200) {
@@ -177,11 +176,7 @@ public class EstudanteSinc {
 					estudante.setNaoAjudante(item.getInt("naoajudante") == 1);
 					
 					if (item.getString("ultimadesignacao").length() > 0) {
-						try {
-							estudante.setUltimaDesignacao(sdf.parse(item.getString("ultimadesignacao")));
-						} catch (ParseException e) {
-							e.printStackTrace();
-						}
+						estudante.setUltimaDesignacao(LocalDate.parse(item.getString("ultimadesignacao"), Params.dateFormate()));
 					}
 					
 					if (item.getString("salaultimadesignacao").length() > 0) {

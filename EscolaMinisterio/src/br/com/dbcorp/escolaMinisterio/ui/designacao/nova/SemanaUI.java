@@ -4,10 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import java.text.SimpleDateFormat;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -40,8 +37,6 @@ import br.com.dbcorp.escolaMinisterio.ui.dialog.EscolhaEstudanteDialog;
 @SuppressWarnings("rawtypes")
 public class SemanaUI extends ASemanaUI {
 	private static final long serialVersionUID = -7064940912653423525L;
-	
-	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
 	private DesignacaoGerenciador gerenciador;
 	private EstudanteGerenciador estudantesGerenciador;
@@ -288,20 +283,20 @@ public class SemanaUI extends ASemanaUI {
 			if (this.designacao1 != null) {
 				this.designacao1.setEstudo(this.obtemEstudo(this.cbEstudo1));
 				this.designacao1.setAjudante(this.obtemAjudante(this.cbAjudante1));
-				this.designacao1.setData(Date.from(this.semanaDesignacao.getData().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+				this.designacao1.setData(this.semanaDesignacao.getData());
 				
 			} 
 			
 			if (this.designacao2 != null) {
 				this.designacao2.setEstudo(this.obtemEstudo(this.cbEstudo2));
 				this.designacao2.setAjudante(this.obtemPessoa(this.cbAjudante2));
-				this.designacao2.setData(Date.from(this.semanaDesignacao.getData().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+				this.designacao2.setData(this.semanaDesignacao.getData());
 				
 			}
 			
 			if (this.designacao3 != null) {
 				this.designacao3.setEstudo(this.obtemEstudo(this.cbEstudo3));
-				this.designacao3.setData(Date.from(this.semanaDesignacao.getData().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+				this.designacao3.setData(this.semanaDesignacao.getData());
 				
 				if (this.chHomem.isSelected()) {
 					if (this.ajudantesHomens.contains(this.cbAjudante3.getSelectedItem())) {
@@ -720,7 +715,7 @@ public class SemanaUI extends ASemanaUI {
 		data.setText("--/--/----");
 		
 		if (estudante.getUltimaDesignacao() != null) {
-			data.setText(this.sdf.format(estudante.getUltimaDesignacao()));
+			data.setText(estudante.getUltimaDesignacao().format(Params.dateFormate()));
 			
 			for (Designacao designacao : estudante.getDesignacoes()) {
 				if (designacao.getData().equals(estudante.getUltimaDesignacao())) {

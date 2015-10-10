@@ -1,7 +1,7 @@
 package br.com.dbcorp.escolaMinisterio.entidades;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -30,7 +30,7 @@ public class MesDesignacao implements Entidade {
 	private boolean melhoreMinisterio;
 	private List<SemanaDesignacao> semanas;
 	private String idOnline;
-	private Date dtUltimaAtualiza;
+	private LocalDateTime dtUltimaAtualiza;
 
 	@Id @GeneratedValue
 	public int getId() {
@@ -48,10 +48,10 @@ public class MesDesignacao implements Entidade {
 	}
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	public Date getDtUltimaAtualiza() {
+	public LocalDateTime getDtUltimaAtualiza() {
 		return dtUltimaAtualiza;
 	}
-	public void setDtUltimaAtualiza(Date dtUltimaAtualiza) {
+	public void setDtUltimaAtualiza(LocalDateTime dtUltimaAtualiza) {
 		this.dtUltimaAtualiza = dtUltimaAtualiza;
 	}
 	
@@ -100,7 +100,7 @@ public class MesDesignacao implements Entidade {
 	@PrePersist
 	@PreUpdate
 	public void dataAtualiza() {
-		this.dtUltimaAtualiza = new Date();
+		this.dtUltimaAtualiza = LocalDateTime.now();
 	}
 	
 	@PreRemove

@@ -5,7 +5,7 @@ import java.awt.Event;
 import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -20,6 +20,7 @@ import br.com.dbcorp.escolaMinisterio.entidades.Estudante;
 import br.com.dbcorp.escolaMinisterio.entidades.Genero;
 import br.com.dbcorp.escolaMinisterio.ui.EstudantesUI;
 import br.com.dbcorp.escolaMinisterio.ui.MainFrame;
+import br.com.dbcorp.escolaMinisterio.ui.Params;
 
 public class ImportEstudantesAction extends Action {
 	private static final long serialVersionUID = -6984594985658043194L;
@@ -75,8 +76,6 @@ public class ImportEstudantesAction extends Action {
 					JOptionPane.showMessageDialog(this.mainFrame, "Arquivo inválido.", "Erro", JOptionPane.WARNING_MESSAGE);
 					
 				} else {
-					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-					
 					while ((line = bf.readLine()) != null) {
 						campos = line.split(";");
 						
@@ -95,7 +94,7 @@ public class ImportEstudantesAction extends Action {
 							}
 							
 							if (campos.length == 4) {
-								estudante.setUltimaDesignacao(sdf.parse(campos[3]));
+								estudante.setUltimaDesignacao(LocalDate.parse(campos[3], Params.dateFormate()));
 							}
 							
 							DataBaseHelper.persist(estudante);

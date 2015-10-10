@@ -1,6 +1,5 @@
 package br.com.dbcorp.escolaMinisterio.ui.model;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,13 +8,12 @@ import javax.swing.table.AbstractTableModel;
 import br.com.dbcorp.escolaMinisterio.Log;
 import br.com.dbcorp.escolaMinisterio.entidades.Designacao;
 import br.com.dbcorp.escolaMinisterio.entidades.Estudante;
+import br.com.dbcorp.escolaMinisterio.ui.Params;
 
 public class EscolhaEstudanteTableModel extends AbstractTableModel {
 	private static final long serialVersionUID = -6199320224633204398L;
 	
 	private Log log = Log.getInstance();
-	
-	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
 	private static final int NOME = 0;
 	private static final int ESTUDO = 1;
@@ -85,7 +83,7 @@ public class EscolhaEstudanteTableModel extends AbstractTableModel {
 		if (estudante.getUltimaDesignacao() != null && estudante.getDesignacoes() != null) {
 			for (Designacao designacao : estudante.getDesignacoes()) {
 				if (designacao.getData().equals(estudante.getUltimaDesignacao())) {
-					data = this.sdf.format(designacao.getData());
+					data = designacao.getData().format(Params.dateFormate());
 					avaliacao = this.avaliacao(designacao.getStatus());
 					estudo = designacao.getEstudo() != null ? designacao.getEstudo().getNrEstudo() : null;
 					

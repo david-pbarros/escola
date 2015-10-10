@@ -1,7 +1,6 @@
 package br.com.dbcorp.escolaMinisterio.sincronismo;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +14,7 @@ import br.com.dbcorp.escolaMinisterio.entidades.ItemProfile.ItensSeg;
 import br.com.dbcorp.escolaMinisterio.entidades.RemoveLog;
 import br.com.dbcorp.escolaMinisterio.entidades.Sincronismo;
 import br.com.dbcorp.escolaMinisterio.sincronismo.PHPConnection.HTTP_METHOD;
+import br.com.dbcorp.escolaMinisterio.ui.Params;
 
 public class ItemProfileSinc {
 
@@ -23,7 +23,6 @@ public class ItemProfileSinc {
 	private SincGerenciador gerenciador;
 	private Sincronismo ultimaSincronia;
 	private String hash;
-	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	
 	private List<ItemProfile> inseridos;
 	
@@ -73,7 +72,7 @@ public class ItemProfileSinc {
 	public String obterNovos() throws IOException, JSONException {
 		PHPConnection con = new PHPConnection(this.url, HTTP_METHOD.GET, this.hash);
 		
-		con.setParameter("data_ultima", this.sdf.format(this.ultimaSincronia.getData()));
+		con.setParameter("data_ultima", this.ultimaSincronia.getData().format(Params.dateTimeFormate()));
 		con.connect();
 		
 		if (con.getResponseCode() != 200) {

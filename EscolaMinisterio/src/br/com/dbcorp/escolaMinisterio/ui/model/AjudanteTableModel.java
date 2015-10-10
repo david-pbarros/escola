@@ -1,7 +1,7 @@
 package br.com.dbcorp.escolaMinisterio.ui.model;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +9,7 @@ import javax.swing.table.AbstractTableModel;
 
 import br.com.dbcorp.escolaMinisterio.Log;
 import br.com.dbcorp.escolaMinisterio.entidades.Ajudante;
+import br.com.dbcorp.escolaMinisterio.ui.Params;
 
 public class AjudanteTableModel extends AbstractTableModel {
 	private static final long serialVersionUID = 4842874392467777392L;
@@ -22,16 +23,12 @@ public class AjudanteTableModel extends AbstractTableModel {
 	
 	private List<Ajudante> ajudantes;
 
-	private SimpleDateFormat sdf;
-	
 	public AjudanteTableModel() {
 		this(new ArrayList<Ajudante>());
 	}
 	
 	public AjudanteTableModel(List<Ajudante> ajudantes) {
 		this.ajudantes = ajudantes;
-		
-		this.sdf = new SimpleDateFormat("dd/MM/yyyy");
 	}
 	
 	public void setItens(List<Ajudante> ajudantes) {
@@ -84,7 +81,7 @@ public class AjudanteTableModel extends AbstractTableModel {
 		case AJUDANTE:
 			return ajudante.getNome();
 		case DATA_ULTIMA_DESIGNACAO:
-			return ajudante.getUltimaDesignacao() != null ? sdf.format(ajudante.getUltimaDesignacao()) : "";
+			return ajudante.getUltimaDesignacao() != null ? ajudante.getUltimaDesignacao().format(Params.dateFormate()) : "";
 		default:
 			this.log.error("columnIndex out of bounds");
 			throw new IndexOutOfBoundsException("columnIndex out of bounds");
@@ -101,8 +98,8 @@ public class AjudanteTableModel extends AbstractTableModel {
 			break;
 		case DATA_ULTIMA_DESIGNACAO:
 			try {
-				ajudante.setUltimaDesignacao(sdf.parse((String)aValue));
-			} catch (ParseException e) {
+				ajudante.setUltimaDesignacao(LocalDate.parse((String)aValue, Params.dateFormate()));
+			} catch (DateTimeParseException e) {
 				this.log.error("", e);
 			}
 			break;

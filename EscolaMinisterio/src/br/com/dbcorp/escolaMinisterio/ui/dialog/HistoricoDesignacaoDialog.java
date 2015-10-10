@@ -4,9 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -120,14 +119,10 @@ public class HistoricoDesignacaoDialog extends JDialog implements ActionListener
 	
 	private void inserir() {
 		try {
-			Date data = new SimpleDateFormat("dd/MM/yyyy").parse(this.txData.getText());
-			Calendar c = Calendar.getInstance();
-			c.set(Calendar.HOUR_OF_DAY, 0);
-			c.set(Calendar.MINUTE, 0);
-			c.set(Calendar.SECOND, 0);
-			c.set(Calendar.MILLISECOND, 0);
+			LocalDate data = LocalDate.parse(this.txData.getText(), Params.dateFormate());
+			LocalDate c = LocalDate.now();
 			
-			if (data.getTime() >= c.getTime().getTime()) {
+			if (!data.isBefore(c)) {
 				JOptionPane.showMessageDialog(this, "A data tem que ser anterior a data atual.", "Data Inválida", JOptionPane.WARNING_MESSAGE);
 			
 			} else {
@@ -153,7 +148,7 @@ public class HistoricoDesignacaoDialog extends JDialog implements ActionListener
 				
 				dispose();
 			}
-		} catch (ParseException e) {
+		} catch (DateTimeParseException e) {
 			JOptionPane.showMessageDialog(this, "Data Inválida.", "Erro", JOptionPane.ERROR_MESSAGE);
 		}
 	}

@@ -1,35 +1,28 @@
 package br.com.dbcorp.escolaMinisterio.ui.designacao.inicial;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
-import javax.swing.JTextField;
-
-import br.com.dbcorp.escolaMinisterio.entidades.Designacao;
-import br.com.dbcorp.escolaMinisterio.entidades.SemanaDesignacao;
-import br.com.dbcorp.escolaMinisterio.ui.Params;
-import br.com.dbcorp.escolaMinisterio.ui.designacao.ASemanaUI;
-import br.com.dbcorp.escolaMinisterio.ui.dialog.ObservacaoDialog;
+import javax.swing.SwingConstants;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-import javax.swing.SwingConstants;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
+import br.com.dbcorp.escolaMinisterio.entidades.Designacao;
+import br.com.dbcorp.escolaMinisterio.entidades.SemanaDesignacao;
+import br.com.dbcorp.escolaMinisterio.ui.Params;
+import br.com.dbcorp.escolaMinisterio.ui.designacao.ASemanaUI;
+import br.com.dbcorp.escolaMinisterio.ui.dialog.ObservacaoDialog;
 
 @SuppressWarnings({"rawtypes", "unused"})
 public class SemanaUI extends ASemanaUI {

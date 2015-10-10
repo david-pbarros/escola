@@ -1,8 +1,7 @@
 package br.com.dbcorp.escolaMinisterio.sincronismo;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +16,7 @@ import br.com.dbcorp.escolaMinisterio.entidades.Genero;
 import br.com.dbcorp.escolaMinisterio.entidades.RemoveLog;
 import br.com.dbcorp.escolaMinisterio.entidades.Sincronismo;
 import br.com.dbcorp.escolaMinisterio.sincronismo.PHPConnection.HTTP_METHOD;
+import br.com.dbcorp.escolaMinisterio.ui.Params;
 
 public class AjudanteSinc {
 
@@ -25,7 +25,6 @@ public class AjudanteSinc {
 	private SincGerenciador gerenciador;
 	private Sincronismo ultimaSincronia;
 	private String hash;
-	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	
 	private List<Ajudante> inseridos;
 	private List<Ajudante> atualizados;
@@ -51,7 +50,7 @@ public class AjudanteSinc {
 			con.setParameter("nome", ajudante.getNome());
 			
 			if (ajudante.getUltimaDesignacao() != null) {
-				con.setParameter("ultimadesignacao", sdf.format(ajudante.getUltimaDesignacao()));
+				con.setParameter("ultimadesignacao", ajudante.getUltimaDesignacao().format(Params.dateFormate()));
 			
 			} else {
 				con.setParameter("ultimadesignacao", "");
@@ -95,7 +94,7 @@ public class AjudanteSinc {
 				con.setParameter("id_online", ajudante.getIdOnline());
 	
 				if (ajudante.getUltimaDesignacao() != null) {
-					con.setParameter("ultimadesignacao", sdf.format(ajudante.getUltimaDesignacao()));
+					con.setParameter("ultimadesignacao", ajudante.getUltimaDesignacao().format(Params.dateFormate()));
 				}
 				
 				con.connect();
@@ -122,7 +121,7 @@ public class AjudanteSinc {
 	public String obterNovos() throws IOException, JSONException {
 		PHPConnection con = new PHPConnection(this.url, HTTP_METHOD.GET, this.hash);
 		
-		con.setParameter("data_ultima", this.sdf.format(this.ultimaSincronia.getData()));
+		con.setParameter("data_ultima", this.ultimaSincronia.getData().format(Params.dateTimeFormate()));
 		con.connect();
 		
 		if (con.getResponseCode() != 200) {
@@ -149,11 +148,7 @@ public class AjudanteSinc {
 					
 	
 					if (item.getString("ultimadesignacao").length() > 0) {
-						try {
-							ajudante.setUltimaDesignacao(sdf.parse(item.getString("ultimadesignacao")));
-						} catch (ParseException e) {
-							e.printStackTrace();
-						}
+						ajudante.setUltimaDesignacao(LocalDate.parse(item.getString("ultimadesignacao"), Params.dateFormate()));
 					}
 					
 					if (ajudante.getId() == 0) {

@@ -7,8 +7,8 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.PublicKey;
 import java.security.Security;
+import java.time.LocalDateTime;
 import java.util.Base64;
-import java.util.Date;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -194,7 +194,7 @@ public class Sincronizador {
 			sinc.setSucesso(false);
 		}
 		
-		sinc.setData(new Date());
+		sinc.setData(LocalDateTime.now());
 		this.gerenciador.salvar(sinc);
 	}
 	
@@ -296,7 +296,7 @@ public class Sincronizador {
 			hasErro = true;
 		}
 		
-		sinc.setData(new Date());
+		sinc.setData(LocalDateTime.now());
 		sinc.setSucesso(!hasErro);
 		
 		this.gerenciador.salvar(sinc);

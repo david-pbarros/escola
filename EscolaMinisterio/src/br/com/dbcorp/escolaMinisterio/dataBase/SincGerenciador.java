@@ -1,5 +1,6 @@
 package br.com.dbcorp.escolaMinisterio.dataBase;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
@@ -63,8 +64,9 @@ public class SincGerenciador extends Gerenciador {
 		return query.getResultList();
 	}
 
+	//TODO: verificar
 	@SuppressWarnings("unchecked")
-	public List<MesDesignacao> obterMesesAtualizados(Date ultimaAtualizacao) {
+	public List<MesDesignacao> obterMesesAtualizados(LocalDateTime ultimaAtualizacao) {
 		Query query = DataBaseHelper.createQuery("FROM MesDesignacao m WHERE m.idOnline IS NOT NULL AND m.dtUltimaAtualiza > :data")
 				.setParameter("data", ultimaAtualizacao);
 		
@@ -90,8 +92,9 @@ public class SincGerenciador extends Gerenciador {
 		return query.getResultList();
 	}
 	
+	//TODO: verificar
 	@SuppressWarnings("unchecked")
-	public List<Ajudante> obterAjudantesAtualizados(Date ultimaAtualizacao) {
+	public List<Ajudante> obterAjudantesAtualizados(LocalDateTime ultimaAtualizacao) {
 		Query query = DataBaseHelper.createQuery("FROM Ajudante a WHERE a.idOnline IS NOT NULL AND a.dtUltimaAtualiza > :data")
 				.setParameter("data", ultimaAtualizacao);
 		
@@ -117,8 +120,9 @@ public class SincGerenciador extends Gerenciador {
 		return query.getResultList();
 	}
 	
+	//TODO: verificar
 	@SuppressWarnings("unchecked")
-	public List<Estudante> obterEstudantesAtualizados(Date ultimaAtualizacao) {
+	public List<Estudante> obterEstudantesAtualizados(LocalDateTime ultimaAtualizacao) {
 		Query query = DataBaseHelper.createQuery("FROM Estudante e WHERE e.idOnline IS NOT NULL AND e.dtUltimaAtualiza > :data")
 				.setParameter("data", ultimaAtualizacao);
 		
@@ -137,8 +141,9 @@ public class SincGerenciador extends Gerenciador {
 		}
 	}
 	
+	//TODO: verificar
 	@SuppressWarnings("unchecked")
-	public List<Estudo> obterEstudosNovos(Date data) {
+	public List<Estudo> obterEstudosNovos(LocalDateTime data) {
 		Query query = DataBaseHelper.createQuery("FROM Estudo e WHERE e.dtUltimaAtualiza IS NULL OR e.dtUltimaAtualiza > :dataUltima")
 				.setParameter("dataUltima", data);
 		
@@ -164,8 +169,9 @@ public class SincGerenciador extends Gerenciador {
 		return query.getResultList();
 	}
 	
+	//TODO: verificar
 	@SuppressWarnings("unchecked")
-	public List<Profile> obterProfilesAtualizados(Date ultimaAtualizacao) {
+	public List<Profile> obterProfilesAtualizados(LocalDateTime ultimaAtualizacao) {
 		Query query = DataBaseHelper.createQuery("FROM Profile p WHERE p.idOnline IS NOT NULL AND p.dtUltimaAtualiza > :data")
 				.setParameter("data", ultimaAtualizacao);
 		
@@ -218,8 +224,9 @@ public class SincGerenciador extends Gerenciador {
 		return query.getResultList();
 	}
 	
+	//TODO: verificar
 	@SuppressWarnings("unchecked")
-	public List<Usuario> obterUsuariosAtualizados(Date ultimaAtualizacao) {
+	public List<Usuario> obterUsuariosAtualizados(LocalDateTime ultimaAtualizacao) {
 		Query query = DataBaseHelper.createQuery("FROM Usuario u WHERE u.idOnline IS NOT NULL AND u.dtUltimaAtualiza > :data")
 				.setParameter("data", ultimaAtualizacao);
 		
@@ -245,8 +252,9 @@ public class SincGerenciador extends Gerenciador {
 		return query.getResultList();
 	}
 	
+	//TODO: verificar
 	@SuppressWarnings("unchecked")
-	public List<SemanaDesignacao> obterSemanasAtualizadas(Date ultimaAtualizacao) {
+	public List<SemanaDesignacao> obterSemanasAtualizadas(LocalDateTime ultimaAtualizacao) {
 		Query query = DataBaseHelper.createQuery("FROM SemanaDesignacao s WHERE s.idOnline IS NOT NULL AND s.dtUltimaAtualiza > :data")
 				.setParameter("data", ultimaAtualizacao);
 		
@@ -272,8 +280,9 @@ public class SincGerenciador extends Gerenciador {
 		return query.getResultList();
 	}
 	
+	//TODO: verificar
 	@SuppressWarnings("unchecked")
-	public List<Designacao> obterDesignacoessAtualizadas(Date ultimaAtualizacao) {
+	public List<Designacao> obterDesignacoessAtualizadas(LocalDateTime ultimaAtualizacao) {
 		Query query = DataBaseHelper.createQuery("FROM Designacao d WHERE d.idOnline IS NOT NULL AND d.dtUltimaAtualiza > :data")
 				.setParameter("data", ultimaAtualizacao);
 		

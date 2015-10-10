@@ -1,7 +1,6 @@
 package br.com.dbcorp.escolaMinisterio.sincronismo;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -24,8 +23,6 @@ public class SemanaSinc {
 	private SincGerenciador gerenciador;
 	private Sincronismo ultimaSincronia;
 	private String hash;
-	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-	private SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MMM/yy");
 	
 	private List<SemanaDesignacao> inseridos;
 	private List<SemanaDesignacao> atualizados;
@@ -47,7 +44,7 @@ public class SemanaSinc {
 		for (SemanaDesignacao semana : semanas) {
 			PHPConnection con = new PHPConnection(this.url, HTTP_METHOD.POST, this.hash);
 			
-			con.setParameter("data", sdf.format(semana.getData()));
+			con.setParameter("data", semana.getData().format(Params.dateFormate()));
 			con.setParameter("visita", semana.isVisita() ? 1 : 0);
 			con.setParameter("assebleia", semana.isAssebleia() ? 1 : 0);
 			con.setParameter("recapitulacao", semana.isRecapitulacao() ? 1 : 0);
@@ -118,7 +115,7 @@ public class SemanaSinc {
 	public String obterNovos() throws IOException {
 		PHPConnection con = new PHPConnection(this.url, HTTP_METHOD.GET, this.hash);
 		
-		con.setParameter("data_ultima", this.sdf.format(this.ultimaSincronia.getData()));
+		con.setParameter("data_ultima", this.ultimaSincronia.getData().format(Params.dateTimeFormate()));
 		con.connect();
 		
 		if (con.getResponseCode() != 200) {
@@ -171,7 +168,7 @@ public class SemanaSinc {
 	
 	private void semanaErro(StringBuffer sb, SemanaDesignacao semana, String msg) {
 		sb.append("\nSemana: ")
-			.append(this.sdf2.format(semana.getData()))
+			.append(semana.getData().format(Params.dateFormate()))
 			.append(" Mensagem: ")
 			.append(msg);
 	}

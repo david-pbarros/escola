@@ -5,26 +5,24 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
-
-import br.com.dbcorp.escolaMinisterio.Log;
-import br.com.dbcorp.escolaMinisterio.entidades.Designacao;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.AcroFields;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
 
+import br.com.dbcorp.escolaMinisterio.Log;
+import br.com.dbcorp.escolaMinisterio.entidades.Designacao;
+import br.com.dbcorp.escolaMinisterio.ui.Params;
+
 public class ItextReportManager {
 
 	private Log log = Log.getInstance();
 	private Set<File> files;
-	
-	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
 	public Set<File> createReport(String fileName, List<Designacao> designacoes) {
 		try {
@@ -81,7 +79,7 @@ public class ItextReportManager {
 
 			form.setField("nome" + i, this.capitalize(designacao.getEstudante().getNome()));
 			form.setField("numero" + i, designacao.getNumero() + "");
-			form.setField("data" + i, sdf.format(designacao.getData()));
+			form.setField("data" + i, designacao.getData().format(Params.dateFormate()));
 			form.setField("fonte" + i, designacao.getFonte());
 			form.setField("tema" + i, designacao.getTema());
 			form.setField("estudo" + i, designacao.getEstudo().getNrEstudo() + "");

@@ -13,7 +13,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +36,11 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableColumnModel;
 
+import com.jgoodies.forms.factories.FormFactory;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.RowSpec;
+
 import br.com.dbcorp.escolaMinisterio.Log;
 import br.com.dbcorp.escolaMinisterio.dataBase.EstudanteGerenciador;
 import br.com.dbcorp.escolaMinisterio.entidades.Designacao;
@@ -47,11 +51,6 @@ import br.com.dbcorp.escolaMinisterio.ui.dialog.HistoricoDesignacaoDialog;
 import br.com.dbcorp.escolaMinisterio.ui.model.DesignacaoCellRender;
 import br.com.dbcorp.escolaMinisterio.ui.model.DesignacaoTableModel;
 import br.com.dbcorp.escolaMinisterio.ui.model.EstudanteTableModel;
-
-import com.jgoodies.forms.factories.FormFactory;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.RowSpec;
 
 @SuppressWarnings("rawtypes")
 public class EstudantesUI extends InternalUI implements ActionListener, ListSelectionListener, ItemListener, TableModelListener {
@@ -77,15 +76,12 @@ public class EstudantesUI extends InternalUI implements ActionListener, ListSele
 	private Genero genero;
 	private List<Estudante> estudantesSelecionados;
 	
-	private SimpleDateFormat sdf;
-
 	public EstudantesUI() {
 		super();
 		
 		this.estudantesSelecionados = new ArrayList<Estudante>();
 		this.gerenciador = new EstudanteGerenciador();
 		this.genero = Genero.MASCULINO;
-		this.sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
 		this.setButtons();
 		
@@ -188,7 +184,7 @@ public class EstudantesUI extends InternalUI implements ActionListener, ListSele
 			this.txDataDesignacao.setEditable(true);
 			this.txDataDesignacao.setEnabled(false);
 			this.txDataDesignacao.setText(this.estudanteSelecionado.getUltimaDesignacao() == null ? 
-											"" : sdf.format(this.estudanteSelecionado.getUltimaDesignacao()));
+											"" : this.estudanteSelecionado.getUltimaDesignacao().format(Params.dateFormate()));
 			
 			this.txSalaDesignacao.setEditable(true);
 			this.txSalaDesignacao.setEnabled(false);

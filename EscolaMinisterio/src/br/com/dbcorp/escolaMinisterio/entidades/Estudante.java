@@ -1,6 +1,6 @@
 package br.com.dbcorp.escolaMinisterio.entidades;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -95,6 +95,6 @@ public class Estudante extends Pessoa {
 	@PrePersist
 	@PreUpdate
 	public void dataAtualiza() {
-		this.dtUltimaAtualiza = new Date();
+		this.dtUltimaAtualiza = LocalDateTime.now();
 	}
 }

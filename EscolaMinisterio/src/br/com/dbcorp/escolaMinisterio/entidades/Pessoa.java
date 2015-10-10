@@ -1,6 +1,7 @@
 package br.com.dbcorp.escolaMinisterio.entidades;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -23,11 +24,11 @@ public abstract class Pessoa implements Entidade {
 
 	private int id;
 	private String nome;
-	private Date ultimaDesignacao;
+	private LocalDate ultimaDesignacao;
 	private Genero genero;
 	private boolean excluido;
 	protected String idOnline;
-	protected Date dtUltimaAtualiza;
+	protected LocalDateTime dtUltimaAtualiza;
 	
 	@Id @GeneratedValue(strategy=GenerationType.TABLE)
 	public int getId() {
@@ -45,10 +46,10 @@ public abstract class Pessoa implements Entidade {
 	}
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	public Date getDtUltimaAtualiza() {
+	public LocalDateTime getDtUltimaAtualiza() {
 		return dtUltimaAtualiza;
 	}
-	public void setDtUltimaAtualiza(Date dtUltimaAtualiza) {
+	public void setDtUltimaAtualiza(LocalDateTime dtUltimaAtualiza) {
 		this.dtUltimaAtualiza = dtUltimaAtualiza;
 	}
 	
@@ -60,10 +61,10 @@ public abstract class Pessoa implements Entidade {
 	}
 	
 	@Temporal(TemporalType.DATE)
-	public Date getUltimaDesignacao() {
+	public LocalDate getUltimaDesignacao() {
 		return ultimaDesignacao;
 	}
-	public void setUltimaDesignacao(Date ultimaDesignacao) {
+	public void setUltimaDesignacao(LocalDate ultimaDesignacao) {
 		this.ultimaDesignacao = ultimaDesignacao;
 	}
 	
@@ -85,7 +86,7 @@ public abstract class Pessoa implements Entidade {
 	@PrePersist
 	@PreUpdate
 	public void dataAtualiza() {
-		this.dtUltimaAtualiza = new Date();
+		this.dtUltimaAtualiza = LocalDateTime.now();
 	}
 	
 	@Override

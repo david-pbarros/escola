@@ -1,6 +1,6 @@
 package br.com.dbcorp.escolaMinisterio.entidades;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -14,6 +14,6 @@ public class Ajudante extends Pessoa {
 	@PrePersist
 	@PreUpdate
 	public void dataAtualiza() {
-		this.dtUltimaAtualiza = new Date();
+		this.dtUltimaAtualiza = LocalDateTime.now();
 	}
 }

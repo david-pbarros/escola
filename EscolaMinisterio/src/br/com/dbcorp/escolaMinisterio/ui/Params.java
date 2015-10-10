@@ -24,6 +24,7 @@ public class Params {
 	private static ImageIcon btRegresso;
 	private static ImageIcon btLupa;
 	
+	private static DateTimeFormatter dateFormatter;
 	private static DateTimeFormatter dateTimeFormatter;
 	
 	public static void setDimensions(MainFrame frame) {
@@ -125,8 +126,16 @@ public class Params {
 	}
 	
 	public static DateTimeFormatter dateFormate() {
+		if (dateFormatter == null) {
+			dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		}
+		
+		return dateFormatter;
+	}
+	
+	public static DateTimeFormatter dateTimeFormate() {
 		if (dateTimeFormatter == null) {
-			dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 		}
 		
 		return dateTimeFormatter;

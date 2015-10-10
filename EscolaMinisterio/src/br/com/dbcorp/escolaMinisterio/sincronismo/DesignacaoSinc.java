@@ -1,8 +1,8 @@
 package br.com.dbcorp.escolaMinisterio.sincronismo;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +16,7 @@ import br.com.dbcorp.escolaMinisterio.entidades.Designacao;
 import br.com.dbcorp.escolaMinisterio.entidades.RemoveLog;
 import br.com.dbcorp.escolaMinisterio.entidades.Sincronismo;
 import br.com.dbcorp.escolaMinisterio.sincronismo.PHPConnection.HTTP_METHOD;
+import br.com.dbcorp.escolaMinisterio.ui.Params;
 
 public class DesignacaoSinc {
 
@@ -24,8 +25,6 @@ public class DesignacaoSinc {
 	private SincGerenciador gerenciador;
 	private Sincronismo ultimaSincronia;
 	private String hash;
-	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-	private SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
 	
 	private List<Designacao> inseridos;
 	private List<Designacao> atualizados;
@@ -53,7 +52,7 @@ public class DesignacaoSinc {
 			con.setParameter("status", designacao.getStatus());
 			con.setParameter("tema", designacao.getTema());
 			con.setParameter("fonte", designacao.getFonte());
-			con.setParameter("data", this.sdf.format(designacao.getData()));
+			con.setParameter("data", designacao.getData().format(Params.dateFormate()));
 			con.setParameter("estudante", designacao.getEstudante().getIdOnline());
 			con.setParameter("semana", designacao.getSemana().getIdOnline());
 			
@@ -175,7 +174,7 @@ public class DesignacaoSinc {
 	public String obterNovos() throws IOException, JSONException {
 		PHPConnection con = new PHPConnection(this.url, HTTP_METHOD.GET, this.hash);
 		
-		con.setParameter("data_ultima", this.sdf.format(this.ultimaSincronia.getData()));
+		con.setParameter("data_ultima", this.ultimaSincronia.getData().format(Params.dateTimeFormate()));
 		con.connect();
 		
 		if (con.getResponseCode() != 200) {
@@ -207,7 +206,7 @@ public class DesignacaoSinc {
 						designacao.setObsFolha(item.getString("obsfolha"));
 						
 						designacao.setSemana(this.gerenciador.obterSemanaDesignacao(item.getString("semana_id")));
-						designacao.setData(this.sdf2.parse(item.getString("data")));
+						designacao.setData(LocalDate.parse(item.getString("data"), Params.dateFormate()));
 						
 						String idEstudante = item.getString("estudante_id");
 						
@@ -238,7 +237,7 @@ public class DesignacaoSinc {
 						} else {
 							this.gerenciador.atualizar(designacao);
 						}
-					} catch (ParseException ex) {
+					} catch (DateTimeParseException ex) {
 						String erro = "Erro inesperado recebendo designações.";
 						Log.getInstance().debug(erro, ex);
 						
@@ -322,7 +321,7 @@ public class DesignacaoSinc {
 		sb.append("\nDesignação: ")
 			.append("Nº").append(designacao.getNumero())
 			.append(" De:")
-			.append(this.sdf2.format(designacao.getData()))
+			.append(designacao.getData().format(Params.dateFormate()))
 			.append(" Mensagem: ")
 			.append(msg);
 	}

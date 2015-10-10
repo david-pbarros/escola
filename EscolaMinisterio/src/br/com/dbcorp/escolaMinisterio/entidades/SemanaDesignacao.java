@@ -1,11 +1,10 @@
 package br.com.dbcorp.escolaMinisterio.entidades;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
@@ -20,8 +19,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import br.com.dbcorp.escolaMinisterio.dataBase.MyLocalDateConverter;
-
 @Entity
 @EntityListeners(RemoveListener.class)
 public class SemanaDesignacao implements Comparable<SemanaDesignacao>, Entidade {
@@ -35,7 +32,7 @@ public class SemanaDesignacao implements Comparable<SemanaDesignacao>, Entidade 
 	private List<Designacao> designacoes;
 	private List<Designacao> designacoesRemovidas;
 	private String idOnline;
-	private Date dtUltimaAtualiza;
+	private LocalDateTime dtUltimaAtualiza;
 	private MesDesignacao mes;
 	
 	@Id @GeneratedValue
@@ -54,14 +51,13 @@ public class SemanaDesignacao implements Comparable<SemanaDesignacao>, Entidade 
 	}
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	public Date getDtUltimaAtualiza() {
+	public LocalDateTime getDtUltimaAtualiza() {
 		return dtUltimaAtualiza;
 	}
-	public void setDtUltimaAtualiza(Date dtUltimaAtualiza) {
+	public void setDtUltimaAtualiza(LocalDateTime dtUltimaAtualiza) {
 		this.dtUltimaAtualiza = dtUltimaAtualiza;
 	}
 	
-	@Convert(converter=MyLocalDateConverter.class)
 	@Temporal(TemporalType.DATE)
 	public LocalDate getData() {
 		return data;
@@ -131,7 +127,7 @@ public class SemanaDesignacao implements Comparable<SemanaDesignacao>, Entidade 
 	@PrePersist
 	@PreUpdate
 	public void dataAtualiza() {
-		this.dtUltimaAtualiza = new Date();
+		this.dtUltimaAtualiza = LocalDateTime.now();
 	}
 	
 	@Override

@@ -5,7 +5,6 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,9 +20,9 @@ import br.com.dbcorp.escolaMinisterio.dataBase.EstudanteGerenciador;
 import br.com.dbcorp.escolaMinisterio.entidades.Designacao;
 import br.com.dbcorp.escolaMinisterio.entidades.Estudo;
 import br.com.dbcorp.escolaMinisterio.entidades.Genero;
+import br.com.dbcorp.escolaMinisterio.entidades.ItemProfile.ItensSeg;
 import br.com.dbcorp.escolaMinisterio.entidades.MesDesignacao;
 import br.com.dbcorp.escolaMinisterio.entidades.SemanaDesignacao;
-import br.com.dbcorp.escolaMinisterio.entidades.ItemProfile.ItensSeg;
 import br.com.dbcorp.escolaMinisterio.ui.Params;
 import br.com.dbcorp.escolaMinisterio.ui.designacao.ADesignacoesUI;
 import br.com.dbcorp.escolaMinisterio.ui.designacao.ASemanaUI;
@@ -168,13 +167,12 @@ public class DesignacoesUI extends ADesignacoesUI {
 	private void aprovarDesignacao() {
 		this.setCursor(new Cursor(Cursor.WAIT_CURSOR));
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		String erro = "";
 		
 		for (SemanaDesignacao semana : this.mesDesignacao.getSemanas()) {
 			for (Designacao designacao : semana.getDesignacoes()) {
 				if (designacao.getEstudante() == null || designacao.getEstudo() == null) {
-					erro += "\nDia: " + sdf.format(semana.getData()) + " - Nr.: " + designacao.getNumero();
+					erro += "\nDia: " + semana.getData().format(Params.dateFormate()) + " - Nr.: " + designacao.getNumero();
 				}
 			}
 		}
