@@ -226,29 +226,21 @@ public class Sincronizador {
 			this.semana = new SemanaSinc(this.gerenciador, this.ultimaSincronia, this.hash);
 			this.designacao = new DesignacaoSinc(this.gerenciador, this.ultimaSincronia, this.hash);
 			
-			String erroApagaLocal = "";
-			String erroApagaWeb = "";
-			String erroProfile = "";
-			String erroItemP = "";
-			String usuarioErro = "";
-			String estudoErro = "";
-			String estudanteErro = "";
-			String ajudanteErro = "";
-			String mesErro = "";
-			String semanaErro = "";
-			String designacaoErro = "";
+			hasErro = true;
 			
-			if (!this.hasError(erroApagaLocal = this.apagarLocal())) {
-				if (!this.hasError(erroApagaWeb = this.apagaWeb())) {
-					if (!this.hasError(erroProfile = this.sicronizarProfile())) {
-						if (!this.hasError(erroItemP = this.sincronizarItemProfile())) {
-							if (!this.hasError(usuarioErro = this.sincronizarUsuario())) {
-								if (!this.hasError(estudoErro = this.sincronizarEstudo())) {
-									if (!this.hasError(estudanteErro = this.sicronizarEstudante())) {
-										if (!this.hasError(	ajudanteErro = this.sicronizarAjudante())) {
-											if (!this.hasError(mesErro = this.sincronizaMes())) {
-												if (!this.hasError(semanaErro = this.sincronizaSemana())) {
-													designacaoErro = this.sicronizarDesignacao();
+			if (!this.hasError(this.apagarLocal())) {
+				if (!this.hasError(this.apagaWeb())) {
+					if (!this.hasError(this.sicronizarProfile())) {
+						if (!this.hasError(this.sincronizarItemProfile())) {
+							if (!this.hasError(this.sincronizarUsuario())) {
+								if (!this.hasError(this.sincronizarEstudo())) {
+									if (!this.hasError(this.sicronizarEstudante())) {
+										if (!this.hasError(this.sicronizarAjudante())) {
+											if (!this.hasError(this.sincronizaMes())) {
+												if (!this.hasError(this.sincronizaSemana())) {
+													this.sicronizarDesignacao();
+													
+													hasErro = false;
 												}
 											}
 										}
@@ -260,26 +252,7 @@ public class Sincronizador {
 				}
 			}
 			
-			this.mensagensTela
-				.append(erroApagaLocal)
-				.append(erroApagaWeb)
-				.append(erroProfile)
-				.append(erroItemP)
-				.append(usuarioErro)
-				.append(estudoErro)
-				.append(estudanteErro)
-				.append(ajudanteErro)
-				.append(mesErro)
-				.append(semanaErro)
-				.append(designacaoErro)
-				.append(this.versao());
-			
-			if (this.hasError(erroApagaLocal) || this.hasError(erroApagaWeb) || this.hasError(erroProfile) || this.hasError(erroItemP) || this.hasError(usuarioErro) ||
-					this.hasError(estudoErro) || this.hasError(estudanteErro) || this.hasError(ajudanteErro) || this.hasError(mesErro) ||this.hasError(semanaErro) ||
-					this.hasError(designacaoErro)) {
-				
-				hasErro = true;
-			}
+			this.mensagensTela.append(this.versao());
 			
 			this.refreshMsg("\nFim do sincronismo.");
 			
@@ -320,7 +293,8 @@ public class Sincronizador {
 	private void gerarHash() throws NoSuchAlgorithmException, NoSuchProviderException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
 		StringBuffer hash = new StringBuffer(Params.propriedades().getProperty("congregacao")).append(";")
 			.append(this.gerenciador.getUser().getNome()).append(";")
-			.append(this.gerenciador.getUser().getSenha());
+			.append(this.gerenciador.getUser().getSenha()).append(";")
+			.append(Params.propriedades().get("verionNumber"));
 		
 		Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding", "BC");
 		cipher.init(Cipher.ENCRYPT_MODE, this.chave);
