@@ -170,18 +170,14 @@ public class Sincronizador {
 			this.itemProfile = new ItemProfileSinc(this.gerenciador, this.ultimaSincronia, this.hash);
 			this.usuario = new UsuarioSinc(this.gerenciador, this.ultimaSincronia, this.hash);
 			
-			String erro = null;
-			
 			this.refreshMsg("\nObtendo novos perfis...");
-			if (!this.hasError(erro = this.profile.obterNovos())) {
+			if (!this.hasError("\nProblemas nos profiles recebidos:", this.profile.obterNovos())) {
 				this.refreshMsg("\nObtendo novos itens de segurança...");
-				if (!this.hasError(erro = this.itemProfile.obterNovos())) {
+				if (!this.hasError("\nProblemas nos itens de segurança recebidos:", this.itemProfile.obterNovos())) {
 					this.refreshMsg("\nObtendo novos usuarios...");
-					erro = this.usuario.obterNovos();
+					this.hasError("\nProblemas nos usuarios recebidos:", this.usuario.obterNovos());
 				}
 			}
-			
-			this.mensagensTela.append(erro);
 			
 			this.refreshMsg("\nFim do sincronismo. Reinicie o sistema.");
 			
@@ -228,31 +224,17 @@ public class Sincronizador {
 			
 			hasErro = true;
 			
-			if (!this.hasError(this.apagarLocal())) {
-				if (!this.hasError(this.apagaWeb())) {
-					if (!this.hasError(this.sicronizarProfile())) {
-						if (!this.hasError(this.sincronizarItemProfile())) {
-							if (!this.hasError(this.sincronizarUsuario())) {
-								if (!this.hasError(this.sincronizarEstudo())) {
-									if (!this.hasError(this.sicronizarEstudante())) {
-										if (!this.hasError(this.sicronizarAjudante())) {
-											if (!this.hasError(this.sincronizaMes())) {
-												if (!this.hasError(this.sincronizaSemana())) {
-													this.sicronizarDesignacao();
-													
-													hasErro = false;
-												}
-											}
-										}
-									}
-								}
+			if (this.apagarLocal()) {
+				if (this.apagaWeb()) {
+					if (this.enviarNovos()) {
+						if (this.atualizarWeb()) {
+							if (this.obterNovos()) {
+								hasErro = false;
 							}
 						}
 					}
 				}
 			}
-			
-			this.mensagensTela.append(this.versao());
 			
 			this.refreshMsg("\nFim do sincronismo.");
 			
@@ -304,89 +286,53 @@ public class Sincronizador {
 		this.hash = Base64.getEncoder().encodeToString(ciphered);
 	}
 	
-	private String apagarLocal() throws JSONException, IOException {
-		String erro = null;
+	private boolean apagarLocal() throws JSONException, IOException {
+		boolean correto = false;
 		
 		this.refreshMsg("\nSincronizando usuários removidos...");
-		if (this.hasError(erro = this.usuario.apagar())) {
-			this.refreshMsg("\nProblemas apagando usuarios:" + erro);
-		
-		} else {
+		if (!this.hasError("\nProblemas apagando usuarios:", this.usuario.apagar())) {
 			this.refreshMsg("\nSincronizando itens de segurança removidos...");
-			if (this.hasError(erro = this.itemProfile.apagar())) {
-				this.refreshMsg("\nProblemas apagando itens de segurança:" + erro);
-			
-			} else {
+			if (!this.hasError("\nProblemas apagando itens de segurança:", this.itemProfile.apagar())) {
 				this.refreshMsg("\nSincronizando perfis removidos...");
-				if (this.hasError(erro = this.profile.apagar())) {
-					this.refreshMsg("\nProblemas apagando perfis:" + erro);
-					
-				} else {
+				if (!this.hasError("\nProblemas apagando perfis:", this.profile.apagar())) {
 					this.refreshMsg("\nSincronizando designações removidos...");
-					if (this.hasError(erro = this.designacao.apagar())) {
-						this.refreshMsg("\nProblemas apagando designações:" + erro);
-						
-					} else {
+					if (!this.hasError("\nProblemas apagando designações:", this.designacao.apagar())) {
 						this.refreshMsg("\nSincronizando ajudantes removidos...");
-						if (this.hasError(erro = this.ajudante.apagar())) {
-							this.refreshMsg("\nProblemas apagando ajudantes:" + erro);
-							
-						} else {
+						if (!this.hasError("\nProblemas apagando ajudantes:", this.ajudante.apagar())) {
 							this.refreshMsg("\nSincronizando estudantes removidos...");
-							if (this.hasError(erro = this.estudante.apagar())) {
-								this.refreshMsg("\nProblemas apagando estudantes:" + erro);
-								
-							} else {
+							if (!this.hasError("\nProblemas apagando estudantes:", this.estudante.apagar())) {
 								this.refreshMsg("\nSincronizando estudos removidos...");
-								if (this.hasError(erro = this.estudo.apagar())) {
-									this.refreshMsg("\nProblemas apagando estudos:" + estudo);
+								if (!this.hasError("\nProblemas apagando estudos:", this.estudo.apagar())) {
+									correto = true;
 								}
 							}
 						}
 					}
 				}
-			}
+			}	
 		}
-		
-		return erro;
+				
+		return correto;
 	}
 	
-	private String apagaWeb() throws IOException {
-		String erro = null;
+	private boolean apagaWeb() throws IOException {
+		boolean correto = false;
 		
 		this.refreshMsg("\nSincronizando usuários removidos na WEB...");
-		if (this.hasError(erro = this.usuario.apagarWeb())) {
-			this.refreshMsg("\nProblemas apagando usuarios na web:" + erro);
-			
-		} else {
+		if (!this.hasError("\nProblemas apagando usuarios na web:", this.usuario.apagarWeb())) {
 			this.refreshMsg("\nSincronizando itens de segurança removidos na WEB...");
-			if (this.hasError(erro = this.itemProfile.apagarWeb())) {
-				this.refreshMsg("\nProblemas apagando itens de segurança na web:" + erro);
-				
-			} else {
+			if (!this.hasError("\nProblemas apagando itens de segurança na web:", this.itemProfile.apagarWeb())) {
 				this.refreshMsg("\nSincronizando perfis removidos na WEB...");
-				if (this.hasError(erro = this.profile.apagarWeb())) {
-					this.refreshMsg("\nProblemas apagando perfis na web:" + erro);
-				
-				} else {
+				if (!this.hasError("\nProblemas apagando perfis na web:", this.profile.apagarWeb())) {
 					this.refreshMsg("\nSincronizando designações removidos na WEB...");
-					if (this.hasError(erro = this.designacao.apagarWeb())) {
-						this.refreshMsg("\nProblemas apagando designações na web:" + erro);
-						
-					} else {
+					if (!this.hasError("\nProblemas apagando designações na web:", this.designacao.apagarWeb())) {
 						this.refreshMsg("\nSincronizando ajudantes removidos na WEB...");
-						if (this.hasError(erro = this.ajudante.apagarWeb())) {
-							this.refreshMsg("\nProblemas apagando ajudantes na web:" + erro);
-						
-						} else {
+						if (!this.hasError("\nProblemas apagando ajudantes na web:", this.ajudante.apagarWeb())) {
 							this.refreshMsg("\nSincronizando estudantes removidos na WEB...");
-							if (this.hasError(erro = this.estudante.apagarWeb())) {
-								this.refreshMsg("\nProblemas apagando estudantes na web:" + erro);
-								
-							} else {
+							if (!this.hasError("\nProblemas apagando estudantes na web:", this.estudante.apagarWeb())) {
 								this.refreshMsg("\nSincronizando estudos removidos na WEB...");
-								if (this.hasError(erro = this.estudo.apagarWeb())) {
-									this.refreshMsg("\nProblemas apagando estudos na web:" + erro);
+								if (!this.hasError("\nProblemas apagando estudos na web:", this.estudo.apagarWeb())) {
+									correto = true;
 								}
 							}
 						}
@@ -395,206 +341,116 @@ public class Sincronizador {
 			}
 		}
 		
-		return erro;
+		return correto;
 	}
 	
-	private String sincronizaMes() throws IOException {
-		String erro = null;
-		
-		this.refreshMsg("\nEnviando novos cadastros de mês...");
-		if (this.hasError(erro = this.mes.enviarNovos())) {
-			this.refreshMsg("\nProblemas nos meses enviados:" + erro);
-			
-		} else {
-			this.refreshMsg("\nAtualizando cadastros de mês...");
-			if (this.hasError(erro = this.mes.atualizarWeb())) {
-				this.refreshMsg("\nProblemas nos meses atualizados:" + erro);
-				
-			} else {
-				this.refreshMsg("\nObtendo novos cadastros de mês...");
-				if (this.hasError(erro = this.mes.obterNovos())) {
-					this.refreshMsg("\nProblemas nos meses recebidos:" + erro);
-				}
-			}
-		}
-		
-		return erro;
-	}
-	
-	private String sicronizarAjudante() throws IOException {
-		String erro = null;
-		
-		this.refreshMsg("\nEnviando novos cadastros de ajudante...");
-		if (this.hasError(erro = this.ajudante.enviarNovos())) {
-			this.refreshMsg("\nProblemas nos ajudantes enviados:" + erro);
-			
-		} else {
-			this.refreshMsg("\nAtualizando cadastros de ajudante...");
-			if (this.hasError(erro = this.ajudante.atualizarWeb())) {
-				this.refreshMsg("\nProblemas nos ajudantes atualizados:" + erro);
-				
-			} else {
-				this.refreshMsg("\nObtendo novos cadastros de ajudante...");
-				if (this.hasError(erro = this.ajudante.obterNovos())) {
-					this.refreshMsg("\nProblemas nos ajudantes recebidos:" + erro);
-				}
-			}
-		}
-
-		return erro;
-	}
-	
-	private String sicronizarEstudante() throws IOException {
-		String erro = null;
-		
-		this.refreshMsg("\nEnviando novos cadastros de estudante...");
-		if (this.hasError(erro = this.estudante.enviarNovos())) {
-			this.refreshMsg("\nProblemas nos estudantes enviados:" + erro);
-			
-		} else {
-			this.refreshMsg("\nAtualizando cadastros de estudante...");
-			if (this.hasError(erro = this.estudante.atualizarWeb())) {
-				this.refreshMsg("\nProblemas nos estudantes atualizados:" + erro);
-				
-			} else {
-				this.refreshMsg("\nObtendo novos cadastros de estudante...");
-				if (this.hasError(erro = this.estudante.obterNovos())) {
-					this.refreshMsg("\nProblemas nos estudantes recebidos:" + erro);
-				}
-			}
-		}
-		
-		return erro;
-	}
-	
-	private String sincronizarEstudo() throws IOException {
-		String erro = null;
-		
-		this.refreshMsg("\nEnviando novos cadastros de estudo...");
-		if (this.hasError(erro = this.estudo.enviar())) {
-			this.refreshMsg("\nProblemas nos estudos enviados:" + erro);
-			
-		} else {
-			this.refreshMsg("\nObtendo novos cadastros de estudo...");
-			if (this.hasError(erro = this.estudo.obterNovos())) {
-				this.refreshMsg("\nProblemas nos estudos recebidos:" + erro);
-			}
-		}
-		
-		return erro;
-	}
-	
-	private String sicronizarProfile() throws IOException {
-		String erro = null;
+	private boolean enviarNovos() throws IOException {
+		boolean correto = false;
 		
 		this.refreshMsg("\nEnviando novos cadastros de perfil...");
-		if (this.hasError(erro = this.profile.enviarNovos())) {
-			this.refreshMsg("\nProblemas nos profiles enviados:" + erro);
-			
-		} else {
-			this.refreshMsg("\nAtualizando cadastros de perfil...");
-			if (this.hasError(erro = this.profile.atualizarWeb())) {
-				this.refreshMsg("\nProblemas nos profiles atualizados:" + erro);
-				
-			} else {
-				this.refreshMsg("\nObtendo novos cadastros de perfil...");
-				if (this.hasError(erro = this.profile.obterNovos())) {
-					this.refreshMsg("\nProblemas nos profiles recebidos:" + erro);
+		if (!this.hasError("\nProblemas nos profiles enviados:", this.profile.enviarNovos())) {
+			this.refreshMsg("\nEnviando novos cadastros de itens de segurança...");
+			if (!this.hasError("\nProblemas nos itens de segurança enviados:", this.itemProfile.enviarNovos())) {
+				this.refreshMsg("\nEnviando novos cadastros de usuario...");
+				if (!this.hasError("\nProblemas nos usuarios enviados:", this.usuario.enviarNovos())) {
+					this.refreshMsg("\nEnviando novos cadastros de estudo...");
+					if (!this.hasError("\nProblemas nos estudos enviados:", this.estudo.enviar())) {
+						this.refreshMsg("\nEnviando novos cadastros de estudante...");
+						if (!this.hasError("\nProblemas nos estudantes enviados:", this.estudante.enviarNovos())) {
+							this.refreshMsg("\nEnviando novos cadastros de ajudante...");
+							if (!this.hasError("\nProblemas nos ajudantes enviados:", this.ajudante.enviarNovos())) {
+								this.refreshMsg("\nEnviando novos cadastros de mês...");
+								if (!this.hasError("\nProblemas nos meses enviados:", this.mes.enviarNovos())) {
+									this.refreshMsg("\nEnviando novos cadastros de dia de reunião...");
+									if (!this.hasError("\nProblemas nos dias de reunião enviados:", this.semana.enviarNovos())) {
+										this.refreshMsg("\nEnviando novos cadastros de designação...");
+										if (!this.hasError("\nProblemas nas designações enviadas:", this.designacao.enviarNovos())) {
+											correto = true;
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		}
 		
-		return erro;
+		return correto;
 	}
 	
-	private String sincronizarItemProfile() throws IOException {
-		String erro = null;
-		
-		this.refreshMsg("\nEnviando novos cadastros de itens de segurança...");
-		if (this.hasError(erro = this.itemProfile.enviarNovos())) {
-			this.refreshMsg("\nProblemas nos itens de segurança enviados:" + erro);
-			
-		} else {
-			this.refreshMsg("\nObtendo novos cadastros de itens de segurança...");
-			if (this.hasError(erro = this.itemProfile.obterNovos())) {
-				this.refreshMsg("\nProblemas nos itens de segurança recebidos:" + erro);
-			}
-		}
-		
-		return erro;
-	}
-	
-	private String sincronizarUsuario() throws IOException {
-		String erro = null;
-		
-		this.refreshMsg("\nEnviando novos cadastros de usuario...");
-		if (this.hasError(erro = this.usuario.enviarNovos())) {
-			this.refreshMsg("\nProblemas nos usuarios enviados:" + erro);
-			
-		} else {
+	private boolean atualizarWeb() throws IOException {
+		boolean correto = false;
+
+		this.refreshMsg("\nAtualizando cadastros de perfil...");
+		if (!this.hasError("\nProblemas nos profiles atualizados:", this.profile.atualizarWeb())) {
 			this.refreshMsg("\nAtualizando cadastros de usuario...");
-			if (this.hasError(erro = this.usuario.atualizarWeb())) {
-				this.refreshMsg("\nProblemas nos usuarios atualizados:" + erro);
-				
-			} else {
+			if (!this.hasError("\nProblemas nos usuarios atualizados:", this.usuario.atualizarWeb())) {
+				this.refreshMsg("\nAtualizando cadastros de estudante...");
+				if (!this.hasError("\nProblemas nos estudantes atualizados:", this.estudante.atualizarWeb())) {
+					this.refreshMsg("\nAtualizando cadastros de ajudante...");
+					if (!this.hasError("\nProblemas nos ajudantes atualizados:", this.ajudante.atualizarWeb())) {
+						this.refreshMsg("\nAtualizando cadastros de mês...");
+						if (!this.hasError("\nProblemas nos meses atualizados:", this.mes.atualizarWeb())) {
+							this.refreshMsg("\nAtualizando cadastros de dia de reunião...");
+							if (!this.hasError("\nProblemas nos dias de reunião atualizados:", this.semana.atualizarWeb())) {
+								this.refreshMsg("\nAtualizando cadastros de designação...");
+								if (!this.hasError("\nProblemas nas designações atualizadas:", this.designacao.atualizarWeb())) {
+									correto = true;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		return correto;
+	}
+	
+	private boolean obterNovos() throws IOException {
+		boolean correto = false;
+		
+		this.refreshMsg("\nObtendo novos cadastros de perfil...");
+		if (!this.hasError("\nProblemas nos profiles recebidos:", this.profile.obterNovos())) {
+			this.refreshMsg("\nObtendo novos cadastros de itens de segurança...");
+			if (!this.hasError("\nProblemas nos itens de segurança recebidos:", this.itemProfile.obterNovos())) {
 				this.refreshMsg("\nObtendo novos cadastros de usuario...");
-				if (this.hasError(erro = this.usuario.obterNovos())) {
-					this.refreshMsg("\nProblemas nos usuarios recebidos:" + erro);
+				if (!this.hasError("\nProblemas nos usuarios recebidos:", this.usuario.obterNovos())) {
+					this.refreshMsg("\nObtendo novos cadastros de estudo...");
+					if (!this.hasError("\nProblemas nos estudos recebidos:", this.estudo.obterNovos())) {
+						this.refreshMsg("\nObtendo novos cadastros de estudante...");
+						if (!this.hasError("\nProblemas nos estudantes recebidos:", this.estudante.obterNovos())) {
+							this.refreshMsg("\nObtendo novos cadastros de ajudante...");
+							if (!this.hasError("\nProblemas nos ajudantes recebidos:", this.ajudante.obterNovos())) {
+								this.refreshMsg("\nObtendo novos cadastros de mês...");
+								if (!this.hasError("\nProblemas nos meses recebidos:", this.mes.obterNovos())) {
+									this.refreshMsg("\nObtendo novos cadastros de dia de reunião...");
+									if (!this.hasError("\nProblemas nos dias de reunião recebidos:", this.semana.obterNovos())) {
+										this.refreshMsg("\nObtendo novos cadastros de designação...");
+										if (!this.hasError("\nProblemas nas designações recebidas:", this.designacao.obterNovos())) {
+											correto = true;
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		}
 		
-		return erro;
+		return correto;
 	}
 	
-	private String sincronizaSemana() throws IOException {
-		String erro = null;
+	private boolean hasError(String msg, String erroStr) {
+		boolean temErro = erroStr != null && erroStr.length() > 0;
 		
-		this.refreshMsg("\nEnviando novos cadastros de dia de reunião...");
-		if (this.hasError(erro = this.semana.enviarNovos())) {
-			this.refreshMsg("\nProblemas nos dias de reunião enviados:" + erro);
-			
-		} else {
-			this.refreshMsg("\nAtualizando cadastros de dia de reunião...");
-			if (this.hasError(erro = this.semana.atualizarWeb())) {
-				this.refreshMsg("\nProblemas nos dias de reunião atualizados:" + erro);
-				
-			} else {
-				this.refreshMsg("\nObtendo novos cadastros de dia de reunião...");
-				if (this.hasError(erro = this.semana.obterNovos())) {
-					this.refreshMsg("\nProblemas nos dias de reunião recebidos:" + erro);
-				}
-			}
+		if (temErro) {
+			this.refreshMsg(msg + erroStr);
 		}
-		
-		return erro;
-	}
 	
-	private String sicronizarDesignacao() throws IOException {
-		String erro = null;
-		
-		this.refreshMsg("\nEnviando novos cadastros de designação...");
-		if (this.hasError(erro = this.designacao.enviarNovos())) {
-			this.refreshMsg("\nProblemas nas designações enviadas:" + erro);
-			
-		} else {
-			this.refreshMsg("\nAtualizando cadastros de designação...");
-			if (this.hasError(erro = this.designacao.atualizarWeb())) {
-				this.refreshMsg("\nProblemas nas designações atualizadas:" + erro);
-				
-			} else {
-				this.refreshMsg("\nObtendo novos cadastros de designação...");
-				if (this.hasError(erro = this.designacao.obterNovos())) {
-					this.refreshMsg("\nProblemas nas designações recebidas:" + erro);
-				}
-			}
-		}
-		
-		return erro;
-	}
-	
-	private boolean hasError(String erroStr) {
-		return erroStr != null && erroStr.length() > 0;
+		return temErro;
 	}
 	
 	private void refreshMsg(String texto) {
