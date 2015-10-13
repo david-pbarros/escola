@@ -4,7 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="mes" class="java.lang.String"/>
-	<field name="data" class="java.util.Date"/>
+	<field name="data" class="java.time.LocalDate"/>
 	<field name="visita" class="java.lang.Boolean"/>
 	<field name="assebleia" class="java.lang.Boolean"/>
 	<field name="recapitulacao" class="java.lang.Boolean"/>
@@ -45,7 +45,7 @@
 					</textElement>
 					<text><![CDATA[Reunião:]]></text>
 				</staticText>
-				<textField pattern="dd/MM/yyyy">
+				<textField pattern="">
 					<reportElement mode="Opaque" x="45" y="5" width="510" height="18" backcolor="#E0E0E0" uuid="32e1935e-82ad-40a2-a41f-dd03e3bb77c2"/>
 					<box leftPadding="0">
 						<topPen lineWidth="1.5"/>
@@ -56,7 +56,7 @@
 					<textElement verticalAlignment="Middle">
 						<font size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{data}.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"))]]></textFieldExpression>
 				</textField>
 			</band>
 			<band height="28">

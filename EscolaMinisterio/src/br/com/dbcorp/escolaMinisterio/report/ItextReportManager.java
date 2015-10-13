@@ -86,10 +86,17 @@ public class ItextReportManager {
 			form.setField("sala_" + designacao.getSala()  + "_" + i, "Yes");
 			form.setField("obs" + i, designacao.getObsFolha());
 			
+			//form.setFieldProperty("nome" + i, "textsize ", 2.0, null);
+			
 			if (designacao.getAjudante() != null) {
 				form.setField("ajudante"  + i, this.capitalize(designacao.getAjudante().getNome()));
+				//form.setFieldProperty("ajudante" + i, "textsize ", 2.0, null);
 			}
 		}
+		
+		
+		
+		
 		
 		stamper.close();
 		reader.close();

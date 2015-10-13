@@ -3,7 +3,7 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<field name="data" class="java.util.Date"/>
+	<field name="data" class="java.time.LocalDate"/>
 	<field name="numero" class="java.lang.Integer"/>
 	<field name="sala" class="java.lang.String"/>
 	<field name="estudante" class="java.lang.String"/>
@@ -39,7 +39,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="9" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA["Dia: " + new SimpleDateFormat("dd/MM/yyyy").format($F{data})]]></textFieldExpression>
+					<textFieldExpression><![CDATA["Dia: " + $F{data}.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"))]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="0" y="17" width="52" height="14" uuid="090c111f-f557-4a3d-a192-ba1eb277cba8"/>
