@@ -1,6 +1,7 @@
 package br.com.dbcorp.escolaMinisterio.sincronismo;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -143,7 +144,7 @@ public class AjudanteSinc {
 					}
 					
 					ajudante.setIdOnline(item.getString("id"));
-					ajudante.setNome(item.getString("nome"));
+					ajudante.setNome(URLDecoder.decode(item.getString("nome"), "ISO-8859-1"));
 					ajudante.setGenero(Genero.values()[item.getInt("genero")]);
 					
 	

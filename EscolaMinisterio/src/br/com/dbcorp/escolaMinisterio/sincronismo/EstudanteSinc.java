@@ -1,6 +1,7 @@
 package br.com.dbcorp.escolaMinisterio.sincronismo;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -169,7 +170,7 @@ public class EstudanteSinc {
 					}
 					
 					estudante.setIdOnline(item.getString("id"));
-					estudante.setNome(item.getString("nome"));
+					estudante.setNome(URLDecoder.decode(item.getString("nome"), "ISO-8859-1"));
 					estudante.setGenero(Genero.values()[item.getInt("genero")]);
 					estudante.setObservacao(item.isNull("observacao") ? null : item.getString("observacao"));
 					estudante.setDesabilitado(item.getInt("desabilitado") == 1);

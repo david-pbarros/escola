@@ -1,6 +1,7 @@
 package br.com.dbcorp.escolaMinisterio.sincronismo;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -200,10 +201,10 @@ public class DesignacaoSinc {
 						designacao.setNumero(item.getInt("numero"));
 						designacao.setSala(item.getString("sala"));
 						designacao.setStatus(item.getString("status").charAt(0));
-						designacao.setTema(item.getString("tema"));
-						designacao.setFonte(item.getString("fonte"));
-						designacao.setObservacao(item.getString("observacao"));
-						designacao.setObsFolha(item.getString("obsfolha"));
+						designacao.setTema(URLDecoder.decode(item.getString("tema"), "ISO-8859-1"));
+						designacao.setFonte(URLDecoder.decode(item.getString("fonte"), "ISO-8859-1"));
+						designacao.setObservacao(URLDecoder.decode(item.getString("observacao"), "ISO-8859-1"));
+						designacao.setObsFolha(URLDecoder.decode(item.getString("obsfolha"), "ISO-8859-1"));
 						
 						designacao.setSemana(this.gerenciador.obterSemanaDesignacao(item.getString("semana_id")));
 						designacao.setData(LocalDate.parse(item.getString("data"), Params.dateFormate()));

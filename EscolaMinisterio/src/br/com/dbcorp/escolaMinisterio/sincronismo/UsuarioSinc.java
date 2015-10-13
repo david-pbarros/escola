@@ -1,6 +1,7 @@
 package br.com.dbcorp.escolaMinisterio.sincronismo;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -138,7 +139,7 @@ public class UsuarioSinc {
 					
 					usuario.setIdOnline(item.getString("id"));
 					usuario.setSenha(item.getString("senha"));
-					usuario.setNome(item.getString("nome"));
+					usuario.setNome(URLDecoder.decode(item.getString("nome"), "ISO-8859-1"));
 					usuario.setReiniciaSenha(item.getInt("reiniciaSenha") == 1);
 					usuario.setBloqueado(item.getInt("bloqueado") == 1);
 					usuario.setProfile(this.gerenciador.obterProfile(item.getString("profile_id")));
