@@ -62,6 +62,35 @@ public class Sincronizador {
 		this(null);
 	}
 	
+	public void verificaSinc() {
+		try {
+			this.obterChave();
+			this.gerarHash();
+			
+			PHPConnection con = new PHPConnection("/service.php/lastSinc", HTTP_METHOD.GET, this.hash);
+			con.connect();
+			
+			if (con.getResponseCode() != 200) {
+				throw new RuntimeException(con.getErrorDetails());
+			}
+			
+			JSONObject obj = con.getResponse();
+			
+			if (obj != null) {
+				if ("existente".equalsIgnoreCase(obj.getString("response"))) {
+					LocalDateTime temp = LocalDateTime.parse(obj.getString("data"), br.com.dbcorp.escolaMinisterio.ui.Params.dateTimeFormate());
+					
+					Params.propriedades().put("doSinc", this.gerenciador.pegarUltimo().getData().isBefore(temp));
+					
+				} else {
+					Params.propriedades().put("doSinc", true);
+				}
+			}
+		} catch (Exception ex) {
+			Params.propriedades().put("doSinc", true);
+		}
+	}
+	
 	public String versao() {
 		String retorno = "";
 		
@@ -273,10 +302,17 @@ public class Sincronizador {
 	}
 	
 	private void gerarHash() throws NoSuchAlgorithmException, NoSuchProviderException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
-		StringBuffer hash = new StringBuffer(Params.propriedades().getProperty("congregacao")).append(";")
-			.append(this.gerenciador.getUser().getNome()).append(";")
-			.append(this.gerenciador.getUser().getSenha()).append(";")
-			.append(Params.propriedades().get("verionNumber"));
+		StringBuffer hash = new StringBuffer(Params.propriedades().getProperty("congregacao")).append(";");
+		
+		if (this.gerenciador.getUser() != null) {
+			hash.append(this.gerenciador.getUser().getNome()).append(";")
+				.append(this.gerenciador.getUser().getSenha()).append(";");
+		
+		} else {
+			hash.append(";").append(";");
+		}
+		
+		hash.append(Params.propriedades().get("verionNumber"));
 		
 		Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding", "BC");
 		cipher.init(Cipher.ENCRYPT_MODE, this.chave);

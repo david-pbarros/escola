@@ -19,8 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `escola_48496`
 --
-CREATE DATABASE IF NOT EXISTS `escola_48496` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `escola_48496`;
+--USE `escola_48496`;
 
 -- --------------------------------------------------------
 
@@ -238,6 +237,17 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 INSERT INTO `usuario` (`ID`, `BLOQUEADO`, `DTULTIMAATUALIZA`, `NOME`, `REINICIASENHA`, `SENHA`, `PROFILE_ID`, `DATAEXCLUSAO`) VALUES
 ('usuario_0', 0, NULL, 'admin', 0, '0DPiKuNIrrVmD8IUCuw1hQxNqZc=', 'profile_0', NULL);
+
+--
+-- Table structure for table `sincronismo`
+--
+
+CREATE TABLE IF NOT EXISTS `sincronismo` (
+  `data` datetime NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `situacao` varchar(1) NOT NULL,
+  PRIMARY KEY (`data`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Constraints for dumped tables
