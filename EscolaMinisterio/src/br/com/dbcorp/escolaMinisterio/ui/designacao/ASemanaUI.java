@@ -30,22 +30,27 @@ public abstract class ASemanaUI extends JPanel implements ActionListener {
 	protected JLabel lbEstudante1;
 	protected JLabel lbEstudante2;
 	protected JLabel lbEstudante3;
+	protected JLabel lbEstudante4;
 	protected JButton btnDetalhes1;
 	protected JButton btnDetalhes2;
 	protected JButton btnDetalhes3;
+	protected JButton btnDetalhes4;
 	
 	protected void setDetalhesButtons() {
 		this.btnDetalhes1 = new JButton("...");
 		this.btnDetalhes2 = new JButton("...");
 		this.btnDetalhes3 = new JButton("...");
+		this.btnDetalhes4 = new JButton("...");
 
 		this.btnDetalhes1.setToolTipText("Detalhes");
 		this.btnDetalhes2.setToolTipText("Detalhes");
 		this.btnDetalhes3.setToolTipText("Detalhes");
+		this.btnDetalhes4.setToolTipText("Detalhes");
 		
 		this.btnDetalhes1.addActionListener(this);
 		this.btnDetalhes2.addActionListener(this);
 		this.btnDetalhes3.addActionListener(this);
+		this.btnDetalhes4.addActionListener(this);
 	}
 	
 	protected void actionDetalhes(ActionEvent event, boolean editable) {

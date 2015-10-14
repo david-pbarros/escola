@@ -12,7 +12,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 
 import br.com.dbcorp.escolaMinisterio.dataBase.DesignacaoGerenciador;
@@ -23,6 +22,7 @@ import br.com.dbcorp.escolaMinisterio.entidades.Genero;
 import br.com.dbcorp.escolaMinisterio.entidades.ItemProfile.ItensSeg;
 import br.com.dbcorp.escolaMinisterio.entidades.MesDesignacao;
 import br.com.dbcorp.escolaMinisterio.entidades.SemanaDesignacao;
+import br.com.dbcorp.escolaMinisterio.ui.DScrollPane;
 import br.com.dbcorp.escolaMinisterio.ui.Params;
 import br.com.dbcorp.escolaMinisterio.ui.designacao.ADesignacoesUI;
 import br.com.dbcorp.escolaMinisterio.ui.designacao.ASemanaUI;
@@ -138,9 +138,9 @@ public class DesignacoesUI extends ADesignacoesUI {
 		if ( this.scroll == null ) {
 			this.mesPanel = new JPanel();
 			
-			this.scroll = new JScrollPane();
+			this.scroll = new DScrollPane();
 			this.scroll.setPreferredSize(new Dimension(Params.INTERNAL_WIDTH, Params.INTERNAL_HEIGHT));
-			this.scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+			this.scroll.setHorizontalScrollBarPolicy(DScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 			this.scroll.setViewportView(this.mesPanel);
 			
 			this.containerPanel.add(scroll, BorderLayout.CENTER);
@@ -150,13 +150,21 @@ public class DesignacoesUI extends ADesignacoesUI {
 		}
 		
 		for (SemanaDesignacao semanaD : this.mesDesignacao.getSemanas()) {
-			SemanaUI semana = new SemanaUI(this.gerenciador, this.estudanteGerenciador, semanaD, (String)this.cbSala.getSelectedItem(), estudos, ajudanteH, ajudanteM, this.editDetalhes);
+			ASemanaUI semana;
+			
+			if (this.mesDesignacao.isMelhoreMinisterio()) {
+				semana = new SemanaMelhoreUI(this.gerenciador, this.estudanteGerenciador, semanaD, (String)this.cbSala.getSelectedItem(), estudos, ajudanteH, ajudanteM, this.editDetalhes);
+			} else {
+				semana = new SemanaUI(this.gerenciador, this.estudanteGerenciador, semanaD, (String)this.cbSala.getSelectedItem(), estudos, ajudanteH, ajudanteM, this.editDetalhes);
+			}
 			
 			this.semanas.add(semana);
 			this.mesPanel.add(semana);
 		}
 
-		this.mesPanel.setPreferredSize(new Dimension(Params.INTERNAL_WIDTH, 238 * this.mesDesignacao.getSemanas().size()));
+		int heigth = this.mesDesignacao.isMelhoreMinisterio() ? 266 : 238;
+		
+		this.mesPanel.setPreferredSize(new Dimension(Params.INTERNAL_WIDTH, heigth * this.mesDesignacao.getSemanas().size()));
 		
 		this.revalidate();
 		this.repaint();
