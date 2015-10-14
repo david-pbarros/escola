@@ -25,18 +25,12 @@ public class SincDialog extends JDialog {
 	
 	private JButton btnFechar;
 	
-	public static final int LOGIN = 1;
-	public static final int GERAL = 2;
-	public static final int PRIMEIRO = 3;
-	
 	protected int tipo;
 	
-	public SincDialog(int tipo) {
+	public SincDialog() {
 		setTitle("Sincronizador");
 		setResizable(false);
 		setModal(true);
-		
-		this.tipo = tipo;
 		
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		
@@ -49,11 +43,7 @@ public class SincDialog extends JDialog {
 		this.btnFechar = new JButton("Fechar");
 		this.btnFechar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (tipo == LOGIN || tipo == PRIMEIRO) {
-					System.exit(0);
-				} else {
-					dispose();
-				}
+				System.exit(0);
 			}
 		});
 		this.btnFechar.setEnabled(false);

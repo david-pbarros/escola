@@ -285,11 +285,7 @@ public class Sincronizador {
 			
 			this.finalizaSinc(hasErro);
 			
-			this.refreshMsg("\nFim do sincronismo.");
-			
-			if (this.ultimaSincronia.isCriado()) {
-				this.refreshMsg(" Reinicie o sistema.");
-			}
+			this.refreshMsg("\nFim do sincronismo. Reinicie o sistema.");
 			
 		} catch (Exception ex) {
 			String erro = "Erro inesperado durante o sincronismo de informações.";

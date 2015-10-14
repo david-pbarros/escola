@@ -94,7 +94,7 @@ public class MainFrame extends JFrame {
 				if ((boolean)br.com.dbcorp.escolaMinisterio.Params.propriedades().get("doSinc")) {
 					int response = JOptionPane.showConfirmDialog(null, "Recomendamos um sincronismo com a WEB. Deseja Realizar?", "Sincronizar?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 					if (response == JOptionPane.YES_OPTION) {
-						new SincDialog(SincDialog.GERAL).setVisible(true);
+						new SincDialog().setVisible(true);
 					}
 				}
 			    

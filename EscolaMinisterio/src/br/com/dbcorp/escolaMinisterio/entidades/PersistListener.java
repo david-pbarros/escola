@@ -1,6 +1,7 @@
 package br.com.dbcorp.escolaMinisterio.entidades;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -16,10 +17,10 @@ public class PersistListener {
 		Params.propriedades().put("doSinc", true);
 
 		if (ent instanceof Entidade) {
-			((Entidade) ent).setDtUltimaAtualiza(LocalDateTime.now());
+			((Entidade) ent).setDtUltimaAtualiza(LocalDateTime.now(ZoneId.of("America/Sao_Paulo")));
 
 		} else {
-			((Estudo) ent).setDtUltimaAtualiza(LocalDateTime.now());
+			((Estudo) ent).setDtUltimaAtualiza(LocalDateTime.now(ZoneId.of("America/Sao_Paulo")));
 		}
 	}
 }

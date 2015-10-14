@@ -10,7 +10,7 @@ public class Params {
 	
 	private static Properties props;
 
-	public static Properties propriedades() {
+	public synchronized static Properties propriedades() {
 		if (props == null) {
 			props = new Properties();
 			
