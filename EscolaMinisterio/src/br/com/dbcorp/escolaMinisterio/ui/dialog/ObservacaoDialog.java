@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -16,6 +15,7 @@ import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.Sizes;
 
+import br.com.dbcorp.escolaMinisterio.ui.DScrollPane;
 import br.com.dbcorp.escolaMinisterio.ui.Params;
 
 public class ObservacaoDialog extends JDialog implements ActionListener {
@@ -53,7 +53,7 @@ public class ObservacaoDialog extends JDialog implements ActionListener {
 				new RowSpec(RowSpec.CENTER, Sizes.bounded(Sizes.DEFAULT, Sizes.constant("10dlu", false), Sizes.constant("10dlu", false)), 0),}));
 		
 		this.txObservacao = new JTextArea(this.observacao);
-		JScrollPane scrollPane = new JScrollPane(this.txObservacao);
+		DScrollPane scrollPane = new DScrollPane(this.txObservacao);
 		
 		if (editable) {
 			this.btnConfirmar = new JButton("Confirmar");

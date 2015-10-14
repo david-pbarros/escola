@@ -14,7 +14,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
@@ -157,14 +156,14 @@ public class EstudosUI extends InternalUI implements TableModelListener, ActionL
 		this.btnSair.setToolTipText("Sair");
 	}
 	
-	private JScrollPane setTable() {
+	private DScrollPane setTable() {
 		this.table = new JTable();
 		this.table.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 13));
 		this.table.setDefaultRenderer(Integer.class, new EstudoCellRender());
 		this.table.setDefaultRenderer(Boolean.class, new EstudoCellRender());
 		this.table.getSelectionModel().addListSelectionListener(this);
 		
-		JScrollPane scrollPane = new JScrollPane(this.table);
+		DScrollPane scrollPane = new DScrollPane(this.table);
 		scrollPane.setViewportBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		scrollPane.setPreferredSize(new Dimension(Params.INTERNAL_WIDTH, 100));
 		

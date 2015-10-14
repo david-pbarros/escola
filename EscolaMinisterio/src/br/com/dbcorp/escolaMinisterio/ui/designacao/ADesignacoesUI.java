@@ -18,13 +18,13 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import br.com.dbcorp.escolaMinisterio.Log;
 import br.com.dbcorp.escolaMinisterio.dataBase.DesignacaoGerenciador;
 import br.com.dbcorp.escolaMinisterio.entidades.Designacao;
 import br.com.dbcorp.escolaMinisterio.entidades.MesDesignacao;
 import br.com.dbcorp.escolaMinisterio.entidades.SemanaDesignacao;
+import br.com.dbcorp.escolaMinisterio.ui.DScrollPane;
 import br.com.dbcorp.escolaMinisterio.ui.InternalUI;
 import br.com.dbcorp.escolaMinisterio.ui.Params;
 import br.com.dbcorp.escolaMinisterio.ui.dialog.PrintDialog;
@@ -49,7 +49,7 @@ public abstract class ADesignacoesUI extends InternalUI implements ActionListene
 	protected JButton btnSalvar;
 	protected JButton btnSair;
 	protected JPanel mesPanel;
-	protected JScrollPane scroll;
+	protected DScrollPane scroll;
 	
 	protected static int ANO_ATUAL;
 	protected static int MES_ATUAL;
@@ -187,9 +187,9 @@ public abstract class ADesignacoesUI extends InternalUI implements ActionListene
 		if ( this.scroll == null ) {
 			this.mesPanel = new JPanel();
 			
-			this.scroll = new JScrollPane();
+			this.scroll = new DScrollPane();
 			this.scroll.setPreferredSize(new Dimension(Params.INTERNAL_WIDTH, Params.INTERNAL_HEIGHT));
-			this.scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+			this.scroll.setHorizontalScrollBarPolicy(DScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 			this.scroll.setViewportView(this.mesPanel);
 			
 			this.containerPanel.add(scroll, BorderLayout.CENTER);

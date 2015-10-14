@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.text.DefaultCaret;
 
@@ -19,6 +18,7 @@ import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 
 import br.com.dbcorp.escolaMinisterio.sincronismo.Sincronizador;
+import br.com.dbcorp.escolaMinisterio.ui.DScrollPane;
 
 public class SincDialog extends JDialog {
 	private static final long serialVersionUID = -5266823832368284482L;
@@ -72,7 +72,7 @@ public class SincDialog extends JDialog {
 				RowSpec.decode("default:grow"),
 				FormSpecs.LINE_GAP_ROWSPEC,}));
 		
-		JScrollPane scrollPane = new JScrollPane();
+		DScrollPane scrollPane = new DScrollPane();
 		panel_1.add(scrollPane, "2, 3, fill, fill");
 		
 		JTextArea textArea = new JTextArea();

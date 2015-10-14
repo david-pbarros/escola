@@ -11,7 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
@@ -23,6 +22,7 @@ import javax.swing.table.TableColumnModel;
 import br.com.dbcorp.escolaMinisterio.dataBase.EstudanteGerenciador;
 import br.com.dbcorp.escolaMinisterio.entidades.Estudante;
 import br.com.dbcorp.escolaMinisterio.entidades.Genero;
+import br.com.dbcorp.escolaMinisterio.ui.DScrollPane;
 import br.com.dbcorp.escolaMinisterio.ui.Params;
 import br.com.dbcorp.escolaMinisterio.ui.model.EscolhaEstudanteCellRender;
 import br.com.dbcorp.escolaMinisterio.ui.model.EscolhaEstudanteTableModel;
@@ -113,14 +113,14 @@ public class EscolhaEstudanteDialog extends JDialog implements ActionListener, L
 		setLocation(w/2, h/2);
 	}
 	
-	private JScrollPane setTable() {
+	private DScrollPane setTable() {
 		this.table = new JTable();
 		this.table.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 13));
 		this.table.setDefaultRenderer(Integer.class, new EscolhaEstudanteCellRender());
 		this.table.setDefaultRenderer(String.class, new EscolhaEstudanteCellRender());
 		this.table.getSelectionModel().addListSelectionListener(this);
 		
-		JScrollPane scrollPane = new JScrollPane(this.table);
+		DScrollPane scrollPane = new DScrollPane(this.table);
 		scrollPane.setViewportBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		scrollPane.setPreferredSize(new Dimension(500 , Params.INTERNAL_HEIGHT - 250));
 		

@@ -23,7 +23,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -252,12 +251,12 @@ public class EstudantesUI extends InternalUI implements ActionListener, ListSele
 	    }
 	}
 	
-	private JScrollPane setTable() {
+	private DScrollPane setTable() {
 		this.table = new JTable();
 		this.table.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 13));
 		this.table.getSelectionModel().addListSelectionListener(this);
 		
-		JScrollPane scrollPane = new JScrollPane(this.table);
+		DScrollPane scrollPane = new DScrollPane(this.table);
 		scrollPane.setViewportBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		scrollPane.setPreferredSize(new Dimension(Params.INTERNAL_WIDTH, 100));
 		
@@ -360,7 +359,7 @@ public class EstudantesUI extends InternalUI implements ActionListener, ListSele
 		this.tableEstudo.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 13));
 		this.tableEstudo.setDefaultRenderer(Character.class, new DesignacaoCellRender());
 		
-		JScrollPane scrollPane = new JScrollPane(this.tableEstudo);
+		DScrollPane scrollPane = new DScrollPane(this.tableEstudo);
 		scrollPane.setViewportBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		scrollPane.setPreferredSize(new Dimension(Params.INTERNAL_WIDTH, (this.tableEstudo.getRowHeight() + 29)));
 		

@@ -18,12 +18,12 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 
 import br.com.dbcorp.escolaMinisterio.dataBase.DesignacaoGerenciador;
 import br.com.dbcorp.escolaMinisterio.entidades.MesDesignacao;
 import br.com.dbcorp.escolaMinisterio.entidades.SemanaDesignacao;
+import br.com.dbcorp.escolaMinisterio.ui.DScrollPane;
 import br.com.dbcorp.escolaMinisterio.ui.InternalUI;
 import br.com.dbcorp.escolaMinisterio.ui.Params;
 import br.com.dbcorp.escolaMinisterio.ui.dialog.PrintDialog;
@@ -45,7 +45,7 @@ public class DesignacoesUI extends InternalUI implements ActionListener, ItemLis
 	private JComboBox cbSala;
 	private JButton btnImprimir;
 	private JPanel mesPanel;
-	private JScrollPane scroll;
+	private DScrollPane scroll;
 	
 	private boolean editDetalhes;
 	
@@ -160,9 +160,9 @@ public class DesignacoesUI extends InternalUI implements ActionListener, ItemLis
 			this.mesPanel = new JPanel();
 			this.mesPanel.setBackground(Color.WHITE);
 			
-			this.scroll = new JScrollPane();
+			this.scroll = new DScrollPane();
 			this.scroll.setPreferredSize(new Dimension(Params.INTERNAL_WIDTH, Params.INTERNAL_HEIGHT));
-			this.scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+			this.scroll.setHorizontalScrollBarPolicy(DScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 			this.scroll.setViewportView(this.mesPanel);
 			
 			this.containerPanel.add(scroll, BorderLayout.CENTER);

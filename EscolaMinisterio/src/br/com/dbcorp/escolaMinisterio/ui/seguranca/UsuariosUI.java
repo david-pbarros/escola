@@ -22,7 +22,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
@@ -41,6 +40,7 @@ import br.com.dbcorp.escolaMinisterio.dataBase.UsuarioGerenciador;
 import br.com.dbcorp.escolaMinisterio.entidades.Profile;
 import br.com.dbcorp.escolaMinisterio.entidades.Usuario;
 import br.com.dbcorp.escolaMinisterio.sincronismo.Sincronizador;
+import br.com.dbcorp.escolaMinisterio.ui.DScrollPane;
 import br.com.dbcorp.escolaMinisterio.ui.InternalUI;
 import br.com.dbcorp.escolaMinisterio.ui.Params;
 import br.com.dbcorp.escolaMinisterio.ui.dialog.UsuarioDialog;
@@ -266,14 +266,14 @@ public class UsuariosUI extends InternalUI implements ActionListener, ListSelect
 		this.btnSair.setToolTipText("Sair");
 	}
 	
-	private JScrollPane setTable() {
+	private DScrollPane setTable() {
 		this.table = new JTable();
 		this.table.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 13));
 		this.table.setDefaultRenderer(Integer.class, new EstudoCellRender());
 		this.table.setDefaultRenderer(Boolean.class, new EstudoCellRender());
 		this.table.getSelectionModel().addListSelectionListener(this);
 		
-		JScrollPane scrollPane = new JScrollPane(this.table);
+		DScrollPane scrollPane = new DScrollPane(this.table);
 		scrollPane.setViewportBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		scrollPane.setPreferredSize(new Dimension((Params.INTERNAL_WIDTH / 4), 100));
 		
