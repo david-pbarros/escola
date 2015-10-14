@@ -160,7 +160,7 @@ public class LogonDialog extends JDialog implements ActionListener {
 			
 		try {
 			if (sinc.login()) {
-				new SincDialog().setVisible(true);
+				new SincDialog(SincDialog.LOGIN).setVisible(true);
 				
 				this.gerenciador.localizaUsuario(this.gerenciador.getUser().getNome(), senha);
 				

@@ -25,12 +25,17 @@ public class SincDialog extends JDialog {
 	
 	private JButton btnFechar;
 	
+	public static final int LOGIN = 1;
+	public static final int GERAL = 2;
+	
 	protected int tipo;
 	
-	public SincDialog() {
+	public SincDialog(int tipo) {
 		setTitle("Sincronizador");
 		setResizable(false);
 		setModal(true);
+		
+		this.tipo = tipo;
 		
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		
