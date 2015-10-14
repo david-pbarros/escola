@@ -15,7 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@EntityListeners(RemoveListener.class)
+@EntityListeners({RemoveListener.class, PersistListener.class})
 public class Profile implements Entidade {
 
 	private int id;

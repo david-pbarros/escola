@@ -91,6 +91,23 @@ public class Sincronizador {
 		}
 	}
 	
+	public void finalizaSinc(boolean hasErro) {
+		try {
+			this.obterChave();
+			this.gerarHash();
+			
+			PHPConnection con = new PHPConnection("/service.php/lastSinc", HTTP_METHOD.POST, this.hash);
+			con.setParameter("status", hasErro ? "I" : "C");
+			con.connect();
+			
+			if (con.getResponseCode() != 200) {
+				throw new RuntimeException(con.getErrorDetails());
+			}
+		} catch (Exception ex) {
+			Params.propriedades().put("doSinc", true);
+		}
+	}
+	
 	public String versao() {
 		String retorno = "";
 		
@@ -259,11 +276,14 @@ public class Sincronizador {
 						if (this.atualizarWeb()) {
 							if (this.obterNovos()) {
 								hasErro = false;
+								Params.propriedades().put("doSinc", false);
 							}
 						}
 					}
 				}
 			}
+			
+			this.finalizaSinc(hasErro);
 			
 			this.refreshMsg("\nFim do sincronismo.");
 			

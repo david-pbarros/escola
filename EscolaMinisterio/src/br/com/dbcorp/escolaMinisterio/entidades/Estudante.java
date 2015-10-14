@@ -15,7 +15,7 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Transient;
 
 @Entity
-@EntityListeners(RemoveListener.class)
+@EntityListeners({RemoveListener.class, PersistListener.class})
 public class Estudante extends Pessoa {
 
 	private String observacao;

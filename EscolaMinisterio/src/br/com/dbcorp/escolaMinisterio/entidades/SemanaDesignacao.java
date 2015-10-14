@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
-@EntityListeners(RemoveListener.class)
+@EntityListeners({RemoveListener.class, PersistListener.class})
 public class SemanaDesignacao implements Comparable<SemanaDesignacao>, Entidade {
 
 	private int id;

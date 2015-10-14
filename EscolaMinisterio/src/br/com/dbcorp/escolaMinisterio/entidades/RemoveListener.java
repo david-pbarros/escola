@@ -2,12 +2,15 @@ package br.com.dbcorp.escolaMinisterio.entidades;
 
 import javax.persistence.PreRemove;
 
+import br.com.dbcorp.escolaMinisterio.Params;
 import br.com.dbcorp.escolaMinisterio.dataBase.Gerenciador;
 
 public class RemoveListener {
 	
 	@PreRemove
 	public void onRemove(Object entidade) {
+		Params.propriedades().put("doSinc", true);
+		
 		
 		if (entidade instanceof Entidade) {
 			Entidade e = (Entidade) entidade;

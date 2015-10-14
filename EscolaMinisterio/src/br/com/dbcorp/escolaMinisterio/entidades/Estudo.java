@@ -13,7 +13,7 @@ import javax.persistence.TemporalType;
 
 
 @Entity
-@EntityListeners(RemoveListener.class)
+@EntityListeners({RemoveListener.class, PersistListener.class})
 public class Estudo {
 
 	private int nrEstudo;

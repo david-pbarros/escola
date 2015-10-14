@@ -17,7 +17,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@EntityListeners(RemoveListener.class)
+@EntityListeners({RemoveListener.class, PersistListener.class})
 public class ItemProfile implements Entidade {
 	
 	public enum ItensSeg {

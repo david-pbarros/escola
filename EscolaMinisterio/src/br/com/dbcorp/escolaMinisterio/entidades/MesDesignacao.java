@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -21,6 +22,7 @@ import javax.persistence.TemporalType;
 import br.com.dbcorp.escolaMinisterio.MesesDom;
 
 @Entity
+@EntityListeners(PersistListener.class)
 public class MesDesignacao implements Entidade {
 	
 	private int id;

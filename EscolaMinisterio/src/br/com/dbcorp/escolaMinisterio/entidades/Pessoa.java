@@ -12,14 +12,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-@EntityListeners(RemoveListener.class)
+@EntityListeners({RemoveListener.class, PersistListener.class})
 public abstract class Pessoa implements Entidade {
 
 	private int id;
@@ -83,11 +81,11 @@ public abstract class Pessoa implements Entidade {
 		this.excluido = excluido;
 	}
 	
-	@PrePersist
+	/*@PrePersist
 	@PreUpdate
 	public void dataAtualiza() {
 		this.dtUltimaAtualiza = LocalDateTime.now();
-	}
+	}*/
 	
 	@Override
 	public boolean equals(Object obj) {
