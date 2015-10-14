@@ -45,6 +45,7 @@ public class MesSinc {
 			con.setParameter("ano", mes.getAno());
 			con.setParameter("status", mes.getStatus());
 			con.setParameter("mes", mes.getMes().ordinal());
+			con.setParameter("melhoreministerio", mes.isMelhoreMinisterio() ? 1 : 0);
 			
 			con.connect();
 			
@@ -132,6 +133,7 @@ public class MesSinc {
 					mes.setAno(item.getInt("ano"));
 					mes.setStatus(item.getString("status").charAt(0));
 					mes.setMes(MesesDom.values()[item.getInt("mes")]);
+					mes.setMelhoreMinisterio(item.getInt("melhoreministerio") == 1);
 					
 					if (mes.getId() == 0) {
 						this.gerenciador.salvar(mes);
