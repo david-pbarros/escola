@@ -15,16 +15,16 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.FormSpecs;
+import com.jgoodies.forms.layout.RowSpec;
+
 import br.com.dbcorp.escolaMinisterio.Log;
 import br.com.dbcorp.escolaMinisterio.dataBase.Gerenciador;
 import br.com.dbcorp.escolaMinisterio.dataBase.Gerenciador.StatusLogon;
 import br.com.dbcorp.escolaMinisterio.sincronismo.Sincronizador;
 import br.com.dbcorp.escolaMinisterio.ui.Splash;
-
-import com.jgoodies.forms.factories.FormFactory;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.RowSpec;
 
 public class LogonDialog extends JDialog implements ActionListener {
 	private static final long serialVersionUID = 2046432224214280872L;
@@ -41,18 +41,18 @@ public class LogonDialog extends JDialog implements ActionListener {
 	
 	public LogonDialog(Splash parent) {
 		getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
-				FormFactory.RELATED_GAP_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("default:grow"),
-				FormFactory.RELATED_GAP_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("default:grow"),
-				FormFactory.UNRELATED_GAP_COLSPEC,},
+				FormSpecs.UNRELATED_GAP_COLSPEC,},
 			new RowSpec[] {
-				FormFactory.PARAGRAPH_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,}));
+				FormSpecs.PARAGRAPH_GAP_ROWSPEC,
+				FormSpecs.DEFAULT_ROWSPEC,
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				FormSpecs.DEFAULT_ROWSPEC,
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				FormSpecs.DEFAULT_ROWSPEC,}));
 		
 		this.gerenciador = new Gerenciador();
 		this.parent = parent;
@@ -70,10 +70,10 @@ public class LogonDialog extends JDialog implements ActionListener {
 		JPanel nomePanel = new JPanel();
 		nomePanel.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("max(30dlu;min)"),
-				FormFactory.RELATED_GAP_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("default:grow"),},
 			new RowSpec[] {
-				FormFactory.DEFAULT_ROWSPEC,}));
+				FormSpecs.DEFAULT_ROWSPEC,}));
 		
 		nomePanel.add(new JLabel("Nome:"), "1, 1, right, default");
 		nomePanel.add(this.txtNome, "3, 1, fill, default");
@@ -81,10 +81,10 @@ public class LogonDialog extends JDialog implements ActionListener {
 		JPanel senhaPanel = new JPanel();
 		senhaPanel.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("max(30dlu;min)"),
-				FormFactory.RELATED_GAP_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("default:grow"),},
 			new RowSpec[] {
-				FormFactory.DEFAULT_ROWSPEC,}));
+				FormSpecs.DEFAULT_ROWSPEC,}));
 		
 		senhaPanel.add(new JLabel("Senha:"), "1, 1, right, default");
 		senhaPanel.add(this.txtSenha, "3, 1, fill, default");

@@ -13,12 +13,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.text.DefaultCaret;
 
-import br.com.dbcorp.escolaMinisterio.sincronismo.Sincronizador;
-
-import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
+
+import br.com.dbcorp.escolaMinisterio.sincronismo.Sincronizador;
 
 public class SincDialog extends JDialog {
 	private static final long serialVersionUID = -5266823832368284482L;
@@ -63,14 +63,14 @@ public class SincDialog extends JDialog {
 		JPanel panel_1 = new JPanel();
 		getContentPane().add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(new FormLayout(new ColumnSpec[] {
-				FormFactory.RELATED_GAP_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("default:grow"),
-				FormFactory.RELATED_GAP_COLSPEC,},
+				FormSpecs.RELATED_GAP_COLSPEC,},
 			new RowSpec[] {
 				RowSpec.decode("5dlu"),
-				FormFactory.LINE_GAP_ROWSPEC,
+				FormSpecs.LINE_GAP_ROWSPEC,
 				RowSpec.decode("default:grow"),
-				FormFactory.LINE_GAP_ROWSPEC,}));
+				FormSpecs.LINE_GAP_ROWSPEC,}));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		panel_1.add(scrollPane, "2, 3, fill, fill");

@@ -20,16 +20,16 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.FormSpecs;
+import com.jgoodies.forms.layout.RowSpec;
+
 import br.com.dbcorp.escolaMinisterio.dataBase.UsuarioGerenciador;
 import br.com.dbcorp.escolaMinisterio.entidades.Profile;
 import br.com.dbcorp.escolaMinisterio.entidades.Usuario;
 import br.com.dbcorp.escolaMinisterio.exceptions.DuplicateKeyException;
 import br.com.dbcorp.escolaMinisterio.ui.Params;
-
-import com.jgoodies.forms.factories.FormFactory;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.RowSpec;
 
 public class UsuarioDialog extends JDialog implements ActionListener {
 	private static final long serialVersionUID = 7789542379134478478L;
@@ -64,18 +64,18 @@ public class UsuarioDialog extends JDialog implements ActionListener {
 		
 		JPanel infoPanel = new JPanel();
 		infoPanel.setLayout(new FormLayout(new ColumnSpec[] {
-				FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,
-				FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+				FormSpecs.LABEL_COMPONENT_GAP_COLSPEC,
+				FormSpecs.DEFAULT_COLSPEC,
+				FormSpecs.LABEL_COMPONENT_GAP_COLSPEC,
 				ColumnSpec.decode("406px:grow"),},
 			new RowSpec[] {
-				FormFactory.LINE_GAP_ROWSPEC,
+				FormSpecs.LINE_GAP_ROWSPEC,
 				RowSpec.decode("20px"),
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				FormSpecs.DEFAULT_ROWSPEC,
 				RowSpec.decode("max(9dlu;default)"),
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,}));
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				FormSpecs.DEFAULT_ROWSPEC,}));
 		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.add(this.btnOK);

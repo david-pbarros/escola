@@ -1,6 +1,7 @@
 package br.com.dbcorp.escolaMinisterio.ui.seguranca;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -29,6 +30,11 @@ import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.FormSpecs;
+import com.jgoodies.forms.layout.RowSpec;
+
 import br.com.dbcorp.escolaMinisterio.Log;
 import br.com.dbcorp.escolaMinisterio.dataBase.ProfileGerenciador;
 import br.com.dbcorp.escolaMinisterio.dataBase.UsuarioGerenciador;
@@ -40,13 +46,6 @@ import br.com.dbcorp.escolaMinisterio.ui.Params;
 import br.com.dbcorp.escolaMinisterio.ui.dialog.UsuarioDialog;
 import br.com.dbcorp.escolaMinisterio.ui.model.EstudoCellRender;
 import br.com.dbcorp.escolaMinisterio.ui.model.UsuarioTableModel;
-
-import com.jgoodies.forms.factories.FormFactory;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.RowSpec;
-
-import java.awt.Color;
 
 public class UsuariosUI extends InternalUI implements ActionListener, ListSelectionListener {
 	private static final long serialVersionUID = -8357592201532513235L;
@@ -120,16 +119,16 @@ public class UsuariosUI extends InternalUI implements ActionListener, ListSelect
 		JPanel itensPanel = new JPanel();
 		itensPanel.setBorder(BorderFactory.createTitledBorder("Dados do usuário:"));
 		itensPanel.setLayout(new FormLayout(new ColumnSpec[] {
-				FormFactory.DEFAULT_COLSPEC,
-				FormFactory.RELATED_GAP_COLSPEC,
+				FormSpecs.DEFAULT_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("default:grow"),},
 			new RowSpec[] {
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,}));
+				FormSpecs.DEFAULT_ROWSPEC,
+				FormSpecs.DEFAULT_ROWSPEC,
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				FormSpecs.DEFAULT_ROWSPEC,
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				FormSpecs.DEFAULT_ROWSPEC,}));
 		
 		containerPanel.add(commandPanel, BorderLayout.NORTH);
 		containerPanel.add(this.setTable(), BorderLayout.WEST);

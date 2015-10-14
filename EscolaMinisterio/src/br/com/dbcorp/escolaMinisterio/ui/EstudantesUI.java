@@ -36,9 +36,9 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableColumnModel;
 
-import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 
 import br.com.dbcorp.escolaMinisterio.Log;
@@ -292,28 +292,28 @@ public class EstudantesUI extends InternalUI implements ActionListener, ListSele
 	private JPanel setFieldsPanel() {
 		JPanel panel = new JPanel();
 		panel.setLayout(new FormLayout(new ColumnSpec[] {
-				FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+				FormSpecs.LABEL_COMPONENT_GAP_COLSPEC,
 				ColumnSpec.decode("right:pref"),
-				FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+				FormSpecs.LABEL_COMPONENT_GAP_COLSPEC,
 				ColumnSpec.decode("45dlu"),
-				FormFactory.UNRELATED_GAP_COLSPEC,
+				FormSpecs.UNRELATED_GAP_COLSPEC,
 				ColumnSpec.decode("right:pref"),
-				FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+				FormSpecs.LABEL_COMPONENT_GAP_COLSPEC,
 				ColumnSpec.decode("pref:grow"),
-				FormFactory.LABEL_COMPONENT_GAP_COLSPEC,},
+				FormSpecs.LABEL_COMPONENT_GAP_COLSPEC,},
 			new RowSpec[] {
 				RowSpec.decode("15dlu"),
-				FormFactory.LINE_GAP_ROWSPEC,
-				FormFactory.PREF_ROWSPEC,
-				FormFactory.LINE_GAP_ROWSPEC,
-				FormFactory.PREF_ROWSPEC,
-				FormFactory.LINE_GAP_ROWSPEC,
-				FormFactory.PREF_ROWSPEC,
-				FormFactory.LINE_GAP_ROWSPEC,
-				FormFactory.PREF_ROWSPEC,
-				FormFactory.LINE_GAP_ROWSPEC,
-				FormFactory.PREF_ROWSPEC,
-				FormFactory.LINE_GAP_ROWSPEC,}));
+				FormSpecs.LINE_GAP_ROWSPEC,
+				FormSpecs.PREF_ROWSPEC,
+				FormSpecs.LINE_GAP_ROWSPEC,
+				FormSpecs.PREF_ROWSPEC,
+				FormSpecs.LINE_GAP_ROWSPEC,
+				FormSpecs.PREF_ROWSPEC,
+				FormSpecs.LINE_GAP_ROWSPEC,
+				FormSpecs.PREF_ROWSPEC,
+				FormSpecs.LINE_GAP_ROWSPEC,
+				FormSpecs.PREF_ROWSPEC,
+				FormSpecs.LINE_GAP_ROWSPEC,}));
 		
 		panel.add(new JLabel("Nome:"), "2, 1");
 		panel.add(this.txNome, "4, 1, 5, 1, fill, fill");
