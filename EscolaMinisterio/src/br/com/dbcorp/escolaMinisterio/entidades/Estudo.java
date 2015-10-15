@@ -6,8 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -73,11 +71,5 @@ public class Estudo {
 	}
 	public void setExcluido(boolean excluido) {
 		this.excluido = excluido;
-	}
-	
-	@PrePersist
-	@PreUpdate
-	public void dataAtualiza() {
-		this.dtUltimaAtualiza = LocalDateTime.now();
 	}
 }

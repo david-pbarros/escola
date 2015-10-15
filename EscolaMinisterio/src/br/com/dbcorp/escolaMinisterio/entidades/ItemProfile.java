@@ -11,8 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -97,11 +95,5 @@ public class ItemProfile implements Entidade {
 	@Override
 	public int hashCode() {
 		return this.item.hashCode();
-	}
-	
-	@PrePersist
-	@PreUpdate
-	public void dataAtualiza() {
-		this.dtUltimaAtualiza = LocalDateTime.now();
 	}
 }

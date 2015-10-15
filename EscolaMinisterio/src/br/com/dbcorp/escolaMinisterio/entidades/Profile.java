@@ -9,8 +9,6 @@ import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -61,12 +59,6 @@ public class Profile implements Entidade {
 	}
 	public void setItens(List<ItemProfile> itens) {
 		this.itens = itens;
-	}
-	
-	@PrePersist
-	@PreUpdate
-	public void dataAtualiza() {
-		this.dtUltimaAtualiza = LocalDateTime.now();
 	}
 	
 	@Override

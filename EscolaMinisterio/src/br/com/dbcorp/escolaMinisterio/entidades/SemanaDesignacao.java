@@ -13,8 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -123,13 +121,7 @@ public class SemanaDesignacao implements Comparable<SemanaDesignacao>, Entidade 
 	public int compareTo(SemanaDesignacao o) {
 		return data.compareTo(o.data);
 	}
-	
-	@PrePersist
-	@PreUpdate
-	public void dataAtualiza() {
-		this.dtUltimaAtualiza = LocalDateTime.now();
-	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof SemanaDesignacao && ((SemanaDesignacao) obj).id == id) {

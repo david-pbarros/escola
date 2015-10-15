@@ -1,6 +1,5 @@
 package br.com.dbcorp.escolaMinisterio.entidades;
 
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,8 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.OneToMany;
 import javax.persistence.PostLoad;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Transient;
 
 @Entity
@@ -90,11 +87,5 @@ public class Estudante extends Pessoa {
 				this.estudos.put(designacao.getEstudo().getNrEstudo(), designacao);
 			}
 		}
-	}
-	
-	@PrePersist
-	@PreUpdate
-	public void dataAtualiza() {
-		this.dtUltimaAtualiza = LocalDateTime.now();
 	}
 }

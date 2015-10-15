@@ -13,9 +13,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.PostLoad;
-import javax.persistence.PrePersist;
-import javax.persistence.PreRemove;
-import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -97,17 +94,6 @@ public class MesDesignacao implements Entidade {
 	@PostLoad
 	public void ordenaSemanas() {
 		Collections.sort(this.semanas);
-	}
-	
-	@PrePersist
-	@PreUpdate
-	public void dataAtualiza() {
-		this.dtUltimaAtualiza = LocalDateTime.now();
-	}
-	
-	@PreRemove
-	public void onRemove() {
-		
 	}
 	
 	@Override

@@ -81,12 +81,6 @@ public abstract class Pessoa implements Entidade {
 		this.excluido = excluido;
 	}
 	
-	/*@PrePersist
-	@PreUpdate
-	public void dataAtualiza() {
-		this.dtUltimaAtualiza = LocalDateTime.now();
-	}*/
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Pessoa && ((Pessoa) obj).id == id) {
