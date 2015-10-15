@@ -246,10 +246,6 @@ public class Sincronizador {
 		Sincronismo sinc = new Sincronismo();
 		
 		try {
-			this.gerenciador.limparDesignacoesNaoVinculadas();
-			this.gerenciador.limparSemEstudo();
-			this.gerenciador.limpaIndevidos();
-			this.gerenciador.limparDuplicados();
 			
 			this.obterChave();
 			this.gerarHash();
@@ -268,6 +264,9 @@ public class Sincronizador {
 			this.semana = new SemanaSinc(this.gerenciador, this.ultimaSincronia, this.hash);
 			this.designacao = new DesignacaoSinc(this.gerenciador, this.ultimaSincronia, this.hash);
 			
+			this.refreshMsg("\nDesfragmentando a base...");
+			this.gerenciador.desfragmentarBase();
+
 			hasErro = true;
 			
 			if (this.apagarLocal()) {

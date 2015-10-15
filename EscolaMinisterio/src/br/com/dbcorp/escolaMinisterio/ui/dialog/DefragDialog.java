@@ -110,12 +110,7 @@ public class DefragDialog extends JDialog implements ActionListener {
 			this.mainframe.setCursor(new Cursor(Cursor.WAIT_CURSOR));
 			
 			try {
-				Gerenciador gerenciador = new Gerenciador();
-
-				gerenciador.limparDesignacoesNaoVinculadas();
-				gerenciador.limparSemEstudo();
-				gerenciador.limpaIndevidos();
-				gerenciador.limparDuplicados();
+				new Gerenciador().desfragmentarBase();
 			
 				this.mainframe.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 				JOptionPane.showMessageDialog(this, "Processo de de Desfragmentação da Base Finalizado.", "Informação", JOptionPane.INFORMATION_MESSAGE);
