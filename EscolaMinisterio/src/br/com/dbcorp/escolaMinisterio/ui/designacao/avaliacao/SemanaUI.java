@@ -18,6 +18,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 
+import br.com.dbcorp.escolaMinisterio.AvaliacaoDOM;
 import br.com.dbcorp.escolaMinisterio.entidades.Designacao;
 import br.com.dbcorp.escolaMinisterio.entidades.SemanaDesignacao;
 import br.com.dbcorp.escolaMinisterio.ui.Params;
@@ -223,7 +224,7 @@ public class SemanaUI extends ASemanaUI {
 		this.lbEstudante2 = new JLabel();
 		this.lbEstudante3 = new JLabel();
 		
-		String[] dominio = new String[]{"Selecionar...", "Passou", "Não Passou"};
+		String[] dominio = new String[]{"Selecionar...", AvaliacaoDOM.PASSOU.getLabel(), AvaliacaoDOM.SUBSTITUIDO.getLabel(), AvaliacaoDOM.NAO_PASSOU.getLabel()};
 		
 		this.cbAvaliacao1 = new JComboBox(dominio);
 		this.cbAvaliacao2 = new JComboBox(dominio);
@@ -375,12 +376,7 @@ public class SemanaUI extends ASemanaUI {
 	}
 	
 	private void setAvaliacao(Designacao designacao, JComboBox cbAvaliacao) {
-		if ("Passou".equals(cbAvaliacao.getSelectedItem())) {
-			designacao.setStatus('P');
-			
-		} else if ("Não Passou".equals(cbAvaliacao.getSelectedItem())) {
-			designacao.setStatus('F');
-		}
+		designacao.setStatus(AvaliacaoDOM.getByDescription((String) cbAvaliacao.getSelectedItem()).getSigla());
 	}
 	
 	private void abrirObservacao(Designacao designacao) {

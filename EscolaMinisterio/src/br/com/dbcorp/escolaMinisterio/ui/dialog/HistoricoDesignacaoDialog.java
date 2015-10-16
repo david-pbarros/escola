@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.text.MaskFormatter;
 
+import br.com.dbcorp.escolaMinisterio.AvaliacaoDOM;
 import br.com.dbcorp.escolaMinisterio.dataBase.EstudanteGerenciador;
 import br.com.dbcorp.escolaMinisterio.entidades.Designacao;
 import br.com.dbcorp.escolaMinisterio.entidades.Estudante;
@@ -134,10 +135,10 @@ public class HistoricoDesignacaoDialog extends JDialog implements ActionListener
 				
 				switch (this.cbStatus.getSelectedIndex()) {
 				case 0:
-					designacao.setStatus('P');
+					designacao.setStatus(AvaliacaoDOM.PASSOU.getSigla());
 					break;
 				case 1:
-					designacao.setStatus('F');
+					designacao.setStatus(AvaliacaoDOM.NAO_PASSOU.getSigla());
 					break;
 				}
 				

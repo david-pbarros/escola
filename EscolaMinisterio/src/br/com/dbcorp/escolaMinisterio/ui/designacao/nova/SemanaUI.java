@@ -22,6 +22,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 
+import br.com.dbcorp.escolaMinisterio.AvaliacaoDOM;
 import br.com.dbcorp.escolaMinisterio.dataBase.DesignacaoGerenciador;
 import br.com.dbcorp.escolaMinisterio.dataBase.EstudanteGerenciador;
 import br.com.dbcorp.escolaMinisterio.entidades.Ajudante;
@@ -231,7 +232,7 @@ public class SemanaUI extends ASemanaUI {
 				this.semanaDesignacao.getDesignacoes().add(this.designacao1);
 				this.designacao1.setNumero(1);
 				this.designacao1.setSala(this.sala);
-				this.designacao1.setStatus('A');
+				this.designacao1.setStatus(AvaliacaoDOM.NAO_AVALIADO.getSigla());
 				this.designacao1.setSemana(this.semanaDesignacao);
 			}
 
@@ -245,7 +246,7 @@ public class SemanaUI extends ASemanaUI {
 				this.semanaDesignacao.getDesignacoes().add(this.designacao2);
 				this.designacao2.setNumero(2);
 				this.designacao2.setSala(this.sala);
-				this.designacao2.setStatus('A');
+				this.designacao2.setStatus(AvaliacaoDOM.NAO_AVALIADO.getSigla());
 				this.designacao2.setSemana(this.semanaDesignacao);
 			}
 
@@ -259,7 +260,7 @@ public class SemanaUI extends ASemanaUI {
 				this.semanaDesignacao.getDesignacoes().add(this.designacao3);
 				this.designacao3.setNumero(3);
 				this.designacao3.setSala(this.sala);
-				this.designacao3.setStatus('A');
+				this.designacao3.setStatus(AvaliacaoDOM.NAO_AVALIADO.getSigla());
 				this.designacao3.setSemana(this.semanaDesignacao);
 			}
 
@@ -334,7 +335,7 @@ public class SemanaUI extends ASemanaUI {
 				if (designacao.getSala().equals(this.sala)) {
 					this.load = true;
 					
-					boolean habilitado = designacao.getStatus() == '\u0000' || designacao.getStatus() == 'A';
+					boolean habilitado = designacao.getStatus() == '\u0000' || designacao.getStatus() == AvaliacaoDOM.NAO_AVALIADO.getSigla();
 					
 					switch (designacao.getNumero()) {
 					case 1:

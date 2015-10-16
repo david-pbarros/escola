@@ -18,6 +18,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 
+import br.com.dbcorp.escolaMinisterio.AvaliacaoDOM;
 import br.com.dbcorp.escolaMinisterio.entidades.Designacao;
 import br.com.dbcorp.escolaMinisterio.entidades.SemanaDesignacao;
 import br.com.dbcorp.escolaMinisterio.ui.Params;
@@ -344,26 +345,11 @@ public class SemanaUI extends ASemanaUI {
 			lbAjudante.setText(designacao.getAjudante().getNome());
 		}
 		
-		switch (designacao.getStatus()) {
-		case 'P':
-			lbAvaliacao.setText("Passou");
-			break;
-		case 'F':
-			lbAvaliacao.setText("Não Passou");
-			break;
-		case 'A':
-			lbAvaliacao.setText("Não Avaliado");
-			break;
-		}
+		lbAvaliacao.setText(AvaliacaoDOM.getByInitials(designacao.getStatus()).getLabel());
 	}
 	
 	private void setAvaliacao(Designacao designacao, JComboBox cbAvaliacao) {
-		if ("Passou".equals(cbAvaliacao.getSelectedItem())) {
-			designacao.setStatus('P');
-			
-		} else if ("Não Passou".equals(cbAvaliacao.getSelectedItem())) {
-			designacao.setStatus('F');
-		}
+		designacao.setStatus(AvaliacaoDOM.getByDescription((String) cbAvaliacao.getSelectedItem()).getSigla());
 	}
 	
 	private void abrirObservacao(Designacao designacao) {
