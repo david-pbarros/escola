@@ -48,6 +48,9 @@ public class SemanaUI extends ASemanaUI {
 	private JSeparator separator_2;
 	private JPanel panel;
 	private JSeparator separator_3;
+	private JButton btnTroca1;
+	private JButton btnTroca2;
+	private JButton btnTroca3;
 	
 	public SemanaUI(SemanaDesignacao semanaDesignacao, String sala, boolean editDetalhes) {
 		this.setMinimumSize(new Dimension(743, 175));
@@ -71,6 +74,8 @@ public class SemanaUI extends ASemanaUI {
 				ColumnSpec.decode("center:12dlu"),
 				FormSpecs.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(20dlu;default)"),
+				FormSpecs.RELATED_GAP_COLSPEC,
+				FormSpecs.DEFAULT_COLSPEC,
 				FormSpecs.RELATED_GAP_COLSPEC,
 				FormSpecs.DEFAULT_COLSPEC,
 				FormSpecs.RELATED_GAP_COLSPEC,
@@ -108,6 +113,15 @@ public class SemanaUI extends ASemanaUI {
 			
 		} else if (event.getSource() == this.btnObs3) {
 			this.abrirObservacao(this.designacao3);
+		
+		} else if (event.getSource() == this.btnTroca1) {
+			this.trocarDesignacao(this.designacao1);
+
+		} else if (event.getSource() == this.btnTroca2) {
+			this.trocarDesignacao(this.designacao2);
+			
+		} else if (event.getSource() == this.btnTroca3) {
+			this.trocarDesignacao(this.designacao3);
 		}
 	}
 	
@@ -152,6 +166,7 @@ public class SemanaUI extends ASemanaUI {
 						this.cbAvaliacao1.setEnabled(true);
 						this.btnObs1.setEnabled(true);
 						this.btnDetalhes1.setEnabled(true);
+						this.btnTroca1.setEnabled(true);
 						break;
 					case 2:
 						this.designacao2 = designacao;
@@ -159,6 +174,7 @@ public class SemanaUI extends ASemanaUI {
 						this.cbAvaliacao2.setEnabled(true);
 						this.btnObs2.setEnabled(true);
 						this.btnDetalhes2.setEnabled(true);
+						this.btnTroca2.setEnabled(true);
 						break;
 					case 3:
 						this.designacao3 = designacao;
@@ -166,6 +182,7 @@ public class SemanaUI extends ASemanaUI {
 						this.cbAvaliacao3.setEnabled(true);
 						this.btnObs3.setEnabled(true);
 						this.btnDetalhes3.setEnabled(true);
+						this.btnTroca3.setEnabled(true);
 						break;
 					}
 				}
@@ -205,6 +222,13 @@ public class SemanaUI extends ASemanaUI {
 	
 	@SuppressWarnings("unchecked")
 	private void setFields() {
+		this.lbEstudo1 = new JLabel();
+		this.lbAjudante1 = new JLabel();
+		this.lbEstudo2 = new JLabel();
+		this.lbAjudante2 = new JLabel();
+		this.lbEstudo3 = new JLabel();
+		this.lbAjudante3 = new JLabel();
+		
 		this.chRecapitulao = new JCheckBox("Recapitulação");
 		this.chAssCongr = new JCheckBox("Ass. / Congr.");
 		this.chVisSuper = new JCheckBox("Vis. Super.");
@@ -238,17 +262,39 @@ public class SemanaUI extends ASemanaUI {
 		this.btnObs2 = new JButton("Obs.");
 		this.btnObs3 = new JButton("Obs.");
 		
+		this.btnTroca1 = new JButton(Params.btSincImg());
+		this.btnTroca2 = new JButton(Params.btSincImg());
+		this.btnTroca3 = new JButton(Params.btSincImg());
+
 		this.btnObs1.setToolTipText("Observa\u00E7\u00F5es");
 		this.btnObs2.setToolTipText("Observa\u00E7\u00F5es");
 		this.btnObs3.setToolTipText("Observa\u00E7\u00F5es");
+		
+		this.btnTroca1.setToolTipText("Trocar com outra sala");
+		this.btnTroca2.setToolTipText("Trocar com outra sala");
+		this.btnTroca3.setToolTipText("Trocar com outra sala");
 		
 		this.btnObs1.addActionListener(this);
 		this.btnObs2.addActionListener(this);
 		this.btnObs3.addActionListener(this);
 		
+		this.btnTroca1.addActionListener(this);
+		this.btnTroca2.addActionListener(this);
+		this.btnTroca3.addActionListener(this);
+		
 		this.btnObs1.setEnabled(false);
 		this.btnObs2.setEnabled(false);
 		this.btnObs3.setEnabled(false);
+		
+		this.btnTroca1.setEnabled(false);
+		this.btnTroca2.setEnabled(false);
+		this.btnTroca3.setEnabled(false);
+		
+		this.setDetalhesButtons();
+		
+		this.btnDetalhes1.setEnabled(false);
+		this.btnDetalhes2.setEnabled(false);
+		this.btnDetalhes3.setEnabled(false);
 		
 		this.dataPanel = new JPanel();
 		this.dataPanel.setLayout(new FormLayout(new ColumnSpec[] {
@@ -268,14 +314,12 @@ public class SemanaUI extends ASemanaUI {
 		separator.setPreferredSize(new Dimension(Params.INTERNAL_WIDTH - 50, 5));
 		separatorPanel.add(separator, BorderLayout.SOUTH);
 		
-		this.setDetalhesButtons();
-		
 		separator_1 = new JSeparator();
 		separator_1.setOrientation(SwingConstants.VERTICAL);
 		add(separator_1, "1, 1, 1, 12, right, default");
 		
 		panel = new JPanel();
-		add(panel, "2, 1, 15, 1, fill, top");
+		add(panel, "2, 1, 17, 1, fill, top");
 		panel.setLayout(new BorderLayout(0, 0));
 		
 		separator_3 = new JSeparator();
@@ -284,7 +328,7 @@ public class SemanaUI extends ASemanaUI {
 		add(this.dataPanel, "5, 2, center, fill");
 		
 		JPanel checkPanel = new JPanel();
-		add(checkPanel, "7, 2, 9, 1, fill, fill");
+		add(checkPanel, "7, 2, 11, 1, fill, fill");
 		checkPanel.setLayout(new FormLayout(new ColumnSpec[] {
 				FormSpecs.DEFAULT_COLSPEC,
 				FormSpecs.RELATED_GAP_COLSPEC,
@@ -303,51 +347,38 @@ public class SemanaUI extends ASemanaUI {
 		
 		separator_2 = new JSeparator();
 		separator_2.setOrientation(SwingConstants.VERTICAL);
-		add(separator_2, "17, 1, 1, 12, left, default");
+		add(separator_2, "19, 1, 1, 12, left, default");
 		
 		add(new JLabel("N\u00BA:"), "3, 4, center, default");
 		add(new JLabel("Estudante:"), "5, 4, center, default");
-		JLabel label = new JLabel("Estudo:");
-		add(label, "7, 4, center, default");
+		add(new JLabel("Estudo:"), "7, 4, center, default");
 		add(new JLabel("Avalia\u00E7\u00E3o:"), "11, 4, 3, 1, center, default");
-		JLabel label_1 = new JLabel("Ajudante:");
-		add(label_1, "15, 4, center, default");
+		add(new JLabel("Ajudante:"), "17, 4, center, default");
 		add(new JLabel("1"), "3, 6, center, default");
 		add(this.lbEstudante1, "5, 6, center, default");
-		this.lbEstudo1 = new JLabel();
 		add(this.lbEstudo1, "7, 6, center, default");
-		
 		add(this.cbAvaliacao1, "11, 6, fill, default");
-		add(btnObs1, "13, 6");
-		this.lbAjudante1 = new JLabel();
-		add(this.lbAjudante1, "15, 6, center, default");
+		add(this.btnObs1, "13, 6");
+		add(this.btnTroca1, "15, 6");
+		add(this.lbAjudante1, "17, 6, center, default");
 		add(new JLabel("2"), "3, 8, center, default");
 		add(this.lbEstudante2, "5, 8, center, default");
-		this.lbEstudo2 = new JLabel();
 		add(this.lbEstudo2, "7, 8, center, default");
-		
 		add(this.cbAvaliacao2, "11, 8, fill, default");
-		add(btnObs2, "13, 8");
-		this.lbAjudante2 = new JLabel();
-		add(this.lbAjudante2, "15, 8, center, default");
+		add(this.btnObs2, "13, 8");
+		add(this.btnTroca2, "15, 8");
+		add(this.lbAjudante2, "17, 8, center, default");
 		add(new JLabel("3"), "3, 10, center, default");
-		add(lbEstudante3, "5, 10, center, default");
-		this.lbEstudo3 = new JLabel();
+		add(this.lbEstudante3, "5, 10, center, default");
 		add(this.lbEstudo3, "7, 10, center, center");
-		
 		add(this.cbAvaliacao3, "11, 10, fill, default");
-		add(btnObs3, "13, 10");
-		this.lbAjudante3 = new JLabel();
-		add(this.lbAjudante3, "15, 10, center, center");
-		add(separatorPanel, "2, 12, 15, 1, fill, bottom");
-		
+		add(this.btnObs3, "13, 10");
+		add(this.btnTroca3, "15, 10");
+		add(this.lbAjudante3, "17, 10, center, center");
+		add(separatorPanel, "2, 12, 17, 1, fill, bottom");
 		add(this.btnDetalhes1, "9, 6");
 		add(this.btnDetalhes2, "9, 8");
 		add(this.btnDetalhes3, "9, 10");
-		
-		this.btnDetalhes1.setEnabled(false);
-		this.btnDetalhes2.setEnabled(false);
-		this.btnDetalhes3.setEnabled(false);
 	}
 		
 	private void setCamposTela(Designacao designacao, JLabel lbEstudante, JLabel lbEstudo, JLabel lbAjudante, JComboBox cbAvaliacao) {
@@ -376,11 +407,31 @@ public class SemanaUI extends ASemanaUI {
 	}
 	
 	private void setAvaliacao(Designacao designacao, JComboBox cbAvaliacao) {
-		designacao.setStatus(AvaliacaoDOM.getByDescription((String) cbAvaliacao.getSelectedItem()).getSigla());
+		if (designacao != null) {
+			designacao.setStatus(AvaliacaoDOM.getByDescription((String) cbAvaliacao.getSelectedItem()).getSigla());
+		}
 	}
 	
 	private void abrirObservacao(Designacao designacao) {
 		ObservacaoDialog dialog = new ObservacaoDialog(designacao.getObservacao(), true);
 		designacao.setObservacao(dialog.exibir());
+	}
+	
+	private void trocarDesignacao(Designacao designacao) {
+		String salaAtual = designacao.getSala();
+		String salaTroca = "A".equalsIgnoreCase(salaAtual) ? "B" : "A";
+		
+		Designacao desigOutra = this.semanaDesignacao.getDesignacoes().stream()
+									.filter(d->d.getNumero() == designacao.getNumero() && d.getSala().equals(salaTroca))
+									.findFirst()
+									.orElse(null);
+		
+		designacao.setSala(salaTroca);
+		
+		if (desigOutra != null) {
+			desigOutra.setSala(salaAtual);
+		}
+		
+		this.setDesignacoes();
 	}
 }

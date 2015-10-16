@@ -23,6 +23,7 @@ public class Params {
 	private static ImageIcon btExport;
 	private static ImageIcon btRegresso;
 	private static ImageIcon btLupa;
+	private static ImageIcon btSinc;
 	
 	private static DateTimeFormatter dateFormatter;
 	private static DateTimeFormatter dateTimeFormatter;
@@ -109,6 +110,14 @@ public class Params {
 		}
 		
 		return btLupa;
+	}
+	
+	public static ImageIcon btSincImg() {
+		if (btSinc == null) {
+			btSinc = obterImagem("/sync.png");
+		}
+		
+		return btSinc;
 	}
 	
 	public static Image splashImage() {
