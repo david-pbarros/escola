@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -33,6 +34,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableColumnModel;
 
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -136,13 +138,12 @@ public class EstudantesUI extends InternalUI implements ActionListener, ListSele
 		if (this.table.getModel() instanceof EstudanteTableModel) {
 			EstudanteTableModel model = (EstudanteTableModel) this.table.getModel();
 			model.setItens(this.gerenciador.listarEstudantesTodos(this.genero));
-			model.fireTableDataChanged();
 		
 		} else {
 			EstudanteTableModel model = new EstudanteTableModel(this.gerenciador.listarEstudantesTodos(this.genero));
 			model.addTableModelListener(this);
 			this.table.setModel(model);
-		} 
+		}
 		
 		DesignacaoTableModel model = null;
 		
@@ -255,6 +256,20 @@ public class EstudantesUI extends InternalUI implements ActionListener, ListSele
 		this.table = new JTable();
 		this.table.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 13));
 		this.table.getSelectionModel().addListSelectionListener(this);
+		
+		DefaultCellEditor dce = (DefaultCellEditor)table.getDefaultEditor(Object.class);
+		((JTextField)dce.getComponent()).addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				btnSalvar.setVisible(true);
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {}
+			@Override
+			public void keyPressed(KeyEvent e) {}
+		});
 		
 		DScrollPane scrollPane = new DScrollPane(this.table);
 		scrollPane.setViewportBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
@@ -374,6 +389,11 @@ public class EstudantesUI extends InternalUI implements ActionListener, ListSele
 	}
 	
 	private void atualizarBanco() {
+		TableCellEditor tce = this.table.getCellEditor();
+        if(tce != null) {
+            tce.stopCellEditing();
+        }
+        
 		this.estudanteSelecionado.setObservacao(this.txObservacao.getText());
 		
 		this.gerenciador.atualizar(this.estudanteSelecionado);

@@ -69,6 +69,7 @@ public class EstudanteTableModel extends AbstractTableModel {
 		switch (columnIndex) {
 		case DESABILITADO:
 		case NAO_AJUDANTE:
+		case NOME:
 			return true;
 		default:
 			return false;
@@ -96,6 +97,9 @@ public class EstudanteTableModel extends AbstractTableModel {
 		Estudante estudante = this.estudantes.get(rowIndex);
 		
 		switch (columnIndex) {
+		case NOME:
+			estudante.setNome((String) aValue);
+			break;
 		case DESABILITADO:
 			estudante.setDesabilitado((Boolean) aValue);
 			break;
@@ -109,7 +113,6 @@ public class EstudanteTableModel extends AbstractTableModel {
 		
 		fireTableCellUpdated(rowIndex, columnIndex); // Notifica a atualização da célula
 	}
-		
 	
 	public void limpar() {
 		this.estudantes.clear();

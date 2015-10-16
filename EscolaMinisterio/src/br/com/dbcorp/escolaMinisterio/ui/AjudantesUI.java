@@ -6,22 +6,27 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableColumnModel;
 
 import br.com.dbcorp.escolaMinisterio.dataBase.AjudanteGerenciador;
@@ -132,6 +137,20 @@ public class AjudantesUI extends InternalUI implements TableModelListener, Actio
 		this.table.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 13));
 		this.table.getSelectionModel().addListSelectionListener(this);
 		
+		DefaultCellEditor dce = (DefaultCellEditor)table.getDefaultEditor(Object.class);
+		((JTextField)dce.getComponent()).addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				btnSalvar.setVisible(true);
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {}
+			@Override
+			public void keyPressed(KeyEvent e) {}
+		});
+		
 		DScrollPane scrollPane = new DScrollPane(this.table);
 		scrollPane.setViewportBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		scrollPane.setPreferredSize(new Dimension(Params.INTERNAL_WIDTH, 100));
@@ -161,7 +180,7 @@ public class AjudantesUI extends InternalUI implements TableModelListener, Actio
 			AjudanteTableModel model = (AjudanteTableModel) this.table.getModel();
 			model.setItens(this.gerenciador.listarAjudantes());
 			model.fireTableDataChanged();
-		
+
 		} else {
 			AjudanteTableModel model = new AjudanteTableModel(this.gerenciador.listarAjudantes());
 			model.addTableModelListener(this);
@@ -202,6 +221,11 @@ public class AjudantesUI extends InternalUI implements TableModelListener, Actio
 	}
 	
 	private void atualizarBanco() {
+		TableCellEditor tce = this.table.getCellEditor();
+        if(tce != null) {
+            tce.stopCellEditing();
+        }
+		
 		for (Ajudante ajudante : this.ajudantesSelecionados) {
 			this.gerenciador.atualizar(ajudante);
 		}
