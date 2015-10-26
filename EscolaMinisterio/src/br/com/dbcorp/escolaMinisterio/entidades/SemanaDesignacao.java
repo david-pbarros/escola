@@ -27,6 +27,7 @@ public class SemanaDesignacao implements Comparable<SemanaDesignacao>, Entidade 
 	private boolean assebleia;
 	private boolean recapitulacao;
 	private boolean semReuniao;
+	private boolean videos;
 	private List<Designacao> designacoes;
 	private List<Designacao> designacoesRemovidas;
 	private String idOnline;
@@ -90,6 +91,13 @@ public class SemanaDesignacao implements Comparable<SemanaDesignacao>, Entidade 
 	}
 	public void setSemReuniao(boolean semReuniao) {
 		this.semReuniao = semReuniao;
+	}
+	
+	public boolean isVideos() {
+		return videos;
+	}
+	public void setVideos(boolean videos) {
+		this.videos = videos;
 	}
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="semana")

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import br.com.dbcorp.escolaMinisterio.MesesDom;
@@ -75,6 +76,10 @@ public class DesignacaoGerenciador extends Gerenciador {
 			semana.setData(date);
 			
 			semana.setMes(mesDesignacao);
+			
+			if (semanas.isEmpty()) {
+				semana.setVideos(true);
+			}
 
 			semanas.add(semana);
 			
@@ -138,7 +143,12 @@ public class DesignacaoGerenciador extends Gerenciador {
 		Query query = DataBaseHelper.createQuery("FROM Estudante e WHERE (e.excluido = false OR e.excluido IS NULL) AND e.nome = :nome")
 				.setParameter("nome", nome);
 		
-		return (Estudante) query.getSingleResult();
+		try {
+			return (Estudante) query.getSingleResult();
+			
+		} catch (NoResultException ex) {
+			return null;
+		}
 	}
 	
 	public Estudo estudoPorNumero(int numero) {

@@ -19,6 +19,7 @@ public abstract class ASemanaUI extends JPanel implements ActionListener {
 	protected Designacao designacao1;
 	protected Designacao designacao2;
 	protected Designacao designacao3;
+	protected Designacao designacao4;
 	
 	protected String sala;
 	protected boolean editDetalhes;
@@ -27,6 +28,7 @@ public abstract class ASemanaUI extends JPanel implements ActionListener {
 	protected JCheckBox chAssCongr;
 	protected JCheckBox chVisSuper;
 	protected JCheckBox chSemReuniao;
+	protected JCheckBox chVideos;
 	protected JLabel lbEstudante1;
 	protected JLabel lbEstudante2;
 	protected JLabel lbEstudante3;
@@ -62,6 +64,9 @@ public abstract class ASemanaUI extends JPanel implements ActionListener {
 			
 		} else if (event.getSource() == this.btnDetalhes3 ) {
 			new DetalhesDialog(this.designacao3, this.sala, editable).setVisible(true);
+		
+		} else if (event.getSource() == this.btnDetalhes4 ) {
+			new DetalhesDialog(this.designacao4, this.sala, editable).setVisible(true);
 		}
 	}
 	

@@ -27,6 +27,7 @@ import br.com.dbcorp.escolaMinisterio.ui.Params;
 import br.com.dbcorp.escolaMinisterio.ui.model.EscolhaEstudanteCellRender;
 import br.com.dbcorp.escolaMinisterio.ui.model.EscolhaEstudanteTableModel;
 import br.com.dbcorp.escolaMinisterio.ui.model.EstudanteTableModel;
+import javax.swing.JCheckBox;
 
 public class EscolhaEstudanteDialog extends JDialog implements ActionListener, ListSelectionListener {
 	private static final long serialVersionUID = 7789542379134478478L;
@@ -38,6 +39,8 @@ public class EscolhaEstudanteDialog extends JDialog implements ActionListener, L
 	private JTextField nomeFl;
 	private JButton btnOK;
 	private JButton btnFiltro;
+	private JCheckBox chkHomem;
+	private JCheckBox chkMulher;
 	
 	public EscolhaEstudanteDialog(EstudanteGerenciador gerenciador, Genero genero) {
 		setTitle("Escolher Estudante");
@@ -46,21 +49,36 @@ public class EscolhaEstudanteDialog extends JDialog implements ActionListener, L
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 		this.gerenciador = gerenciador;
-		this.genero = genero;
 		this.estudante = new Estudante();
 		this.nomeFl = new JTextField();
 		this.btnOK = new JButton("Confirmar");
 		this.btnFiltro = new JButton("Procurar...");
+		this.chkHomem = new JCheckBox("Homem");
+		this.chkMulher = new JCheckBox("Mulher");
 		
 		this.nomeFl.setColumns(50);
 		
 		this.btnOK.addActionListener(this);
 		this.btnFiltro.addActionListener(this);
+		this.chkHomem.addActionListener(this);
+		this.chkMulher.addActionListener(this);
 		
 		JPanel infoPanel = new JPanel();
 		infoPanel.add(new JLabel("Nome: "));
 		infoPanel.add(this.nomeFl);
+		infoPanel.add(this.chkHomem);
+		infoPanel.add(this.chkMulher);
 		infoPanel.add(this.btnFiltro);
+		
+		if (genero != null) {
+			this.chkHomem.setEnabled(false);
+			this.chkMulher.setEnabled(false);
+			
+		} else {
+			genero = Genero.MASCULINO;
+		}
+		
+		this.genero = genero;
 		
 		JPanel listPanel = new JPanel(new BorderLayout(0, 0));
 		listPanel.add(this.setTable(), BorderLayout.CENTER);
@@ -73,6 +91,14 @@ public class EscolhaEstudanteDialog extends JDialog implements ActionListener, L
 		getContentPane().add(buttonPanel, BorderLayout.SOUTH); 
 		
 		this.setPreferredSize(new Dimension(925, (Params.INTERNAL_HEIGHT - 100)));
+		this.setPreferredSize(new Dimension(925, 300));
+		
+		if (genero == Genero.MASCULINO) {
+			this.chkHomem.setSelected(true);
+		
+		} else {
+			this.chkMulher.setSelected(true);
+		}
 		
 		pack();
 		
@@ -94,6 +120,14 @@ public class EscolhaEstudanteDialog extends JDialog implements ActionListener, L
 			
 		} else if (event.getSource().equals(this.btnFiltro)) {
 			this.setContent(true);
+		
+		} else if (event.getSource().equals(this.chkHomem) || event.getSource().equals(this.chkMulher)) {
+			this.chkMulher.setSelected(event.getSource().equals(this.chkMulher));
+			this.chkHomem.setSelected(event.getSource().equals(this.chkHomem));
+			
+			this.genero = event.getSource().equals(this.chkHomem) ? Genero.MASCULINO : Genero.FEMININO;
+			
+			this.setContent(!"".equals(this.nomeFl.getText().trim()));
 		}
 	}
 	
