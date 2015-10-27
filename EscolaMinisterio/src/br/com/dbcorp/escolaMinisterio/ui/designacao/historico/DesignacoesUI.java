@@ -83,7 +83,14 @@ public class DesignacoesUI extends ADesignacoesUI {
 	@Override
 	protected void onMontaMes() {
 		for (SemanaDesignacao semanaD : this.mesDesignacao.getSemanas()) {
-			ASemanaUI semana = new SemanaUI(semanaD, (String)this.cbSala.getSelectedItem(), this.editDetalhes);
+			ASemanaUI semana;
+			
+			if (this.mesDesignacao.getAno() > 2015) {
+				semana = new SemanaMelhoreUI(semanaD, (String)this.cbSala.getSelectedItem(), this.editDetalhes);
+				
+			} else {
+				semana = new SemanaUI(semanaD, (String)this.cbSala.getSelectedItem(), this.editDetalhes);
+			}
 			
 			this.semanas.add(semana);
 			this.mesPanel.add(semana);
