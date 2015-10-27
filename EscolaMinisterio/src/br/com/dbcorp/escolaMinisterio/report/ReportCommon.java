@@ -62,7 +62,7 @@ public class ReportCommon {
 			if (!designacoes.isEmpty()) {
 				ItextReportManager rp = new ItextReportManager();
 				
-				Set<File> arquivos = rp.createReport("designacoes", designacoes);
+				Set<File> arquivos = rp.createReport("designacoes"  + (mesDesignacao.getAno() > 2015 ? "" : "Pre2016"), designacoes);
 				
 				if (!arquivos.isEmpty()) {
 					for (File tempFile : arquivos) {
@@ -82,6 +82,8 @@ public class ReportCommon {
 		prop.put("mes", mesDesignacao.getMes().toString());
 		
 		ReportManager rp = new ReportManager();
+		
+		reportName += (mesDesignacao.getAno() > 2015 ? "" : "Pre2016");
 
 		OutputStream out = null;
 		
@@ -127,14 +129,15 @@ public class ReportCommon {
 		List<DesignacaoReport> semanasB = new ArrayList<DesignacaoReport>();
 		
 		for (SemanaDesignacao semana : mesDesignacao.getSemanas()) {
-			if (!semana.isSemReuniao()) {
+			if (!semana.isSemReuniao() && !semana.isVideos()) {
 				DesignacaoReport designacaoReport = new DesignacaoReport();
 				designacaoReport.setData(semana.getData());
 				designacaoReport.setAssebleia(semana.isAssebleia());
 				designacaoReport.setRecapitulacao(semana.isRecapitulacao());
 				designacaoReport.setVisita(semana.isVisita());
+				designacaoReport.setVideos(semana.isVideos());
 				
-				if (especiais && (designacaoReport.isAssebleia() || designacaoReport.isRecapitulacao() || designacaoReport.isVisita())) {
+				if (especiais && (designacaoReport.isAssebleia() || designacaoReport.isRecapitulacao() || designacaoReport.isVisita() || designacaoReport.isVideos())) {
 					DesignacaoReport temp = designacaoReport.clone();
 					temp.setSala("A");
 					

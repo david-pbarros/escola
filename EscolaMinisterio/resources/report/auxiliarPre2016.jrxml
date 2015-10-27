@@ -42,7 +42,7 @@
 					<textFieldExpression><![CDATA["Dia: " + $F{data}.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"))]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="0" y="17" width="54" height="14" uuid="090c111f-f557-4a3d-a192-ba1eb277cba8"/>
+					<reportElement x="0" y="17" width="52" height="14" uuid="090c111f-f557-4a3d-a192-ba1eb277cba8"/>
 					<box>
 						<leftPen lineWidth="1.5"/>
 						<bottomPen lineWidth="1.5"/>
@@ -50,10 +50,10 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="9" isBold="true"/>
 					</textElement>
-					<text><![CDATA[Designação]]></text>
+					<text><![CDATA[Discurso]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="54" y="17" width="250" height="14" uuid="1f23d0bc-bc08-4518-a57f-769483bd7b61"/>
+					<reportElement x="51" y="17" width="252" height="14" uuid="1f23d0bc-bc08-4518-a57f-769483bd7b61"/>
 					<box>
 						<leftPen lineWidth="1.0"/>
 						<bottomPen lineWidth="1.5"/>
@@ -64,7 +64,7 @@
 					<text><![CDATA[Tema]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="303" y="17" width="98" height="14" uuid="23d07f6b-c9a2-4b40-86de-56d0fbb6ddc3"/>
+					<reportElement x="302" y="17" width="100" height="14" uuid="23d07f6b-c9a2-4b40-86de-56d0fbb6ddc3"/>
 					<box>
 						<leftPen lineWidth="1.0"/>
 						<bottomPen lineWidth="1.5"/>
@@ -125,7 +125,7 @@
 	<detail>
 		<band height="26" splitType="Stretch">
 			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="0" width="54" height="26" uuid="3ccd235b-b0d5-49b4-8ca8-84b06e44b826"/>
+				<reportElement x="0" y="0" width="52" height="26" uuid="3ccd235b-b0d5-49b4-8ca8-84b06e44b826"/>
 				<box leftPadding="2">
 					<leftPen lineWidth="1.5"/>
 					<bottomPen lineWidth="1.25"/>
@@ -133,14 +133,10 @@
 				<textElement verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{numero} == 1l ? "Leitura" : (
-  $F{numero} == 2l ? "Visita" : (
-    $F{numero} == 3l ? "Revisita" : "Estudo"
-  )
-)]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{numero} == 0l ? "Destaques" : "Nº " + $F{numero}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="54" y="0" width="250" height="26" uuid="b67a894b-eac7-4810-918f-11b590042684"/>
+				<reportElement x="51" y="0" width="252" height="26" uuid="b67a894b-eac7-4810-918f-11b590042684"/>
 				<box leftPadding="2">
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.25"/>
@@ -151,7 +147,7 @@
 				<textFieldExpression><![CDATA[$F{tema}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="303" y="0" width="98" height="26" uuid="f574a513-ebec-4460-8103-23413c63cef2"/>
+				<reportElement x="302" y="0" width="100" height="26" uuid="f574a513-ebec-4460-8103-23413c63cef2"/>
 				<box leftPadding="2">
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.25"/>

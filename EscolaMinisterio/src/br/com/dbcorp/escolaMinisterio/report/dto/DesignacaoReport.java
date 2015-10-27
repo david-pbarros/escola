@@ -10,6 +10,7 @@ public class DesignacaoReport implements Serializable, Comparable<DesignacaoRepo
 	private boolean visita;
 	private boolean assebleia;
 	private boolean recapitulacao;
+	private boolean videos;
 	private Integer numero;
 	private String sala;
 	private String estudante;
@@ -44,6 +45,13 @@ public class DesignacaoReport implements Serializable, Comparable<DesignacaoRepo
 	}
 	public void setRecapitulacao(boolean recapitulacao) {
 		this.recapitulacao = recapitulacao;
+	}
+	
+	public boolean isVideos() {
+		return videos;
+	}
+	public void setVideos(boolean videos) {
+		this.videos = videos;
 	}
 	
 	public Integer getNumero() {
