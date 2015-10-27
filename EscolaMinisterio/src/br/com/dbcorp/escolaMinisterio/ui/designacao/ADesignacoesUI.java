@@ -200,7 +200,7 @@ public abstract class ADesignacoesUI extends InternalUI implements ActionListene
 		
 		this.onMontaMes();
 
-		this.mesPanel.setPreferredSize(new Dimension(Params.INTERNAL_WIDTH, 181 * this.mesDesignacao.getSemanas().size()));
+		this.mesPanel.setPreferredSize(new Dimension(Params.INTERNAL_WIDTH, (this.mesDesignacao.getAno() > 2015 ? 214 : 181) * this.mesDesignacao.getSemanas().size()));
 		
 		this.afterMountMonth();
 		
