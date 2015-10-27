@@ -180,7 +180,28 @@ public class DesignacoesUI extends ADesignacoesUI {
 		for (SemanaDesignacao semana : this.mesDesignacao.getSemanas()) {
 			for (Designacao designacao : semana.getDesignacoes()) {
 				if (designacao.getEstudante() == null || designacao.getEstudo() == null) {
-					erro += "\nDia: " + semana.getData().format(Params.dateFormate()) + " - Nr.: " + designacao.getNumero();
+					erro += "\nDia: " + semana.getData().format(Params.dateFormate());
+
+					if (designacao.getData().getYear() > 2015) {
+						erro += " - Designação: ";
+						
+						switch (designacao.getNumero()) {
+						case 1:
+							erro += "Leitura";
+							break;
+						case 2:
+							erro += "Visita";					
+							break;
+						case 3:
+							erro += "Revisita";
+							break;
+						case 4:
+							erro += "Estudo";
+							break;
+						}
+					} else {
+						erro += " - Nr.: " + designacao.getNumero();
+					}
 				}
 			}
 		}

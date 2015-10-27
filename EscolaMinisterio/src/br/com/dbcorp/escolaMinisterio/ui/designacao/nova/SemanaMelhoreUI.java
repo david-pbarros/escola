@@ -9,6 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -35,6 +36,7 @@ import br.com.dbcorp.escolaMinisterio.entidades.SemanaDesignacao;
 import br.com.dbcorp.escolaMinisterio.ui.Params;
 import br.com.dbcorp.escolaMinisterio.ui.designacao.ASemanaUI;
 import br.com.dbcorp.escolaMinisterio.ui.dialog.EscolhaEstudanteDialog;
+import com.jgoodies.forms.layout.Sizes;
 
 @SuppressWarnings("rawtypes")
 public class SemanaMelhoreUI extends ASemanaUI {
@@ -51,6 +53,7 @@ public class SemanaMelhoreUI extends ASemanaUI {
 	private List<Estudo> estudos;
 	private List<String> ajudantes;
 	private List<String> ajudantesHomens;
+	private List<String> ajudMulheresPrime;
 	
 	private JTextField txData;
 	
@@ -86,7 +89,7 @@ public class SemanaMelhoreUI extends ASemanaUI {
 	
 	public SemanaMelhoreUI(DesignacaoGerenciador gerenciador, EstudanteGerenciador estudanteGerenciador, SemanaDesignacao semanaDesignacao, String sala, List<Estudo> estudos, List<String> ajudantesHomens, List<String> ajudantesMulheres, boolean editDetalhes) {
 		this.setMinimumSize(new Dimension(631, 232));
-		this.setPreferredSize(new Dimension(931, 229));
+		this.setPreferredSize(new Dimension(941, 229));
 		
 		this.gerenciador = gerenciador;
 		this.estudantesGerenciador = estudanteGerenciador;
@@ -99,10 +102,16 @@ public class SemanaMelhoreUI extends ASemanaUI {
 		this.txData = new JTextField();
 		this.txData.setText(semanaDesignacao.getData().format(Params.dateFormate()));
 		
+		this.estudos = estudos;
+
 		this.ajudantesHomens = this.gerenciador.listaEstudantes(Genero.MASCULINO);
 		this.ajudantesHomens.addAll(ajudantesHomens);
 		
-		this.estudos = estudos;
+		this.ajudantesHomens = this.ajudantesHomens.stream()
+				.filter(p->!SELECIONE.equals(p))
+				.sorted(Comparator.naturalOrder())
+				.collect(Collectors.toList());
+		
 		
 		this.ajudantes = new ArrayList<String>(); 
 		this.ajudantes.addAll(this.ajudantesHomens);
@@ -113,22 +122,21 @@ public class SemanaMelhoreUI extends ASemanaUI {
 							.sorted(Comparator.naturalOrder())
 							.collect(Collectors.toList());
 		
+		this.ajudMulheresPrime = ajudantesMulheres.stream()
+									.filter(p->!SELECIONE.equals(p))
+									.collect(Collectors.toList());
+		this.ajudMulheresPrime.addAll(this.ajudantesHomens);
+		
 		this.ajudantes.add(0, SELECIONE);
-		
-		
-		this.ajudantesHomens = this.ajudantesHomens.stream()
-				.filter(p->!SELECIONE.equals(p))
-				.sorted(Comparator.naturalOrder())
-				.collect(Collectors.toList());
-
 		this.ajudantesHomens.add(0, SELECIONE);
+		this.ajudMulheresPrime.add(0, SELECIONE);
 		
 		setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("10dlu"),
 				FormSpecs.RELATED_GAP_COLSPEC,
 				FormSpecs.DEFAULT_COLSPEC,
 				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("max(100dlu;min):grow"),
+				new ColumnSpec(ColumnSpec.FILL, Sizes.bounded(Sizes.MINIMUM, Sizes.constant("150dlu", true), Sizes.constant("200dlu", true)), 0),
 				FormSpecs.RELATED_GAP_COLSPEC,
 				FormSpecs.DEFAULT_COLSPEC,
 				FormSpecs.RELATED_GAP_COLSPEC,
@@ -140,7 +148,7 @@ public class SemanaMelhoreUI extends ASemanaUI {
 				FormSpecs.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("default:grow"),
 				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("max(100dlu;min):grow"),
+				new ColumnSpec(ColumnSpec.FILL, Sizes.bounded(Sizes.MINIMUM, Sizes.constant("150dlu", true), Sizes.constant("170dlu", true)), 1),
 				FormSpecs.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("10dlu"),},
 			new RowSpec[] {
@@ -240,65 +248,59 @@ public class SemanaMelhoreUI extends ASemanaUI {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	private void estudanteSet(Estudante estudante, JLabel estudanteLB) {
 		estudanteLB.setText(estudante.getNome());
 		
-		if (estudanteLB == this.lbEstudante1 && !estudanteLB.equals(SELECIONE)) {
-			if (this.designacao1 == null) {
-				this.designacao1 = new Designacao();
-				this.semanaDesignacao.getDesignacoes().add(this.designacao1);
-				this.designacao1.setNumero(1);
-				this.designacao1.setSala(this.sala);
-				this.designacao1.setStatus(AvaliacaoDOM.NAO_AVALIADO.getSigla());
-				this.designacao1.setSemana(this.semanaDesignacao);
-			}
-
-			this.designacao1.setEstudante(estudante);
-			this.setUltimaDesignacao(this.designacao1.getEstudante(), this.lblUldDes1, this.lblDtUldDes1);
-			this.carregarEstudos(this.designacao1.getEstudante(), cbEstudo1);
+		if (!estudanteLB.equals(SELECIONE)) {
+			if (estudanteLB == this.lbEstudante1) {
+				if (this.designacao1 == null) {
+					this.designacao1 = new Designacao();
+					this.designacao1.setNumero(1);
+					this.semanaDesignacao.getDesignacoes().add(this.designacao1);
+				}
+				
+				this.carregaDadosProcurar(this.designacao1, estudante, this.cbEstudo1, this.lblUldDes1, this.lblDtUldDes1, this.cbAjudante1);
 			
-		} else if (estudanteLB == this.lbEstudante2 && !estudanteLB.equals(SELECIONE)) {
-			if (this.designacao2 == null) {
-				this.designacao2 = new Designacao();
-				this.semanaDesignacao.getDesignacoes().add(this.designacao2);
-				this.designacao2.setNumero(2);
-				this.designacao2.setSala(this.sala);
-				this.designacao2.setStatus(AvaliacaoDOM.NAO_AVALIADO.getSigla());
-				this.designacao2.setSemana(this.semanaDesignacao);
-			}
-
-			this.designacao2.setEstudante(estudante);
-			this.setUltimaDesignacao(this.designacao2.getEstudante(), this.lblUldDes2, this.lblDtUldDes2);
-			this.carregarEstudos(this.designacao2.getEstudante(), cbEstudo2);
+			} else if (estudanteLB == this.lbEstudante2) {
+				if (this.designacao2 == null) {
+					this.designacao2 = new Designacao();
+					this.designacao2.setNumero(2);
+					this.semanaDesignacao.getDesignacoes().add(this.designacao2);
+				}
+				
+				this.carregaDadosProcurar(this.designacao2, estudante, this.cbEstudo2, this.lblUldDes2, this.lblDtUldDes2, this.cbAjudante2);
 			
-		} else if (estudanteLB == this.lbEstudante3 && !estudanteLB.equals(SELECIONE)) {
-			if (this.designacao3 == null) {
-				this.designacao3 = new Designacao();
-				this.semanaDesignacao.getDesignacoes().add(this.designacao3);
-				this.designacao3.setNumero(3);
-				this.designacao3.setSala(this.sala);
-				this.designacao3.setStatus(AvaliacaoDOM.NAO_AVALIADO.getSigla());
-				this.designacao3.setSemana(this.semanaDesignacao);
+			} else if (estudanteLB == this.lbEstudante3) {
+				if (this.designacao3 == null) {
+					this.designacao3 = new Designacao();
+					this.designacao3.setNumero(3);
+					this.semanaDesignacao.getDesignacoes().add(this.designacao3);
+				}
+				
+				this.carregaDadosProcurar(this.designacao3, estudante, this.cbEstudo3, this.lblUldDes3, this.lblDtUldDes3, this.cbAjudante3);
+			
+			} else if (estudanteLB == this.lbEstudante4) {
+				if (this.designacao4 == null) {
+					this.designacao4 = new Designacao();
+					this.designacao4.setNumero(4);
+					this.semanaDesignacao.getDesignacoes().add(this.designacao4);
+				}
+				
+				this.carregaDadosProcurar(this.designacao4, estudante, this.cbEstudo4, this.lblUldDes4, this.lblDtUldDes4, this.cbAjudante4);
 			}
-
-			this.designacao3.setEstudante(estudante);
-			this.setUltimaDesignacao(this.designacao3.getEstudante(), this.lblUldDes3, this.lblDtUldDes3);
-			this.carregarEstudos(this.designacao3.getEstudante(), cbEstudo3);
-		
-		} else if (estudanteLB == this.lbEstudante4 && !estudanteLB.equals(SELECIONE)) {
-			if (this.designacao4 == null) {
-				this.designacao4 = new Designacao();
-				this.semanaDesignacao.getDesignacoes().add(this.designacao4);
-				this.designacao4.setNumero(4);
-				this.designacao4.setSala(this.sala);
-				this.designacao4.setStatus(AvaliacaoDOM.NAO_AVALIADO.getSigla());
-				this.designacao4.setSemana(this.semanaDesignacao);
-			}
-
-			this.designacao4.setEstudante(estudante);
-			this.setUltimaDesignacao(this.designacao4.getEstudante(), this.lblUldDes4, this.lblDtUldDes4);
-			this.carregarEstudos(this.designacao4.getEstudante(), cbEstudo4);
 		}
+	}
+	
+	private void carregaDadosProcurar(Designacao designacao, Estudante estudante, JComboBox<String> cbEstudo, JLabel ultimaDesignacao, JLabel dtUltmaDesignacao, JComboBox<String> cbAjudantes) {
+		designacao.setSala(this.sala);
+		designacao.setStatus(AvaliacaoDOM.NAO_AVALIADO.getSigla());
+		designacao.setSemana(this.semanaDesignacao);
+		designacao.setEstudante(estudante);
+
+		this.setUltimaDesignacao(designacao.getEstudante(), ultimaDesignacao, dtUltmaDesignacao);
+		this.carregarEstudos(designacao.getEstudante(), cbEstudo);
+		this.setAjudantes(designacao, cbAjudantes);
 	}
 	
 	public void fecharSemana() {
@@ -490,10 +492,13 @@ public class SemanaMelhoreUI extends ASemanaUI {
 		this.cbEstudo2 = new JComboBox();
 		this.cbEstudo3 = new JComboBox();
 		this.cbEstudo4 = new JComboBox();
-		this.cbAjudante1 = new JComboBox(this.ajudantesHomens.toArray());
-		this.cbAjudante2 = new JComboBox(this.ajudantes.toArray());
-		this.cbAjudante3 = new JComboBox(this.ajudantes.toArray());
-		this.cbAjudante4 = new JComboBox(this.ajudantes.toArray());
+		
+		Object[] item = {"Selecione Estudante"};
+		
+		this.cbAjudante1 = new JComboBox(item);
+		this.cbAjudante2 = new JComboBox(item);
+		this.cbAjudante3 = new JComboBox(item);
+		this.cbAjudante4 = new JComboBox(item);
 		
 		this.dataPanel = new JPanel();
 		this.dataPanel.setLayout(new FormLayout(new ColumnSpec[] {
@@ -548,7 +553,7 @@ public class SemanaMelhoreUI extends ASemanaUI {
 		this.EstudantePanel1.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("default:grow"),
 				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,},
+				ColumnSpec.decode("17dlu"),},
 			new RowSpec[] {
 				FormSpecs.DEFAULT_ROWSPEC,}));
 		
@@ -556,7 +561,7 @@ public class SemanaMelhoreUI extends ASemanaUI {
 		this.EstudantePanel2.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("default:grow"),
 				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,},
+				ColumnSpec.decode("17dlu"),},
 			new RowSpec[] {
 				FormSpecs.DEFAULT_ROWSPEC,}));
 		
@@ -590,7 +595,7 @@ public class SemanaMelhoreUI extends ASemanaUI {
 		this.EstudantePanel4.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("default:grow"),
 				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,},
+				ColumnSpec.decode("17dlu"),},
 			new RowSpec[] {
 				FormSpecs.DEFAULT_ROWSPEC,}));
 		
@@ -607,7 +612,7 @@ public class SemanaMelhoreUI extends ASemanaUI {
 		this.EstudantePanel3.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("default:grow"),
 				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,},
+				ColumnSpec.decode("17dlu"),},
 			new RowSpec[] {
 				FormSpecs.DEFAULT_ROWSPEC,}));
 		
@@ -617,7 +622,7 @@ public class SemanaMelhoreUI extends ASemanaUI {
 		this.setDetalhesButtons();
 		
 		add(this.dataPanel, "5, 2, center, fill");
-		add(checkPanel, "7, 2, 11, 1, fill, fill");
+		add(checkPanel, "6, 2, 12, 1, fill, fill");
 		add(new JLabel("Ultima Designa\u00E7\u00E3o"), "7, 4, 3, 1, center, default");
 		add(new JLabel("Estudante:"), "5, 6, center, default");
 		add(new JLabel("Estudo:"), "7, 6, center, default");
@@ -736,6 +741,7 @@ public class SemanaMelhoreUI extends ASemanaUI {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	private void setCamposTela(Designacao designacao, JLabel lbEstudante, JComboBox cbEstudo, JComboBox cbAjudante, JLabel lbData, JLabel lbNr, boolean habilitado, JButton btnProcurar) {
 		cbEstudo.setEnabled(habilitado);
 		cbAjudante.setEnabled(habilitado);
@@ -745,6 +751,8 @@ public class SemanaMelhoreUI extends ASemanaUI {
 			lbEstudante.setText(designacao.getEstudante().getNome());
 			
 			this.setUltimaDesignacao(designacao.getEstudante(), lbNr, lbData);
+			
+			this.setAjudantes(designacao, cbAjudante);
 		}
 		
 		if (designacao.getEstudo() != null) {
@@ -761,6 +769,29 @@ public class SemanaMelhoreUI extends ASemanaUI {
 					cbAjudante.setSelectedIndex(i);
 				}
 			}
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void setAjudantes(Designacao designacao, JComboBox<String> cbAjudantes) {
+		if (designacao.getEstudante() != null) {
+			List<String> ajudantes = null;
+			
+			if (designacao.getNumero() == 1) {
+				ajudantes = this.ajudantesHomens;
+				
+			} else {
+				if (designacao.getEstudante().getGenero() == Genero.MASCULINO) {
+					ajudantes = this.ajudantes;
+					
+				} else {
+					ajudantes = this.ajudMulheresPrime;
+				}
+			}
+		
+			ajudantes = ajudantes.stream().filter(p->!designacao.getEstudante().getNome().equals(p)).collect(Collectors.toList());
+			
+			cbAjudantes.setModel(new DefaultComboBoxModel(ajudantes.toArray()));
 		}
 	}
 }
