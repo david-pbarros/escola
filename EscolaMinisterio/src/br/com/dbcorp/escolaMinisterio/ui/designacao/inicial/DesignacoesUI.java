@@ -26,6 +26,7 @@ import br.com.dbcorp.escolaMinisterio.entidades.SemanaDesignacao;
 import br.com.dbcorp.escolaMinisterio.ui.DScrollPane;
 import br.com.dbcorp.escolaMinisterio.ui.InternalUI;
 import br.com.dbcorp.escolaMinisterio.ui.Params;
+import br.com.dbcorp.escolaMinisterio.ui.designacao.ASemanaUI;
 import br.com.dbcorp.escolaMinisterio.ui.dialog.PrintDialog;
 import br.com.dbcorp.escolaMinisterio.ui.dialog.SincDialog;
 
@@ -35,7 +36,7 @@ public class DesignacoesUI extends InternalUI implements ActionListener, ItemLis
 
 	private DesignacaoGerenciador gerenciador;
 	
-	private List<SemanaUI> semanas;
+	private List<ASemanaUI> semanas;
 	
 	private MesDesignacao mesDesignacao;
 	
@@ -113,7 +114,7 @@ public class DesignacoesUI extends InternalUI implements ActionListener, ItemLis
 	@Override
 	public void reset() {
 		if (this.mesPanel != null) {
-			for (SemanaUI semana : this.semanas) {
+			for (ASemanaUI semana : this.semanas) {
 				semana.reset();
 			}
 			
@@ -154,7 +155,7 @@ public class DesignacoesUI extends InternalUI implements ActionListener, ItemLis
 	private void montaMes() {
 		this.setCursor(new Cursor(Cursor.WAIT_CURSOR));
 		
-		this.semanas = new ArrayList<SemanaUI>();
+		this.semanas = new ArrayList<ASemanaUI>();
 		
 		if ( this.scroll == null ) {
 			this.mesPanel = new JPanel();
@@ -172,13 +173,20 @@ public class DesignacoesUI extends InternalUI implements ActionListener, ItemLis
 		}
 		
 		for (SemanaDesignacao semanaD : this.mesDesignacao.getSemanas()) {
-			SemanaUI semana = new SemanaUI(semanaD, (String)this.cbSala.getSelectedItem(), this.editDetalhes);
+			ASemanaUI semana;
+			
+			if (this.mesDesignacao.getAno() > 2015) {
+				semana = new SemanaMelhoreUI(semanaD, (String)this.cbSala.getSelectedItem(), this.editDetalhes);
+				
+			} else {
+				semana = new SemanaUI(semanaD, (String)this.cbSala.getSelectedItem(), this.editDetalhes);
+			}
 			
 			this.semanas.add(semana);
 			this.mesPanel.add(semana);
 		}
 
-		this.mesPanel.setPreferredSize(new Dimension(Params.INTERNAL_WIDTH, 181 * this.mesDesignacao.getSemanas().size()));
+		this.mesPanel.setPreferredSize(new Dimension(Params.INTERNAL_WIDTH, (this.mesDesignacao.getAno() > 2015 ? 214 : 181) * this.mesDesignacao.getSemanas().size()));
 		
 		this.revalidate();
 		this.repaint();
