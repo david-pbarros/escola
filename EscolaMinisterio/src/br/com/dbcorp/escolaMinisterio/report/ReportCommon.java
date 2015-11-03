@@ -62,7 +62,7 @@ public class ReportCommon {
 			if (!designacoes.isEmpty()) {
 				ItextReportManager rp = new ItextReportManager();
 				
-				Set<File> arquivos = rp.createReport("designacoes"  + (mesDesignacao.getAno() > 2015 ? "" : "Pre2016"), designacoes);
+				Set<File> arquivos = rp.createReport("designacoes", designacoes, mesDesignacao.getAno() > 2015);
 				
 				if (!arquivos.isEmpty()) {
 					for (File tempFile : arquivos) {

@@ -24,9 +24,11 @@ public class ItextReportManager {
 	private Log log = Log.getInstance();
 	private Set<File> files;
 	
-	public Set<File> createReport(String fileName, List<Designacao> designacoes) {
+	public Set<File> createReport(String fileName, List<Designacao> designacoes, boolean novoModelo) {
 		try {
 			this.files = new TreeSet<File>();
+			
+			fileName += (novoModelo ? "" : "Pre2016");
 			
 			List<Designacao> selecionadas = new ArrayList<Designacao>();
 			
@@ -48,7 +50,7 @@ public class ItextReportManager {
 						input = ReportManager.class.getResourceAsStream("/resources/report/" + fileName + ".pdf");
 					}
 					
-					this.creatFileOut(new PdfReader(input), selecionadas);
+					this.creatFileOut(new PdfReader(input), selecionadas, novoModelo);
 					
 					selecionadas.clear();
 					input.close();
@@ -65,7 +67,7 @@ public class ItextReportManager {
 		}
 	}
 	
-	private void creatFileOut(PdfReader reader, List<Designacao> designacoes) throws IOException, DocumentException {
+	private void creatFileOut(PdfReader reader, List<Designacao> designacoes, boolean novoModelo) throws IOException, DocumentException {
 		File tempFile = File.createTempFile("folhas" + this.files.size(), ".pdf");
 	    tempFile.deleteOnExit();
 	    
@@ -75,33 +77,60 @@ public class ItextReportManager {
 		AcroFields form = stamper.getAcroFields();
 		
 		for (int i = 0; i < designacoes.size(); i++) {
-			Designacao designacao = designacoes.get(i);
-
-			form.setField("nome" + i, this.capitalize(designacao.getEstudante().getNome()));
-			form.setField("numero" + i, designacao.getNumero() + "");
-			form.setField("data" + i, designacao.getData().format(Params.dateFormate()));
-			form.setField("fonte" + i, designacao.getFonte());
-			form.setField("tema" + i, designacao.getTema());
-			form.setField("estudo" + i, designacao.getEstudo().getNrEstudo() + "");
-			form.setField("sala_" + designacao.getSala()  + "_" + i, "Yes");
-			form.setField("obs" + i, designacao.getObsFolha());
-			
-			//form.setFieldProperty("nome" + i, "textsize ", 2.0, null);
-			
-			if (designacao.getAjudante() != null) {
-				form.setField("ajudante"  + i, this.capitalize(designacao.getAjudante().getNome()));
-				//form.setFieldProperty("ajudante" + i, "textsize ", 2.0, null);
+			if (novoModelo) {
+				this.novoModelo(form, designacoes.get(i), i);
+				
+			} else {
+				this.pre2016(form, designacoes.get(i), i);
 			}
 		}
-		
-		
-		
-		
 		
 		stamper.close();
 		reader.close();
 		
 		this.files.add(tempFile);
+	}
+	
+	private void pre2016(AcroFields form, Designacao designacao, int position) throws IOException, DocumentException {
+		form.setField("nome" + position, this.capitalize(designacao.getEstudante().getNome()));
+		form.setField("numero" + position, designacao.getNumero() + "");
+		form.setField("data" + position, designacao.getData().format(Params.dateFormate()));
+		form.setField("fonte" + position, designacao.getFonte());
+		form.setField("tema" + position, designacao.getTema());
+		form.setField("estudo" + position, designacao.getEstudo().getNrEstudo() + "");
+		form.setField("sala_" + designacao.getSala()  + "_" + position, "Yes");
+		form.setField("obs" + position, designacao.getObsFolha());
+		
+		if (designacao.getAjudante() != null) {
+			form.setField("ajudante"  + position, this.capitalize(designacao.getAjudante().getNome()));
+		}
+	}
+	
+	private void novoModelo(AcroFields form, Designacao designacao, int position) throws IOException, DocumentException {
+		form.setField("nome" + position, this.capitalize(designacao.getEstudante().getNome()));
+		form.setField("data" + position, designacao.getData().format(Params.dateFormate()));
+		form.setField("estudo" + position, designacao.getEstudo().getNrEstudo() + "");
+		form.setField("ch" + designacao.getSala().toUpperCase()  + position, "Yes");
+		form.setField("obs" + position, designacao.getObsFolha());
+		
+		switch (designacao.getNumero()) {
+		case 1:
+			form.setField("chLeitura" + position, "Yes");
+			break;
+		case 2:
+			form.setField("chVisita" + position, "Yes");
+			break;
+		case 3:
+			form.setField("chRevisita" + position, "Yes");
+			break;
+		case 4:
+			form.setField("chEstudo" + position, "Yes");
+			break;
+		}
+		
+		if (designacao.getAjudante() != null) {
+			form.setField("ajud"  + position, this.capitalize(designacao.getAjudante().getNome()));
+		}
 	}
 	
 	private String capitalize(String original) {
@@ -111,7 +140,7 @@ public class ItextReportManager {
 			String[] palavras = original.toLowerCase().split(" ");
 			
 			for (String palavra : palavras) {
-				if (palavra.length() > 3) {
+				if (palavra.trim().length() > 2) {
 					novo.append(palavra.substring(0, 1).toUpperCase())
 						.append(palavra.substring(1));
 					
