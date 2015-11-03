@@ -139,7 +139,7 @@ public class UsuarioSinc {
 					
 					usuario.setIdOnline(item.getString("id"));
 					usuario.setSenha(item.getString("senha"));
-					usuario.setNome(URLDecoder.decode(item.getString("nome"), "ISO-8859-1"));
+					usuario.setNome(URLDecoder.decode(item.getString("nome"), "UTF-8"));
 					usuario.setReiniciaSenha(item.getInt("reiniciaSenha") == 1);
 					usuario.setBloqueado(item.getInt("bloqueado") == 1);
 					usuario.setProfile(this.gerenciador.obterProfile(item.getString("profile_id")));

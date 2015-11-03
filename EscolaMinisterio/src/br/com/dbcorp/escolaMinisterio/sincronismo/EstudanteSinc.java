@@ -170,7 +170,7 @@ public class EstudanteSinc {
 					}
 					
 					estudante.setIdOnline(item.getString("id"));
-					estudante.setNome(URLDecoder.decode(item.getString("nome"), "ISO-8859-1"));
+					estudante.setNome(URLDecoder.decode(item.getString("nome"), "UTF-8"));
 					estudante.setGenero(Genero.values()[item.getInt("genero")]);
 					estudante.setObservacao(item.isNull("observacao") ? null : item.getString("observacao"));
 					estudante.setDesabilitado(item.getInt("desabilitado") == 1);

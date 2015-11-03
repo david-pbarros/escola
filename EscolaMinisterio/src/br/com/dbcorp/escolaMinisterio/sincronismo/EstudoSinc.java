@@ -93,7 +93,7 @@ public class EstudoSinc {
 						continue;
 					}
 					
-					estudo.setDescricao(URLDecoder.decode(item.getString("descricao"), "ISO-8859-1"));
+					estudo.setDescricao(URLDecoder.decode(item.getString("descricao"), "UTF-8"));
 					estudo.setLeitura(item.getInt("leitura") == 1);
 					estudo.setDemonstracao(item.getInt("demonstracao") == 1);
 					estudo.setDiscurso(item.getInt("discurso") == 1);

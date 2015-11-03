@@ -201,10 +201,10 @@ public class DesignacaoSinc {
 						designacao.setNumero(item.getInt("numero"));
 						designacao.setSala(item.getString("sala"));
 						designacao.setStatus(item.getString("status").charAt(0));
-						designacao.setTema(URLDecoder.decode(item.getString("tema"), "ISO-8859-1"));
-						designacao.setFonte(URLDecoder.decode(item.getString("fonte"), "ISO-8859-1"));
-						designacao.setObservacao(URLDecoder.decode(item.getString("observacao"), "ISO-8859-1"));
-						designacao.setObsFolha(URLDecoder.decode(item.getString("obsfolha"), "ISO-8859-1"));
+						designacao.setTema(URLDecoder.decode(item.getString("tema"), "UTF-8"));
+						designacao.setFonte(URLDecoder.decode(item.getString("fonte"), "UTF-8"));
+						designacao.setObservacao(URLDecoder.decode(item.getString("observacao"), "UTF-8"));
+						designacao.setObsFolha(URLDecoder.decode(item.getString("obsfolha"), "UTF-8"));
 						
 						designacao.setSemana(this.gerenciador.obterSemanaDesignacao(item.getString("semana_id")));
 						designacao.setData(LocalDate.parse(item.getString("data"), Params.dateFormate()));

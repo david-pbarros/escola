@@ -144,7 +144,7 @@ public class AjudanteSinc {
 					}
 					
 					ajudante.setIdOnline(item.getString("id"));
-					ajudante.setNome(URLDecoder.decode(item.getString("nome"), "ISO-8859-1"));
+					ajudante.setNome(URLDecoder.decode(item.getString("nome"), "UTF-8"));
 					ajudante.setGenero(Genero.values()[item.getInt("genero")]);
 					
 	
