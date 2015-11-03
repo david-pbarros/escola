@@ -22,11 +22,12 @@ import br.com.dbcorp.escolaMinisterio.AvaliacaoDOM;
 import br.com.dbcorp.escolaMinisterio.entidades.Designacao;
 import br.com.dbcorp.escolaMinisterio.entidades.SemanaDesignacao;
 import br.com.dbcorp.escolaMinisterio.ui.Params;
+import br.com.dbcorp.escolaMinisterio.ui.designacao.ASemanaMelhoreUI;
 import br.com.dbcorp.escolaMinisterio.ui.designacao.ASemanaUI;
 import br.com.dbcorp.escolaMinisterio.ui.dialog.ObservacaoDialog;
 
 @SuppressWarnings({"rawtypes", "unused"})
-public class SemanaMelhoreUI extends ASemanaUI {
+public class SemanaMelhoreUI extends ASemanaMelhoreUI {
 	private static final long serialVersionUID = -7064940912653423525L;
 	
 	private JLabel lbData;

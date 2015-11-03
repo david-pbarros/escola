@@ -23,6 +23,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
+import com.jgoodies.forms.layout.Sizes;
 
 import br.com.dbcorp.escolaMinisterio.AvaliacaoDOM;
 import br.com.dbcorp.escolaMinisterio.dataBase.DesignacaoGerenciador;
@@ -34,12 +35,11 @@ import br.com.dbcorp.escolaMinisterio.entidades.Genero;
 import br.com.dbcorp.escolaMinisterio.entidades.Pessoa;
 import br.com.dbcorp.escolaMinisterio.entidades.SemanaDesignacao;
 import br.com.dbcorp.escolaMinisterio.ui.Params;
-import br.com.dbcorp.escolaMinisterio.ui.designacao.ASemanaUI;
+import br.com.dbcorp.escolaMinisterio.ui.designacao.ASemanaMelhoreUI;
 import br.com.dbcorp.escolaMinisterio.ui.dialog.EscolhaEstudanteDialog;
-import com.jgoodies.forms.layout.Sizes;
 
 @SuppressWarnings("rawtypes")
-public class SemanaMelhoreUI extends ASemanaUI {
+public class SemanaMelhoreUI extends ASemanaMelhoreUI {
 	private static final long serialVersionUID = -7064940912653423525L;
 	private static final String SELECIONE = "Selecione...";
 	private static final String NR_LIMPO = "--";
