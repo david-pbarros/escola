@@ -53,18 +53,7 @@
 					<text><![CDATA[Designação]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="54" y="17" width="250" height="14" uuid="1f23d0bc-bc08-4518-a57f-769483bd7b61"/>
-					<box>
-						<leftPen lineWidth="1.0"/>
-						<bottomPen lineWidth="1.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="9" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Tema]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="303" y="17" width="98" height="14" uuid="23d07f6b-c9a2-4b40-86de-56d0fbb6ddc3"/>
+					<reportElement x="54" y="17" width="280" height="14" uuid="23d07f6b-c9a2-4b40-86de-56d0fbb6ddc3"/>
 					<box>
 						<leftPen lineWidth="1.0"/>
 						<bottomPen lineWidth="1.5"/>
@@ -75,7 +64,7 @@
 					<text><![CDATA[Fonte]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="401" y="17" width="206" height="14" uuid="cefd7a16-0bab-4f53-8f02-a2e7b0e7a0e9"/>
+					<reportElement x="334" y="17" width="238" height="14" uuid="cefd7a16-0bab-4f53-8f02-a2e7b0e7a0e9"/>
 					<box>
 						<leftPen lineWidth="1.0"/>
 						<bottomPen lineWidth="1.5"/>
@@ -86,7 +75,7 @@
 					<text><![CDATA[Estudante / Ajudante]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="697" y="17" width="62" height="14" uuid="f4e0167f-af8c-4029-8fdd-a0568e531bf1"/>
+					<reportElement x="683" y="17" width="76" height="14" uuid="f4e0167f-af8c-4029-8fdd-a0568e531bf1"/>
 					<box>
 						<leftPen lineWidth="1.0"/>
 						<bottomPen lineWidth="1.5"/>
@@ -109,7 +98,7 @@
 					<text><![CDATA[Conselho]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="607" y="17" width="90" height="14" uuid="da189d12-1451-41c2-bdfd-2bf424f86875"/>
+					<reportElement x="572" y="17" width="111" height="14" uuid="da189d12-1451-41c2-bdfd-2bf424f86875"/>
 					<box>
 						<leftPen lineWidth="1.0"/>
 						<bottomPen lineWidth="1.5"/>
@@ -140,18 +129,7 @@
 )]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="54" y="0" width="250" height="26" uuid="b67a894b-eac7-4810-918f-11b590042684"/>
-				<box leftPadding="2">
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.25"/>
-				</box>
-				<textElement verticalAlignment="Middle">
-					<font size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{tema}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="303" y="0" width="98" height="26" uuid="f574a513-ebec-4460-8103-23413c63cef2"/>
+				<reportElement x="54" y="0" width="280" height="26" uuid="f574a513-ebec-4460-8103-23413c63cef2"/>
 				<box leftPadding="2">
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.25"/>
@@ -162,7 +140,7 @@
 				<textFieldExpression><![CDATA[$F{fonte}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="401" y="0" width="206" height="13" uuid="12a9ea51-2071-44f9-9079-bb3f39ce39d0"/>
+				<reportElement x="334" y="0" width="238" height="13" uuid="12a9ea51-2071-44f9-9079-bb3f39ce39d0"/>
 				<box leftPadding="2">
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
@@ -173,7 +151,7 @@
 				<textFieldExpression><![CDATA[$F{estudante}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="697" y="0" width="62" height="26" uuid="3ae46783-890c-4af4-abc6-f72ddde6473b"/>
+				<reportElement x="683" y="0" width="76" height="26" uuid="3ae46783-890c-4af4-abc6-f72ddde6473b"/>
 				<box>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.25"/>
@@ -196,7 +174,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="401" y="13" width="206" height="13" uuid="c5195df8-684f-42cf-8ddf-e5eee801cab6"/>
+				<reportElement x="334" y="13" width="238" height="13" uuid="c5195df8-684f-42cf-8ddf-e5eee801cab6"/>
 				<box leftPadding="2">
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.25"/>
@@ -207,7 +185,7 @@
 				<textFieldExpression><![CDATA[$F{ajudante}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="607" y="0" width="90" height="26" uuid="74e6cfb1-6fd8-4543-ab83-e8a26393a0f6"/>
+				<reportElement x="572" y="0" width="111" height="26" uuid="74e6cfb1-6fd8-4543-ab83-e8a26393a0f6"/>
 				<box>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.25"/>
