@@ -238,16 +238,18 @@ public class Gerenciador {
 		List<Estudante> estudantes = query.getResultList();
 		
 		estudantes.forEach(e->{
-			Optional<Designacao> max = e.getDesignacoes().stream().max(Comparator.comparing(Designacao::getData));
-			
-			if (max.isPresent()) {
-				LocalDate maxDate = max.orElse(null).getData();
+			if (e.getUltimaDesignacao() != null) {
+				Optional<Designacao> max = e.getDesignacoes().stream().max(Comparator.comparing(Designacao::getData));
 				
-				if (maxDate != null && !maxDate.isEqual(e.getUltimaDesignacao())) {
-					e.setUltimaDesignacao(max.orElse(null).getData());
-					e.setSalaUltimaDesignacao(max.orElse(null).getSala().charAt(0));
+				if (max.isPresent()) {
+					LocalDate maxDate = max.orElse(null).getData();
 					
-					DataBaseHelper.merge(e);
+					if (maxDate != null && !maxDate.isEqual(e.getUltimaDesignacao())) {
+						e.setUltimaDesignacao(max.orElse(null).getData());
+						e.setSalaUltimaDesignacao(max.orElse(null).getSala().charAt(0));
+						
+						DataBaseHelper.merge(e);
+					}
 				}
 			}
 		});
