@@ -246,12 +246,15 @@ public class DesignacoesUI extends ADesignacoesUI {
 							sb.append("V");
 							pw.println(sb);
 							
-						} else if (semana.isVideos()) {
-							sb.append("AV");
-							pw.println(sb);
-							
 						} else {
-							sb.append("N").append(";");
+							if (semana.isVideos()) {
+								sb.append("AV");
+							
+							} else {
+								sb.append("N");
+							}
+							
+							sb.append(";");
 							
 							for (Designacao designacao : semana.getDesignacoes()) {
 								StringBuffer sbDes = new StringBuffer(sb);

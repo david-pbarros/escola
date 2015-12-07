@@ -52,11 +52,10 @@ public class ReportCommon {
 					}
 				}
 				
-				Collections.sort(salaA);
-				Collections.sort(salaB);
-				
 				designacoes.addAll(salaA);
 				designacoes.addAll(salaB);
+				
+				Collections.sort(designacoes);
 			}
 			
 			if (!designacoes.isEmpty()) {
@@ -129,7 +128,7 @@ public class ReportCommon {
 		List<DesignacaoReport> semanasB = new ArrayList<DesignacaoReport>();
 		
 		for (SemanaDesignacao semana : mesDesignacao.getSemanas()) {
-			if (!semana.isSemReuniao() && !semana.isVideos()) {
+			if (!semana.isSemReuniao()) {
 				DesignacaoReport designacaoReport = new DesignacaoReport();
 				designacaoReport.setData(semana.getData());
 				designacaoReport.setAssebleia(semana.isAssebleia());
@@ -137,7 +136,7 @@ public class ReportCommon {
 				designacaoReport.setVisita(semana.isVisita());
 				designacaoReport.setVideos(semana.isVideos());
 				
-				if (especiais && (designacaoReport.isAssebleia() || designacaoReport.isRecapitulacao() || designacaoReport.isVisita() || designacaoReport.isVideos())) {
+				if (especiais && (designacaoReport.isAssebleia() || designacaoReport.isRecapitulacao() || designacaoReport.isVisita())) {
 					DesignacaoReport temp = designacaoReport.clone();
 					temp.setSala("A");
 					
