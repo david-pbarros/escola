@@ -73,7 +73,12 @@ public class ItextReportManager {
 	    
 	    OutputStream out = new FileOutputStream(tempFile);
 		
-		PdfStamper stamper =  new PdfStamper(reader, out);
+	    /*
+	     * reader.removeUsageRights();//habilita a edição do form PDF para pdf preenchidos criados
+	     * PdfStamper stamper = new PdfStamper(reader, out);
+	     */
+	    
+		PdfStamper stamper =  new PdfStamper(reader, out, '\0', true);//contrutor que permite manter o byte originais do pdf. (mantem o form aberto);
 		AcroFields form = stamper.getAcroFields();
 		
 		for (int i = 0; i < designacoes.size(); i++) {
