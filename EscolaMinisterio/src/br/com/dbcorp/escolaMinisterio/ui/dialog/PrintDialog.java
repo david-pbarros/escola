@@ -7,7 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
@@ -29,6 +31,12 @@ public class PrintDialog extends JDialog implements ActionListener {
 	private JRadioButton rbDesignacao;
 	
 	private MesDesignacao mes;
+	private JLabel lbSala;
+	private JComboBox<String> cbSala;
+	private JComboBox<String> cbDe;
+	private JComboBox<String> cbAte;
+	
+	private Dimension defaultDimension;
 	
 	public PrintDialog(MesDesignacao mes) {
 		setTitle("Escolha de impress\u00E3o...");
@@ -38,8 +46,10 @@ public class PrintDialog extends JDialog implements ActionListener {
 		
 		this.mes = mes;
 		
-		this.setPreferredSize(new Dimension(240, 150));
-		this.setMinimumSize(new Dimension(240, 150));
+		this.defaultDimension = new Dimension(160, 155);
+		
+		this.setPreferredSize(this.defaultDimension);
+		this.setMinimumSize(this.defaultDimension);
 		
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.SOUTH);
@@ -60,7 +70,7 @@ public class PrintDialog extends JDialog implements ActionListener {
 				FormSpecs.DEFAULT_ROWSPEC,
 				FormSpecs.LINE_GAP_ROWSPEC,
 				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.LINE_GAP_ROWSPEC,
+				FormSpecs.DEFAULT_ROWSPEC,
 				FormSpecs.DEFAULT_ROWSPEC,}));
 		
 		this.rbDirigente = new JRadioButton("Controle Dirigente");
@@ -72,10 +82,31 @@ public class PrintDialog extends JDialog implements ActionListener {
 		this.rbDesignacao.addActionListener(this);
 		
 		this.rbDirigente.setSelected(true);
+		
+		String[] salas = {"Todas", "A", "B"};
+		this.cbSala = new JComboBox<>(salas);
+		this.lbSala = new JLabel("Sala:");
+
+		this.lbSala.setVisible(false);
+		this.cbSala.setVisible(false);
+		
+		this.combosData(mes);
+
+		JPanel salaPanel = new JPanel();
+		salaPanel.add(this.rbDesignacao);
+		salaPanel.add(this.lbSala);
+		salaPanel.add(this.cbSala);
+		
+		JPanel dataPanel = new JPanel();
+		dataPanel.add(new JLabel("De:"));
+		dataPanel.add(cbDe);
+		dataPanel.add(new JLabel("At\u00E9:"));
+		dataPanel.add(cbAte);
 
 		panel_1.add(this.rbDirigente, "2, 2");
 		panel_1.add(this.rbAuxiliar, "2, 4");
-		panel_1.add(this.rbDesignacao, "2, 6");
+		panel_1.add(salaPanel, "1, 5, 2, 1, left, fill");
+		panel_1.add(dataPanel, "1, 6, 2, 1, left, fill");
 		
 		this.centerScreen();
 	}
@@ -88,6 +119,10 @@ public class PrintDialog extends JDialog implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
+		Dimension d = this.defaultDimension;
+		this.lbSala.setVisible(false);
+		this.cbSala.setVisible(false);
+		
 		if (event.getSource() == this.btnOK) {
 			this.imprimir();
 		
@@ -99,7 +134,19 @@ public class PrintDialog extends JDialog implements ActionListener {
 			
 		} else if (event.getSource() == this.rbDesignacao) {
 			this.setRadio(this.rbDesignacao);
+			
+			this.lbSala.setVisible(true);
+			this.cbSala.setVisible(true);
+			d = new Dimension(250, 190);
 		}
+		
+		this.setPreferredSize(d);
+		this.setMinimumSize(d);
+		this.setMaximumSize(d);
+		
+		this.centerScreen();
+		
+		this.pack();
 	}
 	
 	private void setRadio(JRadioButton selecionado) {
@@ -123,7 +170,7 @@ public class PrintDialog extends JDialog implements ActionListener {
 				rpc.gerarTipoAuxiliar(this.mes);
 			
 			} else if (this.rbDesignacao.isSelected()) {
-				rpc.gerarTipoDesignacoes(this.mes);
+				rpc.gerarTipoDesignacoes(this.mes, (String)this.cbSala.getSelectedItem(), (String)this.cbDe.getSelectedItem(), (String)this.cbAte.getSelectedItem());
 			}
 			
 			this.dispose();
@@ -131,5 +178,18 @@ public class PrintDialog extends JDialog implements ActionListener {
 		} finally {
 			this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		}
+	}
+	
+	private void combosData(MesDesignacao mes) {
+		String[] datas = new String[mes.getSemanas().size()];
+		
+		for (int i = 0; i < mes.getSemanas().size(); i++) {
+			datas[i] = mes.getSemanas().get(i).getData().format(Params.dateFormate());
+		}
+		
+		this.cbDe = new JComboBox<>(datas);
+		this.cbAte = new JComboBox<>(datas);
+		
+		this.cbAte.setSelectedIndex(datas.length-1);
 	}
 }

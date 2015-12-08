@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -20,6 +21,7 @@ import br.com.dbcorp.escolaMinisterio.entidades.Designacao;
 import br.com.dbcorp.escolaMinisterio.entidades.MesDesignacao;
 import br.com.dbcorp.escolaMinisterio.entidades.SemanaDesignacao;
 import br.com.dbcorp.escolaMinisterio.report.dto.DesignacaoReport;
+import br.com.dbcorp.escolaMinisterio.ui.Params;
 
 public class ReportCommon {
 	
@@ -33,30 +35,40 @@ public class ReportCommon {
 		this.comum(mesDesignacao, "auxiliar", false);
 	}
 	
-	public void gerarTipoDesignacoes(MesDesignacao mesDesignacao) {
+	public void gerarTipoDesignacoes(MesDesignacao mesDesignacao, String sala, String dtDe, String dtAte) {
 		try {
 			List<Designacao> designacoes = new ArrayList<Designacao>();
 		
+			LocalDate de = LocalDate.parse(dtDe, Params.dateFormate());
+			LocalDate ate = LocalDate.parse(dtAte, Params.dateFormate());
+			
 			for (SemanaDesignacao semana : mesDesignacao.getSemanas()) {
 				List<Designacao> salaA = new ArrayList<Designacao>();
 				List<Designacao> salaB = new ArrayList<Designacao>();
 				
 				if (semana.getDesignacoes() != null) {
 					for (Designacao designacao : semana.getDesignacoes()) {
-						if ("A".equalsIgnoreCase(designacao.getSala())) {
-							salaA.add(designacao);
-							
-						} else {
-							salaB.add(designacao);
+						if (!semana.getData().isBefore(de) && !semana.getData().isAfter(ate)) {
+							if ("A".equalsIgnoreCase(designacao.getSala())) {
+								salaA.add(designacao);
+								
+							} else {
+								salaB.add(designacao);
+							}
 						}
 					}
 				}
 				
-				designacoes.addAll(salaA);
-				designacoes.addAll(salaB);
+				if ("Todas".equals(sala) || "A".equals(sala)) {
+					designacoes.addAll(salaA);
+				}
 				
-				Collections.sort(designacoes);
+				if ("Todas".equals(sala) || "B".equals(sala)) {
+					designacoes.addAll(salaB);
+				}
 			}
+
+			Collections.sort(designacoes);
 			
 			if (!designacoes.isEmpty()) {
 				ItextReportManager rp = new ItextReportManager();
