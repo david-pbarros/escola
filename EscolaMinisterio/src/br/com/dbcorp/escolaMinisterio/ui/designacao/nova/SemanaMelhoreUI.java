@@ -425,22 +425,22 @@ public class SemanaMelhoreUI extends ASemanaMelhoreUI {
 	}
 	
 	private void semanaEnabled(boolean valor) {
-		this.btnProcurar1.setEnabled(this.semanaDesignacao.isVideos() || valor);
+		this.btnProcurar1.setEnabled(this.isApresentacoes() || valor);
 		this.btnProcurar2.setEnabled(valor);
 		this.btnProcurar3.setEnabled(valor);
 		this.btnProcurar4.setEnabled(valor);
 		
-		this.cbEstudo1.setEnabled(this.semanaDesignacao.isVideos() || valor);
+		this.cbEstudo1.setEnabled(this.isApresentacoes() || valor);
 		this.cbEstudo2.setEnabled(valor);
 		this.cbEstudo3.setEnabled(valor);
 		this.cbEstudo4.setEnabled(valor);
 		
-		this.cbAjudante1.setEnabled(this.semanaDesignacao.isVideos() || valor);
+		this.cbAjudante1.setEnabled(this.isApresentacoes()  || valor);
 		this.cbAjudante2.setEnabled(valor);
 		this.cbAjudante3.setEnabled(valor);
 		this.cbAjudante4.setEnabled(valor);
 		
-		this.btnDetalhes1.setEnabled(this.semanaDesignacao.isVideos() || valor);
+		this.btnDetalhes1.setEnabled(this.isApresentacoes()  || valor);
 		this.btnDetalhes2.setEnabled(valor);
 		this.btnDetalhes3.setEnabled(valor);
 		this.btnDetalhes4.setEnabled(valor);
@@ -451,7 +451,7 @@ public class SemanaMelhoreUI extends ASemanaMelhoreUI {
 	}
 	
 	private void limparCampos() {
-		if (!this.semanaDesignacao.isVideos()) {
+		if (!this.isApresentacoes()) {
 			this.lbEstudante1.setText(SELECIONE);
 			this.cbEstudo1.removeAllItems();
 			this.cbAjudante1.setSelectedIndex(0);
@@ -813,5 +813,9 @@ public class SemanaMelhoreUI extends ASemanaMelhoreUI {
 			
 			cbAjudantes.setModel(new DefaultComboBoxModel(ajudantes.toArray()));
 		}
+	}
+	
+	private boolean isApresentacoes() {
+		return this.chVideos.isSelected() && "A".equals(this.sala);
 	}
 }
