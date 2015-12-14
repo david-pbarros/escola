@@ -15,9 +15,10 @@ public class Main {
 			public void run() {
 				Splash splash = new Splash(Main.width, Main.height);
 				splash.setVisible(true);
+
+				new Thread(()->{new Sincronizador().verificaSinc();}).start();
 			}
 		});
 		
-		new Thread(()->{new Sincronizador().verificaSinc();}).start();
 	}
 }

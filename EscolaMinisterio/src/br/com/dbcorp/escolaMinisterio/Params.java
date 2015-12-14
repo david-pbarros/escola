@@ -21,8 +21,8 @@ public class Params {
 					System.out.println("chave: " + key + " valor: " + props.get(key));
 				}
 	
-				props.put("verionNumber", 401);
-				props.put("versionName", "4.0.1");
+				props.put("verionNumber", 402);
+				props.put("versionName", "4.0.2");
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -37,7 +37,7 @@ public class Params {
 		return new FileInputStream(f);
 	}
 	
-	private static String getAppPath() {
+	public static String getAppPath() {
 		String url = Params.class.getProtectionDomain().getCodeSource().getLocation().getPath();
         File dir = new File(url);
         
