@@ -809,9 +809,15 @@ public class SemanaMelhoreUI extends ASemanaMelhoreUI {
 				}
 			}
 		
-			ajudantes = ajudantes.stream().filter(p->!designacao.getEstudante().getNome().equals(p)).collect(Collectors.toList());
+			if (ajudantes != null && !ajudantes.isEmpty()) {
+				if (designacao.getEstudante() != null) {
+					System.out.println(designacao.getId());
+					
+					ajudantes = ajudantes.stream().filter(p->!designacao.getEstudante().getNome().equals(p)).collect(Collectors.toList());
+				}
 			
-			cbAjudantes.setModel(new DefaultComboBoxModel(ajudantes.toArray()));
+				cbAjudantes.setModel(new DefaultComboBoxModel(ajudantes.toArray()));
+			}
 		}
 	}
 	
