@@ -1,6 +1,5 @@
 package br.com.dbcorp.escolaMinisterio;
 
-import java.io.File;
 import java.util.Calendar;
 import java.util.Properties;
 
@@ -34,7 +33,7 @@ public class Log {
 		if (!"DEBUG".equalsIgnoreCase(type)) {
 			Calendar cl = Calendar.getInstance(); 
 			
-			path = path + File.separator + "escola_" + cl.get(Calendar.YEAR) + (cl.get(Calendar.MONTH) + 1) + cl.get(Calendar.DAY_OF_MONTH) + ".log";
+			path = path + "escola_" + cl.get(Calendar.YEAR) + (cl.get(Calendar.MONTH) + 1) + cl.get(Calendar.DAY_OF_MONTH) + ".log";
 			
 			FileAppender fa = new FileAppender();
 			fa.setName("FileLogger");

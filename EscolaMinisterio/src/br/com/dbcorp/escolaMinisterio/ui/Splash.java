@@ -134,10 +134,7 @@ public class Splash extends JWindow {
 		bw.write("[DATABASE]");
 		bw.newLine();
 		bw.write("javax.persistence.jdbc.url=jdbc:sqlite:");
-		
-		String db = JOptionPane.showInputDialog("Caminho do banco de dados:", getAppPath() + File.separator + "escola.db");
-		
-		bw.write(db.replace("\\", "/"));
+		bw.write((getAppPath() + File.separator + "escola.db").replace("\\", "/"));
 		bw.newLine();
 		bw.write("eclipselink.ddl-generation=create-or-extend-tables");
 		bw.newLine();
@@ -151,25 +148,21 @@ public class Splash extends JWindow {
 		bw.newLine();
 		bw.write("[LOG]");
 		bw.newLine();
-		bw.write("logType=DEBUG");
+		bw.write("logType=ERRO");
 		bw.newLine();
 		bw.write("logPath=");
-		
-		String log = JOptionPane.showInputDialog("Caminho do diretorio de logs:", logPath.toString());
-		
-		bw.write(log.replace("\\", "/"));
-		
+		bw.write((logPath + File.separator).toString().replace("\\", "/"));
 		bw.newLine();
 		bw.write("[SINCRONISMO]");
 		bw.newLine();
 		bw.write("server=");
-		bw.write(JOptionPane.showInputDialog("URL do servidor de sincronismo:", "escolaministerio.jwdbcorp.dx.am"));
+		bw.write("escolaministerio.jwdbcorp.dx.am");
 		bw.newLine();
 		bw.write("congregacao=");
 		bw.write(JOptionPane.showInputDialog("Número da congregação:", "11111"));
 		bw.newLine();
 		bw.write("hash=");
-		bw.write(JOptionPane.showInputDialog("Chave pública:", "LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0NCk1JR2ZNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0R05BRENCaVFLQmdRQzNwbVVNVVEvNDRvN3h2TDJIUmhWUC8ycVYNCkEvTkRCRGZGdENrbFJldU1iTGNRa1k1UlVqU05JaFBZdlFpN3V3dG52NUdWZ1RaK1BreU55UmdPdnUvTGlhKysNCm4yeFJLMDhma05xdkxNR2trZFg0VWo5Q0V5U2hsNEFGRXZCeVpDTjFiOU52cGVWVzJ5dmY5eUl1eXVtUjV2SjgNCmxMbXVPSXZQZmpHTkkvUkJQd0lEQVFBQg0KLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0t"));
+		bw.write("LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0NCk1JR2ZNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0R05BRENCaVFLQmdRQzNwbVVNVVEvNDRvN3h2TDJIUmhWUC8ycVYNCkEvTkRCRGZGdENrbFJldU1iTGNRa1k1UlVqU05JaFBZdlFpN3V3dG52NUdWZ1RaK1BreU55UmdPdnUvTGlhKysNCm4yeFJLMDhma05xdkxNR2trZFg0VWo5Q0V5U2hsNEFGRXZCeVpDTjFiOU52cGVWVzJ5dmY5eUl1eXVtUjV2SjgNCmxMbXVPSXZQZmpHTkkvUkJQd0lEQVFBQg0KLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0t");
 		bw.flush();
 	}
 }
