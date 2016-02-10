@@ -9,14 +9,13 @@ import br.com.dbcorp.escolaMinisterio.entidades.Designacao;
 import br.com.dbcorp.escolaMinisterio.entidades.Estudante;
 import br.com.dbcorp.escolaMinisterio.entidades.Estudo;
 import br.com.dbcorp.escolaMinisterio.entidades.Genero;
-import br.com.dbcorp.escolaMinisterio.entidades.RemoveListener;
 import br.com.dbcorp.escolaMinisterio.exceptions.DuplicateKeyException;
 
 public class EstudanteGerenciador extends Gerenciador {
 	
 	@SuppressWarnings("unchecked")
 	public List<Estudante> listarEstudantesTodos(Genero genero) {
-		Query query = DataBaseHelper.createQuery("FROM Estudante e JOIN FETCH e.designacoes WHERE (e.excluido = false OR e.excluido IS NULL) AND e.genero = :genero")
+		Query query = DataBaseHelper.createQuery("FROM Estudante e JOIN FETCH e.designacoes WHERE (e.excluido = false OR e.excluido IS NULL) AND e.genero = :genero ORDER BY e.nome")
 				.setParameter("genero", genero);
 		
 		return query.getResultList();
@@ -25,7 +24,7 @@ public class EstudanteGerenciador extends Gerenciador {
 	@SuppressWarnings("unchecked")
 	public List<Estudante> listarEstudantes(Genero genero) {
 		Query query = DataBaseHelper.createQuery("FROM Estudante e JOIN FETCH e.designacoes WHERE (e.excluido = false OR e.excluido IS NULL) AND "
-			+ "(e.desabilitado = false OR e.desabilitado IS NULL) AND e.genero = :genero")
+			+ "(e.desabilitado = false OR e.desabilitado IS NULL) AND e.genero = :genero ORDER BY e.nome")
 				.setParameter("genero", genero);
 		
 		return query.getResultList();
@@ -34,7 +33,7 @@ public class EstudanteGerenciador extends Gerenciador {
 	@SuppressWarnings("unchecked")
 	public List<Estudante> listarEstudantes(Genero genero, String nome) {
 		Query query = DataBaseHelper.createQuery("FROM Estudante e JOIN FETCH e.designacoes WHERE (e.excluido = false OR e.excluido IS NULL) AND "
-			+ "(e.desabilitado = false OR e.desabilitado IS NULL) AND e.genero = :genero AND e.nome LIKE :nome")
+			+ "(e.desabilitado = false OR e.desabilitado IS NULL) AND e.genero = :genero AND e.nome LIKE :nome  ORDER BY e.nome")
 				.setParameter("genero", genero)
 				.setParameter("nome", "%" + nome + "%");
 		
@@ -54,19 +53,21 @@ public class EstudanteGerenciador extends Gerenciador {
 	
 	public void inserir(Estudante estudante) throws DuplicateKeyException {
 		Query query = DataBaseHelper.createQuery("FROM Estudante e WHERE (e.excluido = false OR e.excluido IS NULL) AND e.nome = :nome")
-				.setParameter("nome", estudante.getNome());
+				.setParameter("nome", estudante.getNome().trim());
 		
 		try {
 			query.getSingleResult();
 			throw new DuplicateKeyException();
 			
 		} catch (NoResultException exception) {
+			estudante.setNome(estudante.getNome().trim());
 			DataBaseHelper.persist(estudante);
 			
 		}
 	}
 
 	public void atualizar(Estudante estudante) {
+		estudante.setNome(estudante.getNome().trim());
 		DataBaseHelper.merge(estudante);
 	}
 	
@@ -75,12 +76,10 @@ public class EstudanteGerenciador extends Gerenciador {
 				.setParameter("idEstudante", estudante.getId());
 		
 		if (!query.getResultList().isEmpty()) {
-			DataBaseHelper.beginTX();
-			
 			estudante.setExcluido(true);
-			DataBaseHelper.mergeWTX(estudante);
-			new RemoveListener().onRemove(estudante);
 
+			DataBaseHelper.beginTX();
+			DataBaseHelper.mergeWTX(estudante);
 			DataBaseHelper.commitTX();
 			
 		} else {

@@ -51,6 +51,7 @@ public class EstudanteSinc {
 			con.setParameter("nome", estudante.getNome());
 			con.setParameter("desabilitado", estudante.isDesabilitado() ? 1 : 0);
 			con.setParameter("naoAjudante", estudante.isNaoAjudante() ? 1 : 0);
+			con.setParameter("excluidoLogico", estudante.isExcluido() ? 1 : 0);
 			
 			if (estudante.getUltimaDesignacao() != null) {
 				con.setParameter("ultimadesignacao", estudante.getUltimaDesignacao().format(Params.dateFormate()));
@@ -112,6 +113,7 @@ public class EstudanteSinc {
 				con.setParameter("observacao", estudante.getObservacao());
 				con.setParameter("desabilitado", estudante.isDesabilitado() ? 1 : 0);
 				con.setParameter("naoAjudante", estudante.isNaoAjudante() ? 1 : 0);
+				con.setParameter("excluidoLogico", estudante.isExcluido() ? 1 : 0);
 	
 				if (estudante.getUltimaDesignacao() != null) {
 					con.setParameter("ultimadesignacao", estudante.getUltimaDesignacao().format(Params.dateFormate()));

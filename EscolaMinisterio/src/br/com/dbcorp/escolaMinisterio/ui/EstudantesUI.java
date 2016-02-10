@@ -162,9 +162,10 @@ public class EstudantesUI extends InternalUI implements ActionListener, ListSele
 			model.setDesignacaoes(this.estudanteSelecionado.getEstudos());
 		}
 		
-		model.fireTableDataChanged();
 		
 		this.tableEstudo.setModel(model);
+		
+		model.fireTableDataChanged();
 		
 		if (this.estudanteSelecionado == null) {
 			this.txNome.setEditable(false);
@@ -410,6 +411,11 @@ public class EstudantesUI extends InternalUI implements ActionListener, ListSele
 	private void removerBanco() {
 		this.gerenciador.remover(this.estudanteSelecionado);
 		
+		this.estudanteSelecionado = null;
+		
+		int row = this.table.getSelectedRow();
+		((EstudanteTableModel) this.table.getModel()).fireTableRowsDeleted(row, row);
+
 		this.reset();
 	}
 	

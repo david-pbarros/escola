@@ -49,6 +49,7 @@ public class AjudanteSinc {
 			
 			con.setParameter("genero", ajudante.getGenero().ordinal());
 			con.setParameter("nome", ajudante.getNome());
+			con.setParameter("removidoLogico", ajudante.isExcluido() ? 1 : 0);
 			
 			if (ajudante.getUltimaDesignacao() != null) {
 				con.setParameter("ultimadesignacao", ajudante.getUltimaDesignacao().format(Params.dateFormate()));
@@ -93,6 +94,7 @@ public class AjudanteSinc {
 				
 				con.setParameter("nome", ajudante.getNome());
 				con.setParameter("id_online", ajudante.getIdOnline());
+				con.setParameter("removidoLogico", ajudante.isExcluido() ? 1 : 0);
 	
 				if (ajudante.getUltimaDesignacao() != null) {
 					con.setParameter("ultimadesignacao", ajudante.getUltimaDesignacao().format(Params.dateFormate()));

@@ -6,7 +6,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import br.com.dbcorp.escolaMinisterio.entidades.Ajudante;
-import br.com.dbcorp.escolaMinisterio.entidades.RemoveListener;
 import br.com.dbcorp.escolaMinisterio.exceptions.DuplicateKeyException;
 
 public class AjudanteGerenciador {
@@ -20,19 +19,21 @@ public class AjudanteGerenciador {
 	
 	public void inserir(Ajudante ajudante) throws DuplicateKeyException {
 		Query query = DataBaseHelper.createQuery("FROM Ajudante a WHERE (a.excluido = false OR a.excluido IS NULL ) AND a.nome = :nome")
-				.setParameter("nome", ajudante.getNome());
+				.setParameter("nome", ajudante.getNome().trim());
 		
 		try {
 			query.getSingleResult();
 			throw new DuplicateKeyException();
 			
 		} catch (NoResultException exception) {
+			ajudante.setNome(ajudante.getNome().trim());
 			DataBaseHelper.persist(ajudante);
 			
 		}
 	}
 	
 	public void atualizar(Ajudante ajudante) {
+		ajudante.setNome(ajudante.getNome().trim());
 		DataBaseHelper.merge(ajudante);
 	}
 	
@@ -41,12 +42,10 @@ public class AjudanteGerenciador {
 				.setParameter("idAjudante", ajudante.getId());
 		
 		if (!query.getResultList().isEmpty()) {
-			DataBaseHelper.beginTX();
-			
 			ajudante.setExcluido(true);
-			DataBaseHelper.mergeWTX(ajudante);
-			new RemoveListener().onRemove(ajudante);
 
+			DataBaseHelper.beginTX();
+			DataBaseHelper.mergeWTX(ajudante);
 			DataBaseHelper.commitTX();
 			
 		} else {
