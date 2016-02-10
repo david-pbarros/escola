@@ -1,10 +1,18 @@
 package br.com.dbcorp.escolaMinisterio.ui.dialog;
 
+import static br.com.dbcorp.escolaMinisterio.Params.getAppPath;
+
 import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -19,18 +27,17 @@ import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 
 import br.com.dbcorp.escolaMinisterio.Log;
-import br.com.dbcorp.escolaMinisterio.dataBase.Gerenciador;
 import br.com.dbcorp.escolaMinisterio.ui.InternalUI;
 import br.com.dbcorp.escolaMinisterio.ui.Params;
 
-public class DefragDialog extends JDialog implements ActionListener {
+public class DelBaseDialog extends JDialog implements ActionListener {
 	private static final long serialVersionUID = -5266823832368284482L;
 	
 	private JButton btnConfirma;
 	private JButton btnCancelar;
 	private InternalUI internalUI;
 	
-	public DefragDialog(InternalUI mainframe) {
+	public DelBaseDialog(InternalUI mainframe) {
 		setTitle("Aviso");
 		setResizable(false);
 		setModal(true);
@@ -81,16 +88,16 @@ public class DefragDialog extends JDialog implements ActionListener {
 				FormSpecs.DEFAULT_ROWSPEC,
 				FormSpecs.LINE_GAP_ROWSPEC,}));
 		
-		JLabel lblNewLabel = new JLabel("Este processo pode demorar alguns minutos.");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_1.add(lblNewLabel, "2, 3");
+		JLabel lblLine1 = new JLabel("A base de dados local ser\u00E1 apagada.");
+		lblLine1.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_1.add(lblLine1, "2, 3");
 		
-		JLabel lblDavidPereiraB = new JLabel("Alguns dados fragmentados ser\u00E3o apagados da base");
-		lblDavidPereiraB.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_1.add(lblDavidPereiraB, "2, 5, center, default");
+		JLabel lblLine2 = new JLabel("Ser\u00E1 necess\u00E1rio o sincronismo inicial.");
+		lblLine2.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_1.add(lblLine2, "2, 5, center, default");
 		
-		JLabel lblEmailDavidpbarroshotmailcom = new JLabel("Deseja Continuar?");
-		panel_1.add(lblEmailDavidpbarroshotmailcom, "2, 7, center, default");
+		JLabel lblLine3 = new JLabel("Processo Irreverss\u00EDvel, deseja continuar?");
+		panel_1.add(lblLine3, "2, 7, center, default");
 		
 		this.centerScreen();
 	}
@@ -110,14 +117,19 @@ public class DefragDialog extends JDialog implements ActionListener {
 			this.internalUI.setCursor(new Cursor(Cursor.WAIT_CURSOR));
 			
 			try {
-				new Gerenciador().desfragmentarBase();
+				Path iniPath = Paths.get(getAppPath() + File.separator + "escola.ini");
+				BufferedWriter bw = Files.newBufferedWriter(iniPath, StandardOpenOption.APPEND);
+				bw.newLine();
+				bw.write("resetBase=true");
+				bw.flush();
 			
 				this.internalUI.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-				JOptionPane.showMessageDialog(this, "Processo de de Desfragmentação da Base Finalizado.", "Informação", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this, "Reinicie o sistema.", "Informação", JOptionPane.INFORMATION_MESSAGE);
+				System.exit(0);
 				
 			} catch( Exception e) {
 				this.internalUI.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-				JOptionPane.showMessageDialog(this, "Erro no Processo de Desfragmentação da Base. Verificar detalhes no Log", "Erro", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, "Erro preparando a deleção da base local", "Erro", JOptionPane.ERROR_MESSAGE);
 				Log.getInstance().error("", e);
 				
 			} finally {

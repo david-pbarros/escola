@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 import br.com.dbcorp.escolaMinisterio.action.Action;
 import br.com.dbcorp.escolaMinisterio.action.AjudanteAction;
 import br.com.dbcorp.escolaMinisterio.action.AvaliacaoAction;
-import br.com.dbcorp.escolaMinisterio.action.BaseFragAction;
+import br.com.dbcorp.escolaMinisterio.action.ConfigAction;
 import br.com.dbcorp.escolaMinisterio.action.ContatoAction;
 import br.com.dbcorp.escolaMinisterio.action.EstudanteAction;
 import br.com.dbcorp.escolaMinisterio.action.EstudoAction;
@@ -168,9 +168,7 @@ public class MainFrame extends JFrame {
 		
 		itens.add(new SincronismoAction(this));
 		
-		if (this.exibe(this.gerenciador.getUser().getProfile().getItens(), ItensSeg.ITM_DEFRAG)) {
-			itens.add(new BaseFragAction(this));
-		}
+		itens.add(new ConfigAction(this));
 		
 		itens.add(new ContatoAction(this));
 		
