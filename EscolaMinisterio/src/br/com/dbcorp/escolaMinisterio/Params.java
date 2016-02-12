@@ -1,17 +1,13 @@
 package br.com.dbcorp.escolaMinisterio;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
+
+import br.com.dbcorp.escolaMinisterio.dataBase.DataBaseHelper;
 
 public class Params {
 	
@@ -66,50 +62,12 @@ public class Params {
 	
 	private static void resetDB() {
 		try {
-			Path iniPath = Paths.get(getAppPath() + File.separator + "escola.ini");
-			Path oldPath = Paths.get(getAppPath() + File.separator + "escola.old");
-		
-			if (Files.lines(iniPath).anyMatch(l->"resetBase=true".equalsIgnoreCase(l))) {
-				List<String> linhas = new ArrayList<>();
-				
-				Files.lines(iniPath).filter(l->!"resetBase=true".equalsIgnoreCase(l)).forEach(l->linhas.add(l));
-				
-				File file = iniPath.toFile();
-				file.renameTo(oldPath.toFile());
-				
-				
-				//Files.delete(iniPath);
-				
-				Files.createFile(iniPath);
-				
-				BufferedWriter bw = Files.newBufferedWriter(iniPath, StandardOpenOption.APPEND);
-				
-				for (String linha : linhas) {
-					bw.write(linha);
-					bw.newLine();
-				}
-				
-				bw.flush();
+			if (IniTools.hasLine("resetBase=true")) {
+				DataBaseHelper.resetDB(IniTools.obterValor("javax.persistence.jdbc.url"));
+				IniTools.apagarLinha("resetBase=true");
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
 		}
-		
-		
-		/*if (firstIni && "true".equalsIgnoreCase(Params.propriedades().getProperty("resetBase", "false"))) {
-		Path basePath = Paths.get(Params.propriedades().getProperty("javax.persistence.jdbc.url").replace("jdbc:sqlite:", ""));
-		
-		try {
-			Files.delete(basePath);
-			
-			rewriterINI();
-			
-			firstIni = false;
-
-		} catch (IOException e) {
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Erro apagando a base local.", "", JOptionPane.ERROR_MESSAGE);
-		}*/
 	}
 }
