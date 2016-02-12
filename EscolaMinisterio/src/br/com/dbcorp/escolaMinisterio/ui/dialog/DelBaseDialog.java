@@ -124,7 +124,7 @@ public class DelBaseDialog extends JDialog implements ActionListener {
 				bw.flush();
 			
 				this.internalUI.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-				JOptionPane.showMessageDialog(this, "Reinicie o sistema.", "Informação", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this, "O sistema deve ser reiniciado.", "Informação", JOptionPane.INFORMATION_MESSAGE);
 				System.exit(0);
 				
 			} catch( Exception e) {

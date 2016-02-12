@@ -12,7 +12,11 @@ import com.lowagie.text.pdf.AcroFields;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
 
+import br.com.dbcorp.escolaMinisterio.Log;
+
 public class iTextTest {
+	
+	private Log log = Log.getInstance();
 	
 	public static final String RESULT1 = "report/designacoes.pdf";
 	
@@ -53,41 +57,12 @@ public class iTextTest {
 				System.out.println(key);
 			}
 			
-			/*form.setField("Texto2_12", "teste");
-			
-			
-			form.setField("Text" + SUFIX.get(2) + NUMEROS_CAMPOS.get("tema"), "kleber");*/
-
-			/*des1
-			form.setField("Check Box1", "Yes");
-			form.setField("Check Box2", "Yes");
-			form.setField("Check Box3", "Yes");
-			*/
-			
-			/*des2
-			form.setField("Check Box.1", "Yes");
-			form.setField("Check Box.2", "Yes");
-			form.setField("Check Box.3", "Yes");
-			*/
-			
-			/*des3
-			form.setField("Check Box-1", "Yes");
-			form.setField("Check Box-2", "Yes");
-			form.setField("Check Box-3", "Yes");
-			*/
-			
-			/*des4
-			form.setField("Check Box_1", "Yes");
-			form.setField("Check Box_2", "Yes");
-			form.setField("Check Box_3", "Yes");
-			*/
-			
 			stamper.close();
 			reader.close();
 			
 			this.print(tempFile);
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.debug("", e);
 		}
 	}
 	
@@ -96,7 +71,7 @@ public class iTextTest {
 		try {
 			Desktop.getDesktop().open(tempFile);
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.debug("", e);
 		}
 	}
 	
@@ -104,10 +79,5 @@ public class iTextTest {
 		iTextTest itext = new iTextTest();
 		
 		itext.manipulate();
-		
-		
-		
-		
-		
 	}
 }

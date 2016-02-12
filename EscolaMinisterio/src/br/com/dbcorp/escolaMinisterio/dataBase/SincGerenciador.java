@@ -9,6 +9,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.Query;
 
+import br.com.dbcorp.escolaMinisterio.Log;
 import br.com.dbcorp.escolaMinisterio.entidades.Ajudante;
 import br.com.dbcorp.escolaMinisterio.entidades.Designacao;
 import br.com.dbcorp.escolaMinisterio.entidades.Estudante;
@@ -300,8 +301,7 @@ public class SincGerenciador extends Gerenciador {
 			return new Designacao();
 		
 		} catch (NonUniqueResultException e) {
-			System.out.println(idOnline);
-			e.printStackTrace();
+			Log.getInstance().info("Designação duplicada - id:" + idOnline, e);
 			
 			throw new RuntimeException();
 		}

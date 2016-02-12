@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import javax.swing.JOptionPane;
+
 import br.com.dbcorp.escolaMinisterio.dataBase.DataBaseHelper;
 
 public class Params {
@@ -30,7 +32,7 @@ public class Params {
 				props.put("versionName", "4.0.3");
 				
 			} catch (Exception e) {
-				e.printStackTrace();
+				Log.getInstance().error("Erro Lendo parametros de inicialização", e);
 			}
 		}
 		
@@ -56,8 +58,6 @@ public class Params {
     	}
     	
     	return dir.getParentFile().getParentFile().getPath().replaceAll("%20", " ").replaceAll("%23", "#").replaceAll("%c3%a3", "ã").replaceAll("%c3%b3", "ó");
-		
-		
 	}
 	
 	private static void resetDB() {
@@ -67,7 +67,10 @@ public class Params {
 				IniTools.apagarLinha("resetBase=true");
 			}
 		} catch (IOException ioe) {
-			ioe.printStackTrace();
+			String msg = "Erro preparando a deleção da base local";
+			
+			Log.getInstance().error(msg, ioe);
+			JOptionPane.showMessageDialog(null, "Erro preparando a deleção da base local", "Erro", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }
