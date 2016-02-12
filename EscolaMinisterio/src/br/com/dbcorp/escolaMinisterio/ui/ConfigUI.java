@@ -2,19 +2,26 @@ package br.com.dbcorp.escolaMinisterio.ui;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import org.jfree.util.Log;
 
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 
+import br.com.dbcorp.escolaMinisterio.IniTools;
 import br.com.dbcorp.escolaMinisterio.Params;
 import br.com.dbcorp.escolaMinisterio.dataBase.Gerenciador;
 import br.com.dbcorp.escolaMinisterio.entidades.ItemProfile;
@@ -36,6 +43,8 @@ public class ConfigUI extends InternalUI implements ActionListener {
 	private JTextField txBanco;
 	private JButton btnLog;
 	private JButton btnBase;
+	
+	private String dbPath;
 	
 	public ConfigUI() {
 		this.gerenciador = new Gerenciador();
@@ -117,11 +126,13 @@ public class ConfigUI extends InternalUI implements ActionListener {
 	
 	@Override
 	public void reset() {
+		this.dbPath = Params.propriedades().getProperty("javax.persistence.jdbc.url").replace("jdbc:sqlite:", "");
+		
 		this.txCong.setText(Params.propriedades().getProperty("congregacao"));
 		this.txServidor.setText(Params.propriedades().getProperty("server"));
 		this.txHash.setText(Params.propriedades().getProperty("hash"));
 		this.txLog.setText(Params.propriedades().getProperty("logPath"));
-		this.txBanco.setText(Params.propriedades().getProperty("javax.persistence.jdbc.url").replace("jdbc:sqlite:", ""));
+		this.txBanco.setText(this.dbPath);
 
 	}
 
@@ -135,9 +146,10 @@ public class ConfigUI extends InternalUI implements ActionListener {
 			new DelBaseDialog(this).setVisible(true);
 			
 		} else if (event.getSource() == this.btnLog) {
+			this.logFolderChoose();
 			
 		} else if (event.getSource() == this.btnBase) {
-			
+			this.dataBaseFolderChoose();
 		}
 	}
 
@@ -145,5 +157,57 @@ public class ConfigUI extends InternalUI implements ActionListener {
 		ItemProfile itemP = new ItemProfile(item);
 		
 		return itens.contains(itemP);
+	}
+	
+	private void logFolderChoose() {
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setDialogTitle("Caminho do Log");
+		fileChooser.setCurrentDirectory(new File(Params.propriedades().getProperty("logPath")));
+		fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		
+		if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+			try {
+				String path = fileChooser.getSelectedFile().getAbsolutePath();
+				path = path.replace("\\", "/") + "/";
+				
+				IniTools.modificarValor("logPath", path);
+				
+				this.txLog.setText(path);
+				
+				JOptionPane.showMessageDialog(this, "Alteração terá efeito após reiniciar o sistema.", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+			
+			} catch (IOException ex) {
+				String msg = "Erro modificando caminho do log";
+
+				Log.error(msg, ex);
+				JOptionPane.showMessageDialog(this, msg, "Erro", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+	}
+	
+	private void dataBaseFolderChoose() {
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setDialogTitle("Caminho do Banco de Dados");
+		fileChooser.setCurrentDirectory(new File(this.dbPath.substring(0, this.dbPath.lastIndexOf("/"))));
+		fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		
+		if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+			try {
+				String path = fileChooser.getSelectedFile().getAbsolutePath();
+				path = path.replace("\\", "/") + "/escola.db";
+				
+				IniTools.modificarValor("javax.persistence.jdbc.url", "jdbc:sqlite:" + path);
+				
+				this.txBanco.setText(path);
+				
+				JOptionPane.showMessageDialog(this, "Alteração terá efeito após reiniciar o sistema.", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+			
+			} catch (IOException ex) {
+				String msg = "Erro modificando caminho da base de dados";
+
+				Log.error(msg, ex);
+				JOptionPane.showMessageDialog(this, msg, "Erro", JOptionPane.ERROR_MESSAGE);
+			}
+		}
 	}
 }

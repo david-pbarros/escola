@@ -34,6 +34,20 @@ public class IniTools {
 	
 	public static void modificarValor(String chave, String valor) throws IOException {
 		IniTools.criaEstrutura();
+		
+		List<String> linhas = new ArrayList<>();
+		
+		Files.lines(oldPath).forEach(l->{
+			if (l.startsWith(chave)) {
+				l = chave + "=" + valor;
+			}
+			
+			linhas.add(l);
+		});
+		
+		IniTools.gravaNovoConteudo(linhas);
+		
+		Files.delete(oldPath);
 	}
 	
 	public static String obterValor(String chave) throws IOException {
