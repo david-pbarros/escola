@@ -56,6 +56,8 @@ public class ConfigUI extends InternalUI implements ActionListener {
 	private JButton btnLimparLog;
 	private JButton btnChangServ;
 	
+	private String successMsg = "Alteração terá efeito após reiniciar o sistema.";
+	
 	public ConfigUI() {
 		this.log = Log.getInstance();
 		
@@ -162,20 +164,24 @@ public class ConfigUI extends InternalUI implements ActionListener {
 		if (event.getSource() == this.btnDesfragmentar) {
 			new DefragDialog(this).setVisible(true);
 			
-		} else if (event.getSource() == this.btnApagarBaseLocal) {
-			new DelBaseDialog(this).setVisible(true);
-			
-		} else if (event.getSource() == this.btnChangServ) {
-			this.mudaServidor();
-			
-		} else if (event.getSource() == this.btnLog) {
-			this.logFolderChoose();
-			
-		} else if (event.getSource() == this.btnBase) {
-			this.dataBaseFolderChoose();
-		
 		} else if (event.getSource() == this.btnLimparLog) {
 			this.limparLog();
+		
+		} else {
+			if (event.getSource() == this.btnApagarBaseLocal) {
+				new DelBaseDialog(this).setVisible(true);
+			
+			} else if (event.getSource() == this.btnChangServ) {
+				this.mudaServidor();
+				
+			} else if (event.getSource() == this.btnLog) {
+				this.logFolderChoose();
+				
+			} else if (event.getSource() == this.btnBase) {
+				this.dataBaseFolderChoose();
+			}
+			
+			System.exit(0);
 		}
 	}
 
@@ -202,7 +208,7 @@ public class ConfigUI extends InternalUI implements ActionListener {
 				
 				this.txLog.setText(path);
 				
-				JOptionPane.showMessageDialog(this, "Alteração terá efeito após reiniciar o sistema.", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this, this.successMsg, "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
 			
 			} catch (IOException ex) {
 				String msg = "Erro modificando caminho do log";
@@ -232,7 +238,7 @@ public class ConfigUI extends InternalUI implements ActionListener {
 				
 				this.txBanco.setText(path);
 				
-				JOptionPane.showMessageDialog(this, "Alteração terá efeito após reiniciar o sistema.", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this, this.successMsg, "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
 			
 			} catch (IOException ex) {
 				String msg = "Erro modificando caminho da base de dados";
@@ -248,18 +254,20 @@ public class ConfigUI extends InternalUI implements ActionListener {
 			Path path = Paths.get(this.logPath);
 			
 			Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
-		         @Override
-		         public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-
-		        	 String temp = file.toString().replace("\\", "/");
-		        	 
-		        	 if (temp.endsWith(".log") && !temp.equals(log.actualFile())) {
-		            	 Files.delete(file);
-		             }
-		        	 
-		             return FileVisitResult.CONTINUE;
-		         }
-		     });
+				@Override
+				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+					String temp = file.toString().replace("\\", "/");
+					 
+					if (temp.endsWith(".log") && !temp.equals(log.actualFile())) {
+						Files.delete(file);
+					}
+						 
+					return FileVisitResult.CONTINUE;
+				}
+		    });
+			
+			JOptionPane.showMessageDialog(this, "Arquivos apagados.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+			
 		} catch (IOException ex) {
 			String msg = "Erro limpando os logs";
 
@@ -272,7 +280,7 @@ public class ConfigUI extends InternalUI implements ActionListener {
 		try {
 			IniTools.modificarValor("server", this.txServidor.getText());
 			
-			JOptionPane.showMessageDialog(this, "Endereço modificado. Reinicie o sistema.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(this, this.successMsg, "Sucesso", JOptionPane.INFORMATION_MESSAGE);
 			
 		} catch (IOException ex) {
 			String msg = "Não foi possível modificar o endereço do servidor.";

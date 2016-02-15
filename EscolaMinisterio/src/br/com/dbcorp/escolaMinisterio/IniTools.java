@@ -14,7 +14,6 @@ public class IniTools {
 	private static Path iniPath = Paths.get(Params.getAppPath() + File.separator + "escola.ini");
 	private static Path oldPath = Paths.get(Params.getAppPath() + File.separator + "escola.old");
 	
-	
 	public static boolean hasLine(String line) throws IOException {
 		boolean retorno = false;
 		
@@ -74,6 +73,8 @@ public class IniTools {
 	private static void criaEstrutura() throws IOException {
 		File file = iniPath.toFile();
 		file.renameTo(oldPath.toFile());
+		
+		Files.deleteIfExists(iniPath);
 		
 		Files.createFile(iniPath);
 	}
