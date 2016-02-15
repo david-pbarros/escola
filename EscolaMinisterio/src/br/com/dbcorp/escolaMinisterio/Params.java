@@ -3,13 +3,8 @@ package br.com.dbcorp.escolaMinisterio;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-
-import javax.swing.JOptionPane;
-
-import br.com.dbcorp.escolaMinisterio.dataBase.DataBaseHelper;
 
 public class Params {
 	
@@ -17,8 +12,6 @@ public class Params {
 
 	public synchronized static Properties propriedades() {
 		if (props == null) {
-			resetDB();
-			
 			props = new Properties();
 			
 			try {
@@ -58,19 +51,5 @@ public class Params {
     	}
     	
     	return dir.getParentFile().getParentFile().getPath().replaceAll("%20", " ").replaceAll("%23", "#").replaceAll("%c3%a3", "ã").replaceAll("%c3%b3", "ó");
-	}
-	
-	private static void resetDB() {
-		try {
-			if (IniTools.hasLine("resetBase=true")) {
-				DataBaseHelper.resetDB(IniTools.obterValor("javax.persistence.jdbc.url"));
-				IniTools.apagarLinha("resetBase=true");
-			}
-		} catch (IOException ioe) {
-			String msg = "Erro preparando a deleção da base local";
-			
-			Log.getInstance().error(msg, ioe);
-			JOptionPane.showMessageDialog(null, "Erro preparando a deleção da base local", "Erro", JOptionPane.ERROR_MESSAGE);
-		}
 	}
 }

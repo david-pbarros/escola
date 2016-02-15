@@ -13,12 +13,15 @@ import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
+import java.util.function.Consumer;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JWindow;
 
+import br.com.dbcorp.escolaMinisterio.IniTools;
 import br.com.dbcorp.escolaMinisterio.Log;
 import br.com.dbcorp.escolaMinisterio.dataBase.DataBaseHelper;
 import br.com.dbcorp.escolaMinisterio.entidades.Estudo;
@@ -64,6 +67,8 @@ public class Splash extends JWindow {
 			public void run() {
 				try {
 					verificarInicializacao();
+					
+					new Thread(()->{new Sincronizador().verificaSinc();}).start();
 					
 					DataBaseHelper.find(Estudo.class, 1);//soh pra carregar o banco
 					
@@ -128,6 +133,12 @@ public class Splash extends JWindow {
 		} catch (FileAlreadyExistsException faex) {
 			System.out.println("Diretorio de Log já existente.");
 		}
+
+		copyDB();
+		
+		resetDB();
+		
+		copyLog();
 	}
 	
 	private static void preencheIni(BufferedWriter bw) throws IOException {
@@ -164,6 +175,77 @@ public class Splash extends JWindow {
 		bw.write("hash=");
 		bw.write("LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0NCk1JR2ZNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0R05BRENCaVFLQmdRQzNwbVVNVVEvNDRvN3h2TDJIUmhWUC8ycVYNCkEvTkRCRGZGdENrbFJldU1iTGNRa1k1UlVqU05JaFBZdlFpN3V3dG52NUdWZ1RaK1BreU55UmdPdnUvTGlhKysNCm4yeFJLMDhma05xdkxNR2trZFg0VWo5Q0V5U2hsNEFGRXZCeVpDTjFiOU52cGVWVzJ5dmY5eUl1eXVtUjV2SjgNCmxMbXVPSXZQZmpHTkkvUkJQd0lEQVFBQg0KLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0t");
 		bw.flush();
+	}
+	
+	private static void resetDB() {
+		try {
+			if (IniTools.hasLine("resetBase=true")) {
+				DataBaseHelper.resetDB(IniTools.obterValor("javax.persistence.jdbc.url"));
+				IniTools.apagarLinha("resetBase=true");
+			}
+		} catch (IOException ioe) {
+			String msg = "Erro preparando a deleção da base local";
+			
+			Log.getInstance().error(msg, ioe);
+			JOptionPane.showMessageDialog(null, msg, "Erro", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	private static void copyLog() {
+		String msg = "Erro movendo conteudo do log";
+		
+		try {
+			if (IniTools.hasLine("oldLog=")) {
+				String oldP = IniTools.obterValor("oldLog");
+				
+				Path old = Paths.get(oldP);
+				Path novo = Paths.get(IniTools.obterValor("logPath"));
+				
+	            Consumer<? super Path> action = new Consumer<Path>(){
+
+	                @Override
+	                public void accept(Path t) {
+	                    try {
+	                        String destinationPath = t.toString().replace(old.toString(), novo.toString());
+	                        
+	                        if ( !Files.exists(Paths.get(destinationPath)) ) {
+	                        	Files.move(t, Paths.get(destinationPath));
+	                        }
+	                    } catch (IOException ioe) {
+	                    	Log.getInstance().error(msg, ioe);
+	            			JOptionPane.showMessageDialog(null, msg, "Erro", JOptionPane.ERROR_MESSAGE);
+	                    }
+	                }
+	            };
+	            
+	            Files.walk(old).forEach(action );
+				
+				IniTools.apagarLinha("oldLog=" + oldP);
+			}
+		} catch (IOException ioe) {
+			Log.getInstance().error(msg, ioe);
+			JOptionPane.showMessageDialog(null, msg, "Erro", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	private static void copyDB() {
+		String msg = "Erro movendo base de dados";
+		
+		try {
+			if (IniTools.hasLine("oldBD=")) {
+				String oldP = IniTools.obterValor("oldBD");
+				
+				Path old = Paths.get(oldP + (oldP.endsWith("/") ? "escola.db" : "/escola.db"));
+				Path novo = Paths.get(IniTools.obterValor("javax.persistence.jdbc.url").replace("jdbc:sqlite:", ""));
+				
+				Files.move(old, novo, StandardCopyOption.REPLACE_EXISTING) ;
+				
+				IniTools.apagarLinha("oldBD=" + oldP);
+			}
+		} catch (IOException ioe) {
+			Log.getInstance().error(msg, ioe);
+			JOptionPane.showMessageDialog(null, msg, "Erro", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 }
 

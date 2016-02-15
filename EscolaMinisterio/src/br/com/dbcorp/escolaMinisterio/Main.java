@@ -2,7 +2,6 @@ package br.com.dbcorp.escolaMinisterio;
 
 import java.awt.EventQueue;
 
-import br.com.dbcorp.escolaMinisterio.sincronismo.Sincronizador;
 import br.com.dbcorp.escolaMinisterio.ui.Splash;
 
 public class Main {
@@ -15,8 +14,6 @@ public class Main {
 			public void run() {
 				Splash splash = new Splash(Main.width, Main.height);
 				splash.setVisible(true);
-
-				new Thread(()->{new Sincronizador().verificaSinc();}).start();
 			}
 		});
 		

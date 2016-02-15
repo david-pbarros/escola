@@ -16,7 +16,15 @@ public class IniTools {
 	
 	
 	public static boolean hasLine(String line) throws IOException {
-		return Files.lines(iniPath).anyMatch(l->line.equalsIgnoreCase(l));
+		boolean retorno = false;
+		
+		retorno = Files.lines(iniPath).anyMatch(l->line.equalsIgnoreCase(l));
+		
+		if ( !retorno ) {
+			retorno = Files.lines(iniPath).anyMatch(l->l.startsWith(line));
+		}
+		
+		return retorno;
 	}
 	
 	
@@ -56,6 +64,13 @@ public class IniTools {
 		return line.length() > 0 ? line.substring(line.indexOf("=") + 1) : line;
 	}
 
+	public static void incluiLinha(String linha) throws IOException {
+		BufferedWriter bw = Files.newBufferedWriter(iniPath, StandardOpenOption.APPEND);
+		bw.newLine();
+		bw.write(linha);
+		bw.flush();
+	}
+	
 	private static void criaEstrutura() throws IOException {
 		File file = iniPath.toFile();
 		file.renameTo(oldPath.toFile());

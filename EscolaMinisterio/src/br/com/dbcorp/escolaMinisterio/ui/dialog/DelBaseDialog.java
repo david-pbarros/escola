@@ -1,18 +1,10 @@
 package br.com.dbcorp.escolaMinisterio.ui.dialog;
 
-import static br.com.dbcorp.escolaMinisterio.Params.getAppPath;
-
 import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -26,6 +18,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 
+import br.com.dbcorp.escolaMinisterio.IniTools;
 import br.com.dbcorp.escolaMinisterio.Log;
 import br.com.dbcorp.escolaMinisterio.ui.InternalUI;
 import br.com.dbcorp.escolaMinisterio.ui.Params;
@@ -117,11 +110,7 @@ public class DelBaseDialog extends JDialog implements ActionListener {
 			this.internalUI.setCursor(new Cursor(Cursor.WAIT_CURSOR));
 			
 			try {
-				Path iniPath = Paths.get(getAppPath() + File.separator + "escola.ini");
-				BufferedWriter bw = Files.newBufferedWriter(iniPath, StandardOpenOption.APPEND);
-				bw.newLine();
-				bw.write("resetBase=true");
-				bw.flush();
+				IniTools.incluiLinha("resetBase=true");
 			
 				this.internalUI.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 				JOptionPane.showMessageDialog(this, "O sistema deve ser reiniciado.", "Informação", JOptionPane.INFORMATION_MESSAGE);

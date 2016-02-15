@@ -45,6 +45,7 @@ public class ConfigUI extends InternalUI implements ActionListener {
 	private JButton btnBase;
 	
 	private String dbPath;
+	private String logPath;
 	
 	public ConfigUI() {
 		this.gerenciador = new Gerenciador();
@@ -127,13 +128,13 @@ public class ConfigUI extends InternalUI implements ActionListener {
 	@Override
 	public void reset() {
 		this.dbPath = Params.propriedades().getProperty("javax.persistence.jdbc.url").replace("jdbc:sqlite:", "");
+		this.logPath = Params.propriedades().getProperty("logPath");
 		
 		this.txCong.setText(Params.propriedades().getProperty("congregacao"));
 		this.txServidor.setText(Params.propriedades().getProperty("server"));
 		this.txHash.setText(Params.propriedades().getProperty("hash"));
-		this.txLog.setText(Params.propriedades().getProperty("logPath"));
+		this.txLog.setText(this.logPath);
 		this.txBanco.setText(this.dbPath);
-
 	}
 
 	//ActionListener
@@ -162,7 +163,7 @@ public class ConfigUI extends InternalUI implements ActionListener {
 	private void logFolderChoose() {
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setDialogTitle("Caminho do Log");
-		fileChooser.setCurrentDirectory(new File(Params.propriedades().getProperty("logPath")));
+		fileChooser.setCurrentDirectory(new File(this.logPath));
 		fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		
 		if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
@@ -171,6 +172,8 @@ public class ConfigUI extends InternalUI implements ActionListener {
 				path = path.replace("\\", "/") + "/";
 				
 				IniTools.modificarValor("logPath", path);
+				
+				IniTools.incluiLinha("oldLog=" + this.logPath);
 				
 				this.txLog.setText(path);
 				
@@ -186,9 +189,11 @@ public class ConfigUI extends InternalUI implements ActionListener {
 	}
 	
 	private void dataBaseFolderChoose() {
+		String dbDirectory = this.dbPath.substring(0, this.dbPath.lastIndexOf("/"));
+		
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setDialogTitle("Caminho do Banco de Dados");
-		fileChooser.setCurrentDirectory(new File(this.dbPath.substring(0, this.dbPath.lastIndexOf("/"))));
+		fileChooser.setCurrentDirectory(new File(dbDirectory));
 		fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		
 		if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
@@ -197,6 +202,8 @@ public class ConfigUI extends InternalUI implements ActionListener {
 				path = path.replace("\\", "/") + "/escola.db";
 				
 				IniTools.modificarValor("javax.persistence.jdbc.url", "jdbc:sqlite:" + path);
+				
+				IniTools.incluiLinha("oldBD=" + dbDirectory);
 				
 				this.txBanco.setText(path);
 				

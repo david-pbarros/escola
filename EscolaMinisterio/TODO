@@ -20,7 +20,7 @@ Programa:
 		- OK: Local do LOG;
 		- OK: Local do banco de dados;
 		- OK: Opção para apagar banco de dados local;
-		- Mover arquivos de pastas atuais para nova (log e banco);
+		- OK: Mover arquivos de pastas atuais para nova (log e banco);
 		- Btn para limpar pasta de log
 
 	Verificar problemas no caminho de execução com espaços no nome
