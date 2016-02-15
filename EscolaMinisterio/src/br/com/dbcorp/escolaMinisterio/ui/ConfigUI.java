@@ -4,6 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -14,14 +20,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import org.jfree.util.Log;
-
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 
 import br.com.dbcorp.escolaMinisterio.IniTools;
+import br.com.dbcorp.escolaMinisterio.Log;
 import br.com.dbcorp.escolaMinisterio.Params;
 import br.com.dbcorp.escolaMinisterio.dataBase.Gerenciador;
 import br.com.dbcorp.escolaMinisterio.entidades.ItemProfile;
@@ -31,6 +36,8 @@ import br.com.dbcorp.escolaMinisterio.ui.dialog.DelBaseDialog;
 
 public class ConfigUI extends InternalUI implements ActionListener {
 	private static final long serialVersionUID = -6877743249664668740L;
+	
+	private Log log;
 	
 	private Gerenciador gerenciador;
 	
@@ -46,8 +53,11 @@ public class ConfigUI extends InternalUI implements ActionListener {
 	
 	private String dbPath;
 	private String logPath;
+	private JButton btnLimparLog;
 	
 	public ConfigUI() {
+		this.log = Log.getInstance();
+		
 		this.gerenciador = new Gerenciador();
 		
 		JPanel dbPanel = new JPanel();
@@ -68,6 +78,8 @@ public class ConfigUI extends InternalUI implements ActionListener {
 				FormSpecs.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("default:grow"),
 				FormSpecs.RELATED_GAP_COLSPEC,
+				FormSpecs.DEFAULT_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
 				FormSpecs.DEFAULT_COLSPEC,},
 			new RowSpec[] {
 				FormSpecs.DEFAULT_ROWSPEC,
@@ -84,6 +96,7 @@ public class ConfigUI extends InternalUI implements ActionListener {
 		this.btnApagarBaseLocal = new JButton("Apagar Base Local");
 		this.btnLog = new JButton("...");
 		this.btnBase = new JButton("...");
+		this.btnLimparLog = new JButton("Limpar");
 		
 		this.txCong = new JTextField();
 		this.txServidor = new JTextField();
@@ -95,6 +108,7 @@ public class ConfigUI extends InternalUI implements ActionListener {
 		this.btnApagarBaseLocal.addActionListener(this);
 		this.btnLog.addActionListener(this);
 		this.btnBase.addActionListener(this);
+		this.btnLimparLog.addActionListener(this);
 		
 		this.txCong.setEditable(false);
 		this.txLog.setEditable(false);
@@ -109,17 +123,18 @@ public class ConfigUI extends InternalUI implements ActionListener {
 		}
 
 		iniPanel.add(new JLabel("Nr. Congrega\u00E7\u00E3o:"), "1, 1, right, default");
-		iniPanel.add(this.txCong, "3, 1, 3, 1, fill, default");
+		iniPanel.add(this.txCong, "3, 1, 5, 1, fill, default");
 		iniPanel.add(new JLabel("Servidor Sincronismo:"), "1, 3, right, default");
-		iniPanel.add(this.txServidor, "3, 3, 3, 1, fill, default");
+		iniPanel.add(this.txServidor, "3, 3, 5, 1, fill, default");
 		iniPanel.add(new JLabel("Chave P\u00FAblica:"), "1, 5, right, default");
-		iniPanel.add(this.txHash, "3, 5, 3, 1, fill, default");
+		iniPanel.add(this.txHash, "3, 5, 5, 1, fill, default");
 		iniPanel.add(new JLabel("Caminho do Log:"), "1, 7, right, default");
 		iniPanel.add(this.txLog, "3, 7, fill, default");
 		iniPanel.add(this.btnLog, "5, 7");
+		iniPanel.add(this.btnLimparLog, "7, 7");
 		iniPanel.add(new JLabel("Caminho do Banco de dados:"), "1, 9, right, default");
-		iniPanel.add(this.txBanco, "3, 9, fill, default");
-		iniPanel.add(this.btnBase, "5, 9");
+		iniPanel.add(this.txBanco, "3, 9, 3, 1, fill, default");
+		iniPanel.add(this.btnBase, "7, 9");
 		
 		getContentPane().add(dbPanel, BorderLayout.NORTH);
 		getContentPane().add(iniPanel, BorderLayout.CENTER);
@@ -151,6 +166,9 @@ public class ConfigUI extends InternalUI implements ActionListener {
 			
 		} else if (event.getSource() == this.btnBase) {
 			this.dataBaseFolderChoose();
+		
+		} else if (event.getSource() == this.btnLimparLog) {
+			this.limparLog();
 		}
 	}
 
@@ -182,7 +200,7 @@ public class ConfigUI extends InternalUI implements ActionListener {
 			} catch (IOException ex) {
 				String msg = "Erro modificando caminho do log";
 
-				Log.error(msg, ex);
+				this.log.error(msg, ex);
 				JOptionPane.showMessageDialog(this, msg, "Erro", JOptionPane.ERROR_MESSAGE);
 			}
 		}
@@ -212,9 +230,34 @@ public class ConfigUI extends InternalUI implements ActionListener {
 			} catch (IOException ex) {
 				String msg = "Erro modificando caminho da base de dados";
 
-				Log.error(msg, ex);
+				this.log.error(msg, ex);
 				JOptionPane.showMessageDialog(this, msg, "Erro", JOptionPane.ERROR_MESSAGE);
 			}
+		}
+	}
+	
+	private void limparLog() {
+		try {
+			Path path = Paths.get(this.logPath);
+			
+			Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
+		         @Override
+		         public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+
+		        	 String temp = file.toString().replace("\\", "/");
+		        	 
+		        	 if (temp.endsWith(".log") && !temp.equals(log.actualFile())) {
+		            	 Files.delete(file);
+		             }
+		        	 
+		             return FileVisitResult.CONTINUE;
+		         }
+		     });
+		} catch (IOException ex) {
+			String msg = "Erro limpando os logs";
+
+			this.log.error(msg, ex);
+			JOptionPane.showMessageDialog(this, msg, "Erro", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

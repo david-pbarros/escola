@@ -21,7 +21,8 @@ Programa:
 		- OK: Local do banco de dados;
 		- OK: Opção para apagar banco de dados local;
 		- OK: Mover arquivos de pastas atuais para nova (log e banco);
-		- Btn para limpar pasta de log
+		- OK: Btn para limpar pasta de log;
+		- Mudar servidor;
 
 	Verificar problemas no caminho de execução com espaços no nome
 	Deleção de designações;

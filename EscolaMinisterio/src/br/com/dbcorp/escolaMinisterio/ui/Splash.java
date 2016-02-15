@@ -30,7 +30,7 @@ import br.com.dbcorp.escolaMinisterio.ui.dialog.LogonDialog;
 
 public class Splash extends JWindow {
 	private static final long serialVersionUID = -7952839849461887170L;
-
+	
 	private static Path logPath = Paths.get(getAppPath() + File.separator + "Log");
 	
 	private int width;
@@ -75,11 +75,16 @@ public class Splash extends JWindow {
 					Thread.sleep(500);
 
 					new LogonDialog(splash).setVisible(true);
+					
+					Log.getInstance().error("teste");
+					
 						
 				} catch (Exception e) {
-					System.out.println(e);
+					String msg = "Erro ao iniciar o aplicativo.";
 					
-					JOptionPane.showMessageDialog(splash, "Erro ao iniciar o aplicativo.", "", JOptionPane.ERROR_MESSAGE);
+					Log.getInstance().error(msg, e);
+					
+					JOptionPane.showMessageDialog(splash, msg, "", JOptionPane.ERROR_MESSAGE);
 					
 					splash.dispose();
 				}

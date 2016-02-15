@@ -20,6 +20,10 @@ public class Params {
 				for(Object key : props.keySet()) {
 					System.out.println("chave: " + key + " valor: " + props.get(key));
 				}
+				
+				if ( !props.getProperty("logPath").endsWith("/") ) {
+					props.put("logPath", props.getProperty("logPath") + "/");
+				}
 	
 				props.put("verionNumber", 403);
 				props.put("versionName", "4.0.3");

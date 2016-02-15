@@ -14,14 +14,15 @@ public class Log {
 	private static Log log;
 	
 	private Logger logger;
+
+	String path;
 	
 	private Log() {
 		String type = "DEBUG";
-		String path = null;
 		
 		try {
 			type = IniTools.obterValor("logType");
-			path = IniTools.obterValor("logPath");
+			this.path = IniTools.obterValor("logPath");
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -36,10 +37,10 @@ public class Log {
 		//add appender to any Logger (here is root)
 		Logger.getRootLogger().addAppender(console);
 		
-		if (!"DEBUG".equalsIgnoreCase(type) && path != null) {
+		if (!"DEBUG".equalsIgnoreCase(type) && this.path != null && !this.path.equals("")) {
 			Calendar cl = Calendar.getInstance(); 
 			
-			path = path + "escola_" + cl.get(Calendar.YEAR) + (cl.get(Calendar.MONTH) + 1) + cl.get(Calendar.DAY_OF_MONTH) + ".log";
+			this.path = this.path + (this.path.endsWith("/") ? "" : "/" )+ "escola_" + cl.get(Calendar.YEAR) + (cl.get(Calendar.MONTH) + 1) + cl.get(Calendar.DAY_OF_MONTH) + ".log";
 			
 			FileAppender fa = new FileAppender();
 			fa.setName("FileLogger");
@@ -63,6 +64,10 @@ public class Log {
 		}
 		
 		return log;
+	}
+	
+	public String actualFile() {
+		return this.path;
 	}
 	
 	public void debug(String message) {
