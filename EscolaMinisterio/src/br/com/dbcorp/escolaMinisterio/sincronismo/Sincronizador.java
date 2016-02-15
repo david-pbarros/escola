@@ -87,7 +87,7 @@ public class Sincronizador {
 				}
 			}
 		} catch (Exception ex) {
-			Params.propriedades().put("doSinc", true);
+			this.log.error("Erro verificando sincronismo", ex);
 		}
 	}
 	

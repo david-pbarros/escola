@@ -116,7 +116,7 @@ public class AjudantesUI extends InternalUI implements TableModelListener, Actio
 		if (this.table.getSelectedRow() > -1 && ajudantes.size() > this.table.getSelectedRow()) {
 			this.ajudanteSelecionado = ajudantes.get(this.table.getSelectedRow());
 			
-			this.btnRemove.setVisible(true);
+			this.btnRemove.setVisible(true && Params.isOnLineMode());
 		}
 	}
 
@@ -127,7 +127,7 @@ public class AjudantesUI extends InternalUI implements TableModelListener, Actio
 	    	
 	    	if (!model.getAjudantes().isEmpty()) {
 	    		this.ajudantesSelecionados.add(model.getAjudantes().get(event.getFirstRow()));
-	    		this.btnSalvar.setVisible(true);
+	    		this.btnSalvar.setVisible(true && Params.isOnLineMode());
 	    	}
 	    }
 	}
@@ -142,7 +142,7 @@ public class AjudantesUI extends InternalUI implements TableModelListener, Actio
 			
 			@Override
 			public void keyTyped(KeyEvent e) {
-				btnSalvar.setVisible(true);
+				btnSalvar.setVisible(true && Params.isOnLineMode());
 			}
 			
 			@Override
@@ -173,6 +173,8 @@ public class AjudantesUI extends InternalUI implements TableModelListener, Actio
 		this.btnSalvar.setToolTipText("Salvar");
 		this.btnRemove.setToolTipText("Remover");
 		this.btnSair.setToolTipText("Sair");
+		
+		this.btnNovo.setVisible(Params.isOnLineMode());
 	}
 	
 	public void reset() {

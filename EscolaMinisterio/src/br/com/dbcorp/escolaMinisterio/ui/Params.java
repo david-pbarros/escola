@@ -149,4 +149,8 @@ public class Params {
 		
 		return dateTimeFormatter;
 	}
+	
+	public static boolean isOnLineMode() {
+		return !br.com.dbcorp.escolaMinisterio.Params.isOffLine();
+	}
 }

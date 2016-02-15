@@ -11,6 +11,8 @@ import java.util.Properties;
 public class Params {
 	
 	private static Properties props;
+	
+	private static boolean offLine = false;
 
 	public synchronized static Properties propriedades() {
 		if (props == null) {
@@ -45,5 +47,13 @@ public class Params {
 	
 	public static Path getAppPath() {
 		return Paths.get(".").toAbsolutePath().normalize();
+	}
+	
+	public static void setOffLineMode() {
+		offLine = true;
+	}
+	
+	public static boolean isOffLine() {
+		return offLine;
 	}
 }

@@ -228,7 +228,7 @@ public class EstudantesUI extends InternalUI implements ActionListener, ListSele
 			
 			this.estudanteSelecionado.reLoad();
 			
-			this.btnRemove.setVisible(true);
+			this.btnRemove.setVisible(true && Params.isOnLineMode());
 			this.btnHistorico.setVisible(true);
 		}
 		
@@ -249,7 +249,7 @@ public class EstudantesUI extends InternalUI implements ActionListener, ListSele
 	    	EstudanteTableModel model = (EstudanteTableModel)event.getSource();
 	    	this.estudantesSelecionados.add(model.getEstudantes().get(event.getFirstRow()));
 	    	
-	    	this.btnSalvar.setVisible(true);
+	    	this.btnSalvar.setVisible(true && Params.isOnLineMode());
 	    }
 	}
 	
@@ -263,7 +263,7 @@ public class EstudantesUI extends InternalUI implements ActionListener, ListSele
 			
 			@Override
 			public void keyTyped(KeyEvent e) {
-				btnSalvar.setVisible(true);
+				btnSalvar.setVisible(true && Params.isOnLineMode());
 			}
 			
 			@Override
@@ -296,6 +296,8 @@ public class EstudantesUI extends InternalUI implements ActionListener, ListSele
 		this.btnSalvar.setToolTipText("Salvar");
 		this.btnRemove.setToolTipText("Remover");
 		this.btnSair.setToolTipText("Sair");
+		
+		this.btnNovo.setVisible(Params.isOnLineMode());
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -360,7 +362,7 @@ public class EstudantesUI extends InternalUI implements ActionListener, ListSele
 		this.txObservacao.addKeyListener(new KeyListener() {
 			
 			public void keyTyped(KeyEvent e) {
-				btnSalvar.setVisible(true);
+				btnSalvar.setVisible(true && Params.isOnLineMode());
 			}
 			
 			public void keyReleased(KeyEvent e) {}

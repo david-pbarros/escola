@@ -103,9 +103,17 @@ public class DesignacoesUI extends InternalUI implements ActionListener, ItemLis
 		
 		this.reset();
 		
-		if ((boolean)br.com.dbcorp.escolaMinisterio.Params.propriedades().get("doSinc")) {
+		Boolean sinc = (Boolean)br.com.dbcorp.escolaMinisterio.Params.propriedades().get("doSinc");
+		
+		if (sinc == null) {
+			br.com.dbcorp.escolaMinisterio.Params.setOffLineMode();
+			
+			JOptionPane.showMessageDialog(null, "Não foi possível conectar ao servidor de dados. Não será possivel modificar os dados!", "Erro", JOptionPane.WARNING_MESSAGE);
+			
+		} else if (sinc) {
 			int response = JOptionPane.showConfirmDialog(null, "Recomendamos um sincronismo com a WEB. Deseja Realizar?", "Sincronizar?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-		    if (response == JOptionPane.YES_OPTION) {
+		    
+			if (response == JOptionPane.YES_OPTION) {
 		    	new SincDialog(SincDialog.GERAL).setVisible(true);
 		    }
 		}
