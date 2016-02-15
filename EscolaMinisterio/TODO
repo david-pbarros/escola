@@ -15,17 +15,16 @@ Programa:
 	OK - Ajudantes apresentar em ordem alfabética;
 	OK - Ao iniciar sem config criar config básica só perguntando numero da cong;
 	OK - Adicionar de alguma forma o log para pegar todos os erros;
-	
-	Tela para config:
-		- OK: Numero da cong (não editável);
-		- OK: Local do LOG;
-		- OK: Local do banco de dados;
-		- OK: Opção para apagar banco de dados local;
-		- OK: Mover arquivos de pastas atuais para nova (log e banco);
-		- OK: Btn para limpar pasta de log;
-		- OK: Mudar servidor;
+	OK - Tela para config:
+			- OK: Numero da cong (não editável);
+			- OK: Local do LOG;
+			- OK: Local do banco de dados;
+			- OK: Opção para apagar banco de dados local;
+			- OK: Mover arquivos de pastas atuais para nova (log e banco);
+			- OK: Btn para limpar pasta de log;
+			- OK: Mudar servidor;
 
-	Verificar problemas no caminho de execução com espaços no nome
+	OK - Verificar problemas no caminho de execução com espaços no nome
 	Deleção de designações;
 	Verificar problemas no marcação de apresentações e videos;
 	Erro ao iniciar se não tem aceso a base remota;

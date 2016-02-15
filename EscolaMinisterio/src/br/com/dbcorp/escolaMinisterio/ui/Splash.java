@@ -31,7 +31,7 @@ import br.com.dbcorp.escolaMinisterio.ui.dialog.LogonDialog;
 public class Splash extends JWindow {
 	private static final long serialVersionUID = -7952839849461887170L;
 	
-	private static Path logPath = Paths.get(getAppPath() + File.separator + "Log");
+	private static Path logPath = getAppPath().resolve("Log");
 	
 	private int width;
 	private int height;
@@ -118,7 +118,7 @@ public class Splash extends JWindow {
 	}
 	
 	public static void verificarInicializacao() throws IOException {
-		Path iniPath = Paths.get(getAppPath() + File.separator + "escola.ini");
+		Path iniPath = getAppPath().resolve("escola.ini");
 		
 		try {
 			Files.createFile(iniPath);
@@ -150,7 +150,7 @@ public class Splash extends JWindow {
 		bw.write("[DATABASE]");
 		bw.newLine();
 		bw.write("javax.persistence.jdbc.url=jdbc:sqlite:");
-		bw.write((getAppPath() + File.separator + "escola.db").replace("\\", "/"));
+		bw.write(getAppPath().resolve("escola.db").toString().replace("\\", "/"));
 		bw.newLine();
 		bw.write("eclipselink.ddl-generation=create-or-extend-tables");
 		bw.newLine();

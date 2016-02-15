@@ -5,14 +5,13 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
 public class IniTools {
-	private static Path iniPath = Paths.get(Params.getAppPath() + File.separator + "escola.ini");
-	private static Path oldPath = Paths.get(Params.getAppPath() + File.separator + "escola.old");
+	private static Path iniPath = Params.getAppPath().resolve("escola.ini");
+	private static Path oldPath = Params.getAppPath().resolve("escola.old");
 	
 	public static boolean hasLine(String line) throws IOException {
 		boolean retorno = false;
