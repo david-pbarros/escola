@@ -54,6 +54,7 @@ public class ConfigUI extends InternalUI implements ActionListener {
 	private String dbPath;
 	private String logPath;
 	private JButton btnLimparLog;
+	private JButton btnChangServ;
 	
 	public ConfigUI() {
 		this.log = Log.getInstance();
@@ -94,6 +95,7 @@ public class ConfigUI extends InternalUI implements ActionListener {
 		
 		this.btnDesfragmentar = new JButton("Desfragmentar");
 		this.btnApagarBaseLocal = new JButton("Apagar Base Local");
+		this.btnChangServ = new JButton("Modificar");
 		this.btnLog = new JButton("...");
 		this.btnBase = new JButton("...");
 		this.btnLimparLog = new JButton("Limpar");
@@ -106,6 +108,7 @@ public class ConfigUI extends InternalUI implements ActionListener {
 
 		this.btnDesfragmentar.addActionListener(this);
 		this.btnApagarBaseLocal.addActionListener(this);
+		this.btnChangServ.addActionListener(this);
 		this.btnLog.addActionListener(this);
 		this.btnBase.addActionListener(this);
 		this.btnLimparLog.addActionListener(this);
@@ -124,10 +127,11 @@ public class ConfigUI extends InternalUI implements ActionListener {
 
 		iniPanel.add(new JLabel("Nr. Congrega\u00E7\u00E3o:"), "1, 1, right, default");
 		iniPanel.add(this.txCong, "3, 1, 5, 1, fill, default");
-		iniPanel.add(new JLabel("Servidor Sincronismo:"), "1, 3, right, default");
-		iniPanel.add(this.txServidor, "3, 3, 5, 1, fill, default");
-		iniPanel.add(new JLabel("Chave P\u00FAblica:"), "1, 5, right, default");
-		iniPanel.add(this.txHash, "3, 5, 5, 1, fill, default");
+		iniPanel.add(new JLabel("Chave P\u00FAblica:"), "1, 3, right, default");
+		iniPanel.add(this.txHash, "3, 3, 5, 1, fill, default");
+		iniPanel.add(new JLabel("Servidor Sincronismo:"), "1, 5, right, default");
+		iniPanel.add(this.txServidor, "3, 5, 3, 1, fill, default");
+		iniPanel.add(this.btnChangServ, "7, 5");
 		iniPanel.add(new JLabel("Caminho do Log:"), "1, 7, right, default");
 		iniPanel.add(this.txLog, "3, 7, fill, default");
 		iniPanel.add(this.btnLog, "5, 7");
@@ -160,6 +164,9 @@ public class ConfigUI extends InternalUI implements ActionListener {
 			
 		} else if (event.getSource() == this.btnApagarBaseLocal) {
 			new DelBaseDialog(this).setVisible(true);
+			
+		} else if (event.getSource() == this.btnChangServ) {
+			this.mudaServidor();
 			
 		} else if (event.getSource() == this.btnLog) {
 			this.logFolderChoose();
@@ -255,6 +262,20 @@ public class ConfigUI extends InternalUI implements ActionListener {
 		     });
 		} catch (IOException ex) {
 			String msg = "Erro limpando os logs";
+
+			this.log.error(msg, ex);
+			JOptionPane.showMessageDialog(this, msg, "Erro", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	private void mudaServidor() {
+		try {
+			IniTools.modificarValor("server", this.txServidor.getText());
+			
+			JOptionPane.showMessageDialog(this, "Endereço modificado. Reinicie o sistema.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+			
+		} catch (IOException ex) {
+			String msg = "Não foi possível modificar o endereço do servidor.";
 
 			this.log.error(msg, ex);
 			JOptionPane.showMessageDialog(this, msg, "Erro", JOptionPane.ERROR_MESSAGE);
