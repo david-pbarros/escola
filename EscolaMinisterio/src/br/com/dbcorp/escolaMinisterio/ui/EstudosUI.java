@@ -88,7 +88,7 @@ public class EstudosUI extends InternalUI implements TableModelListener, ActionL
 	    	EstudoTableModel model = (EstudoTableModel)event.getSource();
 	    	this.estudosModificados.add(model.getEstudos().get(event.getFirstRow()));
 	    	
-	    	this.btnSalvar.setVisible(true);
+	    	this.btnSalvar.setVisible(true && Params.isOnLineMode());
 	    }
 	}
 	
@@ -117,7 +117,7 @@ public class EstudosUI extends InternalUI implements TableModelListener, ActionL
 		if (this.table.getSelectedRow() > -1 && estudos.size() > this.table.getSelectedRow()) {
 			this.estudoSelecionado = estudos.get(this.table.getSelectedRow());
 			
-			this.btnRemove.setVisible(true);
+			this.btnRemove.setVisible(true && Params.isOnLineMode());
 		}
 	}
 	
@@ -154,6 +154,8 @@ public class EstudosUI extends InternalUI implements TableModelListener, ActionL
 		this.btnSalvar.setToolTipText("Salvar");
 		this.btnRemove.setToolTipText("Remover");
 		this.btnSair.setToolTipText("Sair");
+		
+		this.btnNovo.setVisible(Params.isOnLineMode());
 	}
 	
 	private DScrollPane setTable() {

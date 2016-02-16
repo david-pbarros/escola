@@ -348,8 +348,8 @@ public class ProfilesUI extends InternalUI implements ActionListener, ListSelect
 			this.setProgramaSub();
 			this.setCadastroSub();
 			
-			this.btnRemove.setVisible(true);
-			this.btnSalvar.setVisible(true);
+			this.btnRemove.setVisible(true && Params.isOnLineMode());
+			this.btnSalvar.setVisible(true && Params.isOnLineMode());
 		}
 	}
 	
@@ -368,6 +368,8 @@ public class ProfilesUI extends InternalUI implements ActionListener, ListSelect
 		this.btnSalvar.setToolTipText("Salvar");
 		this.btnRemove.setToolTipText("Remover");
 		this.btnSair.setToolTipText("Sair");
+		
+		this.btnNovo.setVisible(Params.isOnLineMode());
 	}
 	
 	private DScrollPane setTable() {

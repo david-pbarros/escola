@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import br.com.dbcorp.escolaMinisterio.ui.AjudantesUI;
 import br.com.dbcorp.escolaMinisterio.ui.MainFrame;
+import br.com.dbcorp.escolaMinisterio.ui.Params;
 import br.com.dbcorp.escolaMinisterio.ui.dialog.SincDialog;
 
 public class SincronismoAction extends Action {
@@ -38,9 +39,13 @@ public class SincronismoAction extends Action {
 	}
 	
 	public void actionPerformed(ActionEvent arg0) {
-		int response = JOptionPane.showConfirmDialog(null, "Após o sincronismo o sistema terá de ser reiniciado. Continuar?", "Sincronizar?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-		if (response == JOptionPane.YES_OPTION) {
-			new SincDialog(SincDialog.GERAL).setVisible(true);
+		if (Params.isOnLineMode()) {
+			int response = JOptionPane.showConfirmDialog(null, "Após o sincronismo o sistema terá de ser reiniciado. Continuar?", "Sincronizar?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+			if (response == JOptionPane.YES_OPTION) {
+				new SincDialog(SincDialog.GERAL).setVisible(true);
+			}
+		} else {
+			JOptionPane.showMessageDialog(this.mainFrame, "Processo desabilitado por não estar online.", "Informação", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 }
