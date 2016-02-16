@@ -39,7 +39,7 @@ public class SincronismoAction extends Action {
 	}
 	
 	public void actionPerformed(ActionEvent arg0) {
-		if (Params.isOnLineMode()) {
+		if (Params.isOnlineMode()) {
 			int response = JOptionPane.showConfirmDialog(null, "Após o sincronismo o sistema terá de ser reiniciado. Continuar?", "Sincronizar?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if (response == JOptionPane.YES_OPTION) {
 				new SincDialog(SincDialog.GERAL).setVisible(true);

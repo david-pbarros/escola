@@ -28,6 +28,8 @@ public class Params {
 	private static DateTimeFormatter dateFormatter;
 	private static DateTimeFormatter dateTimeFormatter;
 	
+	private static boolean sincronizado;
+	
 	public static void setDimensions(MainFrame frame) {
 		WIDTH = frame.getWidth();
 		HEIGHT = frame.getHeight();
@@ -150,7 +152,15 @@ public class Params {
 		return dateTimeFormatter;
 	}
 	
-	public static boolean isOnLineMode() {
+	public static boolean isOnlineMode() {
 		return !br.com.dbcorp.escolaMinisterio.Params.isOffLine();
+	}
+	
+	public static boolean canEdit() {
+		return isOnlineMode() && sincronizado;
+	}
+	
+	public static void setSincronizado(boolean isSincronizado) {
+		sincronizado = isSincronizado;
 	}
 }

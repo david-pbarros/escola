@@ -242,8 +242,8 @@ public class UsuariosUI extends InternalUI implements ActionListener, ListSelect
 		if (this.table.getSelectedRow() > -1 && Usuarios.size() > this.table.getSelectedRow()) {
 			this.usuarioSelecionado = Usuarios.get(this.table.getSelectedRow());
 			
-			this.btnRemove.setVisible(true && Params.isOnLineMode());
-			this.btnSalvar.setVisible(true && Params.isOnLineMode());
+			this.btnRemove.setVisible(true && Params.canEdit());
+			this.btnSalvar.setVisible(true && Params.canEdit());
 			
 			this.setFields();
 		}
@@ -265,7 +265,7 @@ public class UsuariosUI extends InternalUI implements ActionListener, ListSelect
 		this.btnRemove.setToolTipText("Remover");
 		this.btnSair.setToolTipText("Sair");
 		
-		this.btnNovo.setVisible(Params.isOnLineMode());
+		this.btnNovo.setVisible(Params.canEdit());
 	}
 	
 	private DScrollPane setTable() {

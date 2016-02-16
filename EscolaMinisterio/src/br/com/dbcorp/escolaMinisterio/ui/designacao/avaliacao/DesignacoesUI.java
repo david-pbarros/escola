@@ -40,15 +40,15 @@ public class DesignacoesUI extends ADesignacoesUI {
 		TitledBorder title = BorderFactory.createTitledBorder("Avaliar Designações");
 		this.containerPanel.setBorder(title);
 		
-		if (this.gerenciador.isEnable(ItensSeg.AVALIA_SALVA) && Params.isOnLineMode()) {
+		if (this.gerenciador.isEnable(ItensSeg.AVALIA_SALVA) && Params.canEdit()) {
 			this.buttonPanel.add(this.btnSalvar);
 		}
 		
-		if (this.gerenciador.isEnable(ItensSeg.AVALIA_REABRE) && Params.isOnLineMode()) {
+		if (this.gerenciador.isEnable(ItensSeg.AVALIA_REABRE) && Params.canEdit()) {
 			this.buttonPanel.add(this.btnRegresso);
 		}
 		
-		if (this.gerenciador.isEnable(ItensSeg.AVALIA_APROVA) && Params.isOnLineMode()) {
+		if (this.gerenciador.isEnable(ItensSeg.AVALIA_APROVA) && Params.canEdit()) {
 			this.buttonPanel.add(this.btnFechar);
 		}
 		
@@ -94,7 +94,7 @@ public class DesignacoesUI extends ADesignacoesUI {
 		    	this.reabrirDesignacao();
 		    }
 		} else if (event.getSource().equals(this.btnPrint)) {
-			this.imprimir(this.gerenciador.isEnable(ItensSeg.AVALIA_SALVA) && Params.isOnLineMode());
+			this.imprimir(this.gerenciador.isEnable(ItensSeg.AVALIA_SALVA) && Params.canEdit());
 			
 		} else if (event.getSource().equals(this.btnExport)) {
 			this.exportFile();

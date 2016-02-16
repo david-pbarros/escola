@@ -46,15 +46,15 @@ public class DesignacoesUI extends ADesignacoesUI {
 		TitledBorder title = BorderFactory.createTitledBorder("Novas Designações");
 		this.containerPanel.setBorder(title);
 
-		if (this.estudanteGerenciador.isEnable(ItensSeg.NOVA_ADICIONA) && Params.isOnLineMode()) {
+		if (this.estudanteGerenciador.isEnable(ItensSeg.NOVA_ADICIONA) && Params.canEdit()) {
 			buttonPanel.add(this.btnNovo);
 		}
 		 
-		if (this.estudanteGerenciador.isEnable(ItensSeg.NOVA_SALVA) && Params.isOnLineMode()) {
+		if (this.estudanteGerenciador.isEnable(ItensSeg.NOVA_SALVA) && Params.canEdit()) {
 			buttonPanel.add(this.btnSalvar);
 		}
 		
-		if (this.estudanteGerenciador.isEnable(ItensSeg.NOVA_APROVA) && Params.isOnLineMode()) {
+		if (this.estudanteGerenciador.isEnable(ItensSeg.NOVA_APROVA) && Params.canEdit()) {
 			buttonPanel.add(this.btnAprovar);
 		}
 		

@@ -26,7 +26,7 @@ Programa:
 
 	OK - Verificar problemas no caminho de execução com espaços no nome
 	OK - Erro ao iniciar se não tem aceso a base remota;
-	Não permitir alteração se não sincronizar;
+	OK - Não permitir alteração se não sincronizar;
 	Não insere ajudante se já eh estudante habilitado;
 	Deleção de designações;
 	Verificar problemas no marcação de apresentações e videos;

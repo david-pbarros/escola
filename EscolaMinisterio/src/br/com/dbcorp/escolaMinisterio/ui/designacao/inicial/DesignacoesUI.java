@@ -103,6 +103,8 @@ public class DesignacoesUI extends InternalUI implements ActionListener, ItemLis
 		
 		this.reset();
 		
+		Params.setSincronizado(true);
+		
 		Boolean sinc = (Boolean)br.com.dbcorp.escolaMinisterio.Params.propriedades().get("doSinc");
 		
 		if (sinc == null) {
@@ -115,6 +117,11 @@ public class DesignacoesUI extends InternalUI implements ActionListener, ItemLis
 		    
 			if (response == JOptionPane.YES_OPTION) {
 		    	new SincDialog(SincDialog.GERAL).setVisible(true);
+		    
+			} else {
+		    	Params.setSincronizado(false);
+		    	JOptionPane.showMessageDialog(null, "Só será possivel modificar dados após um sincronismo!", "Aviso", JOptionPane.WARNING_MESSAGE);
+				
 		    }
 		}
 	}

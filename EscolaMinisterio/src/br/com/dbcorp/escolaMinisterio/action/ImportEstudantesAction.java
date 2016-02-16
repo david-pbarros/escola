@@ -52,7 +52,7 @@ public class ImportEstudantesAction extends Action {
 	}
 	
 	public void actionPerformed(ActionEvent arg0) {
-		if (Params.isOnLineMode()) {
+		if (Params.canEdit()) {
 			JFileChooser fileChooser = new JFileChooser();
 			
 			FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV", "csv");
@@ -131,7 +131,7 @@ public class ImportEstudantesAction extends Action {
 				}
 			}
 		} else {
-			JOptionPane.showMessageDialog(this.mainFrame, "Processo desabilitado por não estar online.", "Informação", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(this.mainFrame, "Processo desabilitado por não estar online ou desincronizado.", "Informação", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 }
