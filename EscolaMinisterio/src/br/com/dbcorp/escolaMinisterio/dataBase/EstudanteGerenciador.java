@@ -52,8 +52,8 @@ public class EstudanteGerenciador extends Gerenciador {
 	}
 	
 	public void inserir(Estudante estudante) throws DuplicateKeyException {
-		Query query = DataBaseHelper.createQuery("FROM Estudante e WHERE (e.excluido = false OR e.excluido IS NULL) AND e.nome = :nome")
-				.setParameter("nome", estudante.getNome().trim());
+		Query query = DataBaseHelper.createQuery("FROM Estudante e WHERE (e.excluido = false OR e.excluido IS NULL) AND LOWER(e.nome) = :nome")
+				.setParameter("nome", estudante.getNome().trim().toLowerCase());
 		
 		try {
 			query.getSingleResult();

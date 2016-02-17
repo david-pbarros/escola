@@ -18,8 +18,8 @@ public class AjudanteGerenciador {
 	}
 	
 	public void inserir(Ajudante ajudante) throws DuplicateKeyException {
-		Query query = DataBaseHelper.createQuery("FROM Ajudante a WHERE (a.excluido = false OR a.excluido IS NULL ) AND a.nome = :nome")
-				.setParameter("nome", ajudante.getNome().trim());
+		Query query = DataBaseHelper.createQuery("FROM Ajudante a WHERE (a.excluido = false OR a.excluido IS NULL ) AND LOWER(a.nome) = :nome")
+				.setParameter("nome", ajudante.getNome().trim().toLowerCase());
 		
 		try {
 			query.getSingleResult();
@@ -33,8 +33,8 @@ public class AjudanteGerenciador {
 	}
 	
 	public boolean existeEstudante(Ajudante ajudante) {
-		Query query = DataBaseHelper.createQuery("FROM Estudante a WHERE (a.excluido = false OR a.excluido IS NULL ) AND a.nome = :nome")
-				.setParameter("nome", ajudante.getNome().trim());
+		Query query = DataBaseHelper.createQuery("FROM Estudante a WHERE (a.excluido = false OR a.excluido IS NULL ) AND LOWER(a.nome) = :nome")
+				.setParameter("nome", ajudante.getNome().trim().toLowerCase());
 		
 		try {
 			query.getSingleResult();
