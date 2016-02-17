@@ -49,6 +49,7 @@ public class SemanaSinc {
 			con.setParameter("assebleia", semana.isAssebleia() ? 1 : 0);
 			con.setParameter("recapitulacao", semana.isRecapitulacao() ? 1 : 0);
 			con.setParameter("semReuniao", semana.isSemReuniao() ? 1 : 0);
+			con.setParameter("videos", semana.isVideos() ? 1 : 0);
 			con.setParameter("mes", semana.getMes().getIdOnline());
 			
 			con.connect();
@@ -90,6 +91,7 @@ public class SemanaSinc {
 				con.setParameter("assebleia", semana.isAssebleia() ? 1 : 0);
 				con.setParameter("recapitulacao", semana.isRecapitulacao() ? 1 : 0);
 				con.setParameter("semReuniao", semana.isSemReuniao() ? 1 : 0);
+				con.setParameter("videos", semana.isVideos() ? 1 : 0);
 				
 				con.connect();
 				
@@ -143,6 +145,7 @@ public class SemanaSinc {
 						semana.setAssebleia(item.getInt("assebleia") == 1);
 						semana.setRecapitulacao(item.getInt("recapitulacao") == 1);
 						semana.setSemReuniao(item.getInt("semreuniao") == 1);
+						semana.setVideos(item.getInt("videos") == 1);
 						semana.setMes(this.gerenciador.obterMesDesignacao(item.getString("mes_id")));
 						
 						if (semana.getId() == 0) {

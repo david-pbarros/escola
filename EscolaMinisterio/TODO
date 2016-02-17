@@ -1,10 +1,12 @@
 Base:
-	Nova coluna estudantes - exclusao_logica;(ALTER TABLE `estudante` ADD `EXCLUSAOLOGICA` TINYINT( 1 ) NULL DEFAULT '0';)	
-	Nova coluna ajudantes - exclusão_logica;(ALTER TABLE `ajudante` ADD `EXCLUSAOLOGICA` TINYINT( 1 ) NULL DEFAULT '0';)
+	Nova coluna estudantes - ALTER TABLE `estudante` ADD `EXCLUSAOLOGICA` TINYINT( 1 ) NULL DEFAULT '0';	
+	Nova coluna ajudantes - ALTER TABLE `ajudante` ADD `EXCLUSAOLOGICA` TINYINT( 1 ) NULL DEFAULT '0';
+	Nova coluna semanaDesignacao - ALTER TABLE `semanadesignacao` ADD `VIDEOS` TINYINT( 1 ) NULL DEFAULT '0';
 
 WebService:
 	Exclusao lógica estudante;(estudante.php)
 	Exclusao lógica ajudantes;(ajudante.php)
+	Flag Apresentações;(semana.php);
 
 
 Programa:
@@ -30,6 +32,6 @@ Programa:
 	OK - Não insere ajudante se já eh estudante habilitado;
 	OK - Verifica existencia de estudante/ajudante independente do case(upper/lower)
 	OK - Deleção de designações;
-	Verificar problemas no marcação de apresentações e videos;
+	OK - Verificar problemas no marcação de apresentações e videos;
 	Verifica existencia de estudante/ajudante independente de acentuação 
 	Senhas maiusculo e minusculo;
