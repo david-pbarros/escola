@@ -7,7 +7,7 @@ WebService:
 	Exclusao lógica estudante;(estudante.php)
 	Exclusao lógica ajudantes;(ajudante.php)
 	Flag Apresentações;(semana.php);
-
+	Ajuste de versão;(service.php);
 
 Programa:
 	OK - Ajuste na deleção de estudantes;
