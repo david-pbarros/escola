@@ -52,9 +52,7 @@ public class Gerenciador {
 	
 	public StatusLogon login(String usuario, String senha) throws NoSuchAlgorithmException {
 		try {
-			senha = this.criptoSenha(senha);
-			
-			this.localizaUsuario(usuario, senha);
+			this.localizaUsuario(usuario, this.criptoSenha(senha));
 			
 			if (usuarioLogado.isBloqueado()) {
 				return StatusLogon.BLOQUEADO; 
@@ -69,7 +67,6 @@ public class Gerenciador {
 			usuarioLogado = new Usuario();
 			usuarioLogado.setNome(usuario);
 			usuarioLogado.setSenha(senha);
-			
 			
 			return StatusLogon.NAO_LOCALIZADO;
 		}
@@ -98,8 +95,8 @@ public class Gerenciador {
 	}
 	
 	public void localizaUsuario(String usuario, String senha) throws NoSuchAlgorithmException {
-		Query query = DataBaseHelper.createQuery("FROM Usuario u WHERE u.nome = :nome AND u.senha = :senha")
-				.setParameter("nome", usuario)
+		Query query = DataBaseHelper.createQuery("FROM Usuario u WHERE LOWER(u.nome) = :nome AND u.senha = :senha")
+				.setParameter("nome", usuario.toLowerCase())
 				.setParameter("senha", senha);
 		
 		usuarioLogado = (Usuario) query.getSingleResult();
