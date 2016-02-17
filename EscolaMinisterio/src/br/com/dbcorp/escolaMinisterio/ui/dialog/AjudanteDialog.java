@@ -78,9 +78,13 @@ public class AjudanteDialog extends JDialog implements ActionListener {
 		this.ajudante.setGenero(Genero.MASCULINO);
 		
 		try {
-			this.gerenciador.inserir(ajudante);
-			
-			dispose();
+			if (this.gerenciador.existeEstudante(ajudante)) {
+				JOptionPane.showMessageDialog(this, "Pessoa já cadastrada como estudante", "Erro!", JOptionPane.WARNING_MESSAGE);
+				
+			} else {
+				this.gerenciador.inserir(ajudante);
+				dispose();
+			}
 		} catch (DuplicateKeyException e) {
 			JOptionPane.showMessageDialog(this, "Ajudante já existente", "Erro!", JOptionPane.WARNING_MESSAGE);
 		}

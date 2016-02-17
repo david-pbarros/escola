@@ -32,6 +32,19 @@ public class AjudanteGerenciador {
 		}
 	}
 	
+	public boolean existeEstudante(Ajudante ajudante) {
+		Query query = DataBaseHelper.createQuery("FROM Estudante a WHERE (a.excluido = false OR a.excluido IS NULL ) AND a.nome = :nome")
+				.setParameter("nome", ajudante.getNome().trim());
+		
+		try {
+			query.getSingleResult();
+			return true;
+			
+		} catch (NoResultException exception) {
+			return false;
+		}
+	}
+	
 	public void atualizar(Ajudante ajudante) {
 		ajudante.setNome(ajudante.getNome().trim());
 		DataBaseHelper.merge(ajudante);
