@@ -310,28 +310,13 @@ public class SemanaMelhoreUI extends ASemanaMelhoreUI {
 		this.semanaDesignacao.setSemReuniao(this.chSemReuniao.isSelected());
 		this.semanaDesignacao.setVideos(this.chVideos.isSelected());
 		
-		if (this.chAssCongr.isSelected() || this.chRecapitulao.isSelected() || this.chVisSuper.isSelected() || this.chSemReuniao.isSelected()) {
-			this.semanaDesignacao.setDesignacoesRemovidas(this.semanaDesignacao.getDesignacoes());
-			this.semanaDesignacao.setDesignacoes(null);
-
-		} else if (this.chVideos.isSelected()) { 
-			if (this.semanaDesignacao.getDesignacoesRemovidas() == null) {
-				this.semanaDesignacao.setDesignacoesRemovidas(new ArrayList<Designacao>());
-			}
-
-			for (Designacao designacao : this.semanaDesignacao.getDesignacoes()) {
-				if (designacao.getNumero() != 1) {
-					this.semanaDesignacao.getDesignacoesRemovidas().add(designacao);
-					this.semanaDesignacao.getDesignacoes().remove(designacao);
-				}
-			}
-			
-			if (this.designacao1 != null) {
+		if (this.chVideos.isSelected()) { 
+			if ("A".equalsIgnoreCase(this.sala) && this.designacao1 != null) {
 				this.designacao1.setEstudo(this.obtemEstudo(this.cbEstudo1));
 				this.designacao1.setAjudante(this.obtemPessoa(this.cbAjudante1));
 				this.designacao1.setData(this.semanaDesignacao.getData());
 			} 
-		} else {
+		} else if ( !this.chAssCongr.isSelected() && !this.chRecapitulao.isSelected() && !this.chSemReuniao.isSelected() && !this.chVisSuper.isSelected() ) {
 			if (this.designacao1 != null) {
 				this.designacao1.setEstudo(this.obtemEstudo(this.cbEstudo1));
 				this.designacao1.setAjudante(this.obtemPessoa(this.cbAjudante1));

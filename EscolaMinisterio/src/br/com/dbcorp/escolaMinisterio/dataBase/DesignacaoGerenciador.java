@@ -6,6 +6,7 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -163,22 +164,14 @@ public class DesignacaoGerenciador extends Gerenciador {
 	}
 	
 	public void salvaMesDesignacao(MesDesignacao mesDesignacao) {
-		for (SemanaDesignacao semana : mesDesignacao.getSemanas()) {
-			if (semana.getDesignacoesRemovidas() != null && (semana.isAssebleia() || semana.isRecapitulacao() || semana.isSemReuniao() || semana.isVisita())) {
-				for (Designacao designacao : semana.getDesignacoesRemovidas()) {
-					if (designacao.getId() != 0) {
-						DataBaseHelper.remove(designacao);
-					}
-				}
-			}
-		}
-		
 		if (mesDesignacao.getId() == 0) {
 			DataBaseHelper.persist(mesDesignacao);
 			
 		} else {
 			DataBaseHelper.merge(mesDesignacao);
 		}
+
+		this.ajustaDesignacoes(mesDesignacao);
 	}
 	
 	public MesDesignacao mesAtua() {
@@ -192,6 +185,47 @@ public class DesignacaoGerenciador extends Gerenciador {
 			return (MesDesignacao) query.getSingleResult();
 		} catch(Exception ex) {
 			return null;
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void ajustaDesignacoes(MesDesignacao mesDesignacao) {
+		//pré 2016
+		if (!mesDesignacao.isMelhoreMinisterio()) {
+			for (SemanaDesignacao semana : mesDesignacao.getSemanas()) {
+				if (semana.getDesignacoesRemovidas() != null && (semana.isAssebleia() || semana.isRecapitulacao() || semana.isSemReuniao() || semana.isVisita() || semana.isVideos())) {
+					for (Designacao designacao : semana.getDesignacoesRemovidas()) {
+						if (designacao.getId() != 0) {
+							DataBaseHelper.remove(designacao);
+						}
+					}
+				}
+			}
+		} else {
+			//pós 2015
+			List<Designacao> designacoesExistentes = new ArrayList<>();
+			
+			if (mesDesignacao.getId() == 0) {
+				designacoesExistentes.addAll(mesDesignacao.getSemanas().stream().flatMap(s->s.getDesignacoes().stream()).collect(Collectors.toList()));
+			
+			} else {
+				Query query = DataBaseHelper.createQuery("FROM Designacao d JOIN FETCH d.semana s WHERE s.mes.id = :id")
+						.setParameter("id", mesDesignacao.getId());
+				
+				designacoesExistentes.addAll((List<Designacao>) query.getResultList());
+			}
+			
+			for (Designacao designacao : designacoesExistentes) {
+				SemanaDesignacao semana = designacao.getSemana();
+				
+				if (semana.isAssebleia() || semana.isRecapitulacao() || semana.isSemReuniao() || semana.isVisita()) {
+					DataBaseHelper.remove(designacao);
+					
+				} else if (semana.isVideos() && ("B".equalsIgnoreCase(designacao.getSala()) || ("A".equalsIgnoreCase(designacao.getSala()) && designacao.getNumero() != 1))) {
+					DataBaseHelper.remove(designacao);
+
+				}
+			}
 		}
 	}
 }

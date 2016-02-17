@@ -29,6 +29,7 @@ Programa:
 	OK - Não permitir alteração se não sincronizar;
 	OK - Não insere ajudante se já eh estudante habilitado;
 	OK - Verifica existencia de estudante/ajudante independente do case(upper/lower)
-	Deleção de designações;
+	OK - Deleção de designações;
 	Verificar problemas no marcação de apresentações e videos;
+	Verifica existencia de estudante/ajudante independente de acentuação 
 	Senhas maiusculo e minusculo;
