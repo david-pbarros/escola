@@ -3,7 +3,11 @@ package br.com.dbcorp.escolaMinisterio.ui.dialog;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -28,10 +32,10 @@ import br.com.dbcorp.escolaMinisterio.ui.model.EstudoDecorator;
 import br.com.dbcorp.escolaMinisterio.ui.model.EstudoModalCellRender;
 import br.com.dbcorp.escolaMinisterio.ui.model.EstudoTableModalModel;
 
-public class EstudosDialog extends JDialog implements ListSelectionListener {
+public class EstudosDialog extends JDialog implements ListSelectionListener, ActionListener {
 	private static final long serialVersionUID = -1788757880039179872L;
 	
-	private JTextField textField;
+	private JTextField txFiltro;
 	private JButton btnFiltar;
 	private JButton btnOK;
 	private JCheckBox chLeitura;
@@ -80,15 +84,21 @@ public class EstudosDialog extends JDialog implements ListSelectionListener {
 
 		JPanel btnPanel = new JPanel();
 
-		this.textField = new JTextField();
+		this.txFiltro = new JTextField();
 		this.chLeitura = new JCheckBox("Leitura");
 		this.chDemostracao = new JCheckBox("Demostracao");
 		this.chDiscurso = new JCheckBox("Discurso");
 		this.btnFiltar = new JButton("Procurar");
 		this.btnOK = new JButton("Confirmar");
 		
+		this.btnFiltar.addActionListener(this);
+		this.btnOK.addActionListener(this);
+		this.chLeitura.addActionListener(this);
+		this.chDemostracao.addActionListener(this);
+		this.chDiscurso.addActionListener(this);
+		
 		procuraPanel.add(new JLabel("Descri\u00E7\u00E3o:"), "2, 2, right, default");
-		procuraPanel.add(this.textField, "4, 2, 5, 1, fill, default");
+		procuraPanel.add(this.txFiltro, "4, 2, 5, 1, fill, default");
 		procuraPanel.add(this.btnFiltar, "10, 2, 1, 3");
 		procuraPanel.add(new JLabel("Tipo:"), "2, 4, right, default");
 		procuraPanel.add(this.chLeitura, "4, 4");
@@ -101,17 +111,11 @@ public class EstudosDialog extends JDialog implements ListSelectionListener {
 		getContentPane().add(this.setTable(), BorderLayout.CENTER);
 		getContentPane().add(btnPanel, BorderLayout.SOUTH);
 		
-		this.reset();
+		this.reset(this.estudos);
 		
 		pack();
 		
 		this.centerScreen();
-	}
-	
-	private void centerScreen() {
-		int w = Params.WIDTH - this.getPreferredSize().width;
-		int h = Params.HEIGHT - this.getPreferredSize().height;
-		setLocation(w/2, h/2);
 	}
 	
 	//ListSelectionListener
@@ -124,18 +128,37 @@ public class EstudosDialog extends JDialog implements ListSelectionListener {
 		}
 	}
 	
-	public void reset() {
+	//ActionListener
+	@Override
+	public void actionPerformed(ActionEvent event) {
+		if (event.getSource() == this.btnFiltar) {
+			this.filtrar();
+			
+		} else if (event.getSource() == this.btnOK) {
+			
+		} else if (event.getSource() == this.chLeitura || event.getSource() == this.chDemostracao || event.getSource() == this.chDiscurso) {
+			this.setChecks((JCheckBox)event.getSource());
+		}
+	}
+	
+	public void reset(List<EstudoDecorator> estudos) {
 		if (this.table.getModel() instanceof EstudoTableModalModel) {
 			EstudoTableModalModel model = (EstudoTableModalModel) this.table.getModel();
-			model.setItens(this.estudos);
+			model.setItens(estudos);
 			model.fireTableDataChanged();
 		
 		} else {
-			EstudoTableModalModel model = new EstudoTableModalModel(this.estudos);
+			EstudoTableModalModel model = new EstudoTableModalModel(estudos);
 			this.table.setModel(model);
 		} 
 		
 		this.setColumnSize();
+	}
+	
+	private void centerScreen() {
+		int w = Params.WIDTH - this.getPreferredSize().width;
+		int h = Params.HEIGHT - this.getPreferredSize().height;
+		setLocation(w/2, h/2);
 	}
 	
 	private DScrollPane setTable() {
@@ -185,5 +208,47 @@ public class EstudosDialog extends JDialog implements ListSelectionListener {
 		model.getColumn(4).setMinWidth(larguraTela);
 		model.getColumn(4).setPreferredWidth(larguraTela);
 		model.getColumn(4).setMaxWidth(larguraTela);
+	}
+	
+	private void setChecks(JCheckBox check) {
+		boolean selecionado = check.isSelected();
+		
+		this.chLeitura.setSelected(false);
+		this.chDiscurso.setSelected(false);
+		this.chDemostracao.setSelected(false);
+		
+		check.setSelected(selecionado);
+	}
+	
+	private void filtrar() {
+		if (!this.chDemostracao.isSelected() && !this.chDiscurso.isSelected() && !this.chLeitura.isSelected() && this.txFiltro.getText().length() == 0) {
+			this.reset(this.estudos);
+			
+		} else {
+			Predicate<EstudoDecorator> filtroLeit = e->!e.isExcluido();
+			Predicate<EstudoDecorator> filtroDisc = e->!e.isExcluido();
+			Predicate<EstudoDecorator> filtroDemo = e->!e.isExcluido();
+			Predicate<EstudoDecorator> filtroNome = e->!e.isExcluido();
+			
+			if (this.chDemostracao.isSelected()) {
+				filtroDemo = e->e.isDemonstracao();
+			}
+
+			if (this.chDiscurso.isSelected()) {
+				filtroDisc = e->e.isDiscurso();
+			}
+			
+			if (this.chLeitura.isSelected()) {
+				filtroLeit = e->e.isLeitura();
+			}
+			
+			if (this.txFiltro.getText().length() > 0) {
+				filtroNome = e->e.getDescricao().toUpperCase().contains(this.txFiltro.getText().toUpperCase());
+			}
+			
+			System.out.println(this.txFiltro.getText().toUpperCase());
+			
+			this.reset(this.estudos.stream().filter(filtroLeit).filter(filtroDemo).filter(filtroDisc).filter(filtroNome).collect(Collectors.toList()));
+		}
 	}
 }
