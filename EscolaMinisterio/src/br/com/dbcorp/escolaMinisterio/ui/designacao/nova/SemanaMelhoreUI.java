@@ -37,6 +37,8 @@ import br.com.dbcorp.escolaMinisterio.entidades.SemanaDesignacao;
 import br.com.dbcorp.escolaMinisterio.ui.Params;
 import br.com.dbcorp.escolaMinisterio.ui.designacao.ASemanaMelhoreUI;
 import br.com.dbcorp.escolaMinisterio.ui.dialog.EscolhaEstudanteDialog;
+import br.com.dbcorp.escolaMinisterio.ui.dialog.EstudosDialog;
+import br.com.dbcorp.escolaMinisterio.ui.model.EstudoDecorator;
 
 @SuppressWarnings("rawtypes")
 public class SemanaMelhoreUI extends ASemanaMelhoreUI {
@@ -86,6 +88,8 @@ public class SemanaMelhoreUI extends ASemanaMelhoreUI {
 	private JSeparator separator_2;
 	private JPanel panel;
 	private JSeparator separator_3;
+	
+	private JButton btnEstudo1;
 	
 	public SemanaMelhoreUI(DesignacaoGerenciador gerenciador, EstudanteGerenciador estudanteGerenciador, SemanaDesignacao semanaDesignacao, String sala, List<Estudo> estudos, List<String> ajudantesHomens, List<String> ajudantesMulheres, boolean editDetalhes) {
 		this.setMinimumSize(new Dimension(631, 232));
@@ -245,6 +249,9 @@ public class SemanaMelhoreUI extends ASemanaMelhoreUI {
 		} else if (event.getSource() == this.btnProcurar4) {
 			EscolhaEstudanteDialog d = new EscolhaEstudanteDialog(this.estudantesGerenciador, null);
 			this.estudanteSet(d.exibir(), this.lbEstudante4);
+		
+		} else if (event.getSource() == this.btnEstudo1) {
+			new EstudosDialog(this.carregarEstudos2(this.designacao1.getEstudante())).setVisible(true);
 		}
 	}
 	
@@ -498,6 +505,8 @@ public class SemanaMelhoreUI extends ASemanaMelhoreUI {
 		this.cbEstudo3 = new JComboBox();
 		this.cbEstudo4 = new JComboBox();
 		
+		this.btnEstudo1 = new JButton("Nr");
+		
 		Object[] item = {"Selecione Estudante"};
 		
 		this.cbAjudante1 = new JComboBox(item);
@@ -553,6 +562,8 @@ public class SemanaMelhoreUI extends ASemanaMelhoreUI {
 		this.btnProcurar2.addActionListener(this);
 		this.btnProcurar3.addActionListener(this);
 		this.btnProcurar4.addActionListener(this);
+		
+		this.btnEstudo1.addActionListener(this);
 		
 		this.EstudantePanel1 = new JPanel();
 		this.EstudantePanel1.setLayout(new FormLayout(new ColumnSpec[] {
@@ -638,7 +649,7 @@ public class SemanaMelhoreUI extends ASemanaMelhoreUI {
 		add(this.EstudantePanel1, "5, 8");
 		add(this.lblUldDes1, "7, 8, center, default");
 		add(this.lblDtUldDes1, "9, 8, right, default");
-		add(this.cbEstudo1, "11, 8, fill, default");
+		add(this.btnEstudo1, "11, 8, fill, default");
 		add(this.cbAjudante1, "15, 8, 3, 1, fill, default");
 		add(new JLabel("Visita:"), "3, 10, left, default");
 		add(this.EstudantePanel2, "5, 10, fill, default");
@@ -744,6 +755,27 @@ public class SemanaMelhoreUI extends ASemanaMelhoreUI {
 				estudosCB.addItem(estudo.getNrEstudo());
 			}
 		}
+	}
+	
+	private List<EstudoDecorator> carregarEstudos2(Estudante estudante) {
+		List<EstudoDecorator> estudos = new ArrayList<>();
+		
+		for (Estudo estudo : this.estudos) {
+			EstudoDecorator temp;
+			
+			Designacao designacao = estudante.getDesignacoes().stream().filter(d->d.getEstudo().getNrEstudo() == estudo.getNrEstudo()).findAny().orElse(null);
+			
+			if (designacao == null) {
+				temp = new EstudoDecorator(estudo);
+				
+			} else {
+				temp = new EstudoDecorator(estudo, designacao);
+			}
+			
+			estudos.add(temp);
+		}
+		
+		return estudos;
 	}
 	
 	@SuppressWarnings("unchecked")
