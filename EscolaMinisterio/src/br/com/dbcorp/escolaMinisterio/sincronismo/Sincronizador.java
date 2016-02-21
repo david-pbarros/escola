@@ -169,6 +169,7 @@ public class Sincronizador {
 			return "OK".equalsIgnoreCase(obj.getString("response"));
 			
 		} catch (Exception ex) {
+			log.error("Erro no no logon.", ex);
 			return false;
 		}
 	}

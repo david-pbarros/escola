@@ -66,7 +66,7 @@ public class Gerenciador {
 		} catch(NoResultException ex) {
 			usuarioLogado = new Usuario();
 			usuarioLogado.setNome(usuario);
-			usuarioLogado.setSenha(senha);
+			usuarioLogado.setSenha(this.criptoSenha(senha));
 			
 			return StatusLogon.NAO_LOCALIZADO;
 		}
