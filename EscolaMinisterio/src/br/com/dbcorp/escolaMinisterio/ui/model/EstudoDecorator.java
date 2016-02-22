@@ -21,6 +21,10 @@ public class EstudoDecorator {
 		this.designacao = designacao;
 	}
 	
+	public Estudo getEstudo() {
+		return this.estudo;
+	}
+	
 	public int getNrEstudo() {
 		return this.estudo.getNrEstudo();
 	}

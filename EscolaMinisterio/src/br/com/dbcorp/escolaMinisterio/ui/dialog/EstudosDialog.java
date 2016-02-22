@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -26,6 +27,8 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 
+import br.com.dbcorp.escolaMinisterio.AvaliacaoDOM;
+import br.com.dbcorp.escolaMinisterio.entidades.Designacao;
 import br.com.dbcorp.escolaMinisterio.ui.DScrollPane;
 import br.com.dbcorp.escolaMinisterio.ui.Params;
 import br.com.dbcorp.escolaMinisterio.ui.model.EstudoDecorator;
@@ -38,6 +41,7 @@ public class EstudosDialog extends JDialog implements ListSelectionListener, Act
 	private JTextField txFiltro;
 	private JButton btnFiltar;
 	private JButton btnOK;
+	private JCheckBox chAbertos;
 	private JCheckBox chLeitura;
 	private JCheckBox chDemostracao;
 	private JCheckBox chDiscurso;
@@ -45,8 +49,9 @@ public class EstudosDialog extends JDialog implements ListSelectionListener, Act
 	
 	private List<EstudoDecorator> estudos;
 	private EstudoDecorator estudoSelecionado;
+	private Designacao designacao;
 	
-	public EstudosDialog(List<EstudoDecorator> estudos) {
+	public EstudosDialog(List<EstudoDecorator> estudos, Designacao designacao) {
 		int height = new Double(Params.INTERNAL_HEIGHT / 1.1).intValue();
 		int width = new Double(Params.INTERNAL_WIDTH / 1.3).intValue();
 		
@@ -61,10 +66,13 @@ public class EstudosDialog extends JDialog implements ListSelectionListener, Act
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 		this.estudos = estudos;
+		this.designacao = designacao;
 		
 		JPanel procuraPanel = new JPanel();
 		procuraPanel.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("default:grow"),
+				FormSpecs.DEFAULT_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
 				FormSpecs.DEFAULT_COLSPEC,
 				FormSpecs.RELATED_GAP_COLSPEC,
 				FormSpecs.DEFAULT_COLSPEC,
@@ -85,6 +93,7 @@ public class EstudosDialog extends JDialog implements ListSelectionListener, Act
 		JPanel btnPanel = new JPanel();
 
 		this.txFiltro = new JTextField();
+		this.chAbertos = new JCheckBox("Não estudados");
 		this.chLeitura = new JCheckBox("Leitura");
 		this.chDemostracao = new JCheckBox("Demostracao");
 		this.chDiscurso = new JCheckBox("Discurso");
@@ -93,17 +102,19 @@ public class EstudosDialog extends JDialog implements ListSelectionListener, Act
 		
 		this.btnFiltar.addActionListener(this);
 		this.btnOK.addActionListener(this);
+		this.chAbertos.addActionListener(this);
 		this.chLeitura.addActionListener(this);
 		this.chDemostracao.addActionListener(this);
 		this.chDiscurso.addActionListener(this);
 		
 		procuraPanel.add(new JLabel("Descri\u00E7\u00E3o:"), "2, 2, right, default");
-		procuraPanel.add(this.txFiltro, "4, 2, 5, 1, fill, default");
-		procuraPanel.add(this.btnFiltar, "10, 2, 1, 3");
+		procuraPanel.add(this.txFiltro, "4, 2, 7, 1, fill, default");
+		procuraPanel.add(this.btnFiltar, "12, 2, 1, 3");
 		procuraPanel.add(new JLabel("Tipo:"), "2, 4, right, default");
-		procuraPanel.add(this.chLeitura, "4, 4");
-		procuraPanel.add(this.chDemostracao, "6, 4");
-		procuraPanel.add(this.chDiscurso, "8, 4");
+		procuraPanel.add(this.chAbertos, "4, 4");
+		procuraPanel.add(this.chLeitura, "6, 4");
+		procuraPanel.add(this.chDemostracao, "8, 4");
+		procuraPanel.add(this.chDiscurso, "10, 4");
 		
 		btnPanel.add(this.btnOK);
 		
@@ -135,8 +146,9 @@ public class EstudosDialog extends JDialog implements ListSelectionListener, Act
 			this.filtrar();
 			
 		} else if (event.getSource() == this.btnOK) {
+			this.confirmar();
 			
-		} else if (event.getSource() == this.chLeitura || event.getSource() == this.chDemostracao || event.getSource() == this.chDiscurso) {
+		} else if (event.getSource() == this.chAbertos || event.getSource() == this.chLeitura || event.getSource() == this.chDemostracao || event.getSource() == this.chDiscurso) {
 			this.setChecks((JCheckBox)event.getSource());
 		}
 	}
@@ -216,12 +228,13 @@ public class EstudosDialog extends JDialog implements ListSelectionListener, Act
 		this.chLeitura.setSelected(false);
 		this.chDiscurso.setSelected(false);
 		this.chDemostracao.setSelected(false);
+		this.chAbertos.setSelected(false);
 		
 		check.setSelected(selecionado);
 	}
 	
 	private void filtrar() {
-		if (!this.chDemostracao.isSelected() && !this.chDiscurso.isSelected() && !this.chLeitura.isSelected() && this.txFiltro.getText().length() == 0) {
+		if (!this.chAbertos.isSelected() && !this.chDemostracao.isSelected() && !this.chDiscurso.isSelected() && !this.chLeitura.isSelected() && this.txFiltro.getText().length() == 0) {
 			this.reset(this.estudos);
 			
 		} else {
@@ -229,7 +242,12 @@ public class EstudosDialog extends JDialog implements ListSelectionListener, Act
 			Predicate<EstudoDecorator> filtroDisc = e->!e.isExcluido();
 			Predicate<EstudoDecorator> filtroDemo = e->!e.isExcluido();
 			Predicate<EstudoDecorator> filtroNome = e->!e.isExcluido();
+			Predicate<EstudoDecorator> filtroAberto = e->!e.isExcluido();
 			
+			if (this.chAbertos.isSelected()) {
+				filtroAberto = e->e.getAvaliacao() == null;
+			}
+
 			if (this.chDemostracao.isSelected()) {
 				filtroDemo = e->e.isDemonstracao();
 			}
@@ -248,7 +266,26 @@ public class EstudosDialog extends JDialog implements ListSelectionListener, Act
 			
 			System.out.println(this.txFiltro.getText().toUpperCase());
 			
-			this.reset(this.estudos.stream().filter(filtroLeit).filter(filtroDemo).filter(filtroDisc).filter(filtroNome).collect(Collectors.toList()));
+			this.reset(this.estudos.stream().filter(filtroAberto).filter(filtroLeit).filter(filtroDemo).filter(filtroDisc).filter(filtroNome).collect(Collectors.toList()));
+		}
+	}
+	
+	private void confirmar() {
+		if (this.estudoSelecionado != null) {
+			if (this.estudoSelecionado.getAvaliacao() != null && (this.estudoSelecionado.getAvaliacao() == AvaliacaoDOM.PASSOU || this.estudoSelecionado.getAvaliacao() == AvaliacaoDOM.NAO_AVALIADO)) {
+				if (this.estudoSelecionado.getAvaliacao() == AvaliacaoDOM.PASSOU) {
+					JOptionPane.showMessageDialog(this, "O estudante já cumpriu este ponto!", "Informação", JOptionPane.INFORMATION_MESSAGE);
+					
+				} else if (this.estudoSelecionado.getAvaliacao() == AvaliacaoDOM.NAO_AVALIADO) {
+					JOptionPane.showMessageDialog(this, "O estudante já designado para este ponto!", "Informação", JOptionPane.WARNING_MESSAGE);
+				}
+			} else {
+				this.designacao.setEstudo(this.estudoSelecionado.getEstudo());
+				this.setVisible(false);
+			}
+		} else {
+			this.designacao.setEstudo(null);
+			this.setVisible(false);
 		}
 	}
 }
