@@ -725,7 +725,7 @@ public class SemanaMelhoreUI extends ASemanaMelhoreUI {
 		for (Estudo estudo : this.estudos) {
 			EstudoDecorator temp;
 			
-			Designacao designacao = estudante.getDesignacoes().stream().filter(d->d.getEstudo().getNrEstudo() == estudo.getNrEstudo()).findAny().orElse(null);
+			Designacao designacao = estudante.getDesignacoes().stream().filter(d->d.getEstudo() != null && d.getEstudo().getNrEstudo() == estudo.getNrEstudo()).findAny().orElse(null);
 			
 			if (designacao == null) {
 				temp = new EstudoDecorator(estudo);
