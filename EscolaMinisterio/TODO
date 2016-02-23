@@ -1,37 +1,12 @@
 Base:
-	Nova coluna estudantes - ALTER TABLE `estudante` ADD `EXCLUSAOLOGICA` TINYINT( 1 ) NULL DEFAULT '0';	
-	Nova coluna ajudantes - ALTER TABLE `ajudante` ADD `EXCLUSAOLOGICA` TINYINT( 1 ) NULL DEFAULT '0';
-	Nova coluna semanaDesignacao - ALTER TABLE `semanadesignacao` ADD `VIDEOS` TINYINT( 1 ) NULL DEFAULT '0';
 
 WebService:
-	Exclusao lógica estudante;(estudante.php)
-	Exclusao lógica ajudantes;(ajudante.php)
-	Flag Apresentações;(semana.php);
-	Ajuste de versão;(service.php);
+	Modificação de sincronismo do campo tempo e novas designações sem estudo (designacao.php);
+	Ajuste de versão (service.php);
 
 Programa:
-	OK - Ajuste na deleção de estudantes;
-	OK - Estudantes apresentar em ordem alfabética;
-	OK - Inserir/Atualizar estudantes/ajudantes sem espaços em branco no fim e começo;
-	OK - Ajuste na deleção de ajudantes;
-	OK - Ajudantes apresentar em ordem alfabética;
-	OK - Ao iniciar sem config criar config básica só perguntando numero da cong;
-	OK - Adicionar de alguma forma o log para pegar todos os erros;
-	OK - Tela para config:
-			- OK: Numero da cong (não editável);
-			- OK: Local do LOG;
-			- OK: Local do banco de dados;
-			- OK: Opção para apagar banco de dados local;
-			- OK: Mover arquivos de pastas atuais para nova (log e banco);
-			- OK: Btn para limpar pasta de log;
-			- OK: Mudar servidor;
-
-	OK - Verificar problemas no caminho de execução com espaços no nome
-	OK - Erro ao iniciar se não tem aceso a base remota;
-	OK - Não permitir alteração se não sincronizar;
-	OK - Não insere ajudante se já eh estudante habilitado;
-	OK - Verifica existencia de estudante/ajudante independente do case(upper/lower)
-	OK - Deleção de designações;
-	OK - Verificar problemas no marcação de apresentações e videos;
-	OK - Senhas maiusculo e minusculo;
+	OK - Pop-up para escolha de estudo;
+	OK - Pop-up de observação com exibição do tempo decorrido na designação;
+	OK - Ajuste de sincronismo (envio) nova designação sem estudo;
+	OK - Sincronismo do campo tempo com a web;
 	Verifica existencia de estudante/ajudante independente de acentuação 

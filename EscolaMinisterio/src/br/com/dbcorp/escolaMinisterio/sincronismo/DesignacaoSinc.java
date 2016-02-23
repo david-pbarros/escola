@@ -47,7 +47,6 @@ public class DesignacaoSinc {
 		for (Designacao designacao : designacoes) {
 			PHPConnection con = new PHPConnection(this.url, HTTP_METHOD.POST, this.hash);
 			
-			con.setParameter("estudo", designacao.getEstudo().getNrEstudo());
 			con.setParameter("numero", designacao.getNumero());
 			con.setParameter("sala", designacao.getSala());
 			con.setParameter("status", designacao.getStatus());
@@ -56,6 +55,14 @@ public class DesignacaoSinc {
 			con.setParameter("data", designacao.getData().format(Params.dateFormate()));
 			con.setParameter("estudante", designacao.getEstudante().getIdOnline());
 			con.setParameter("semana", designacao.getSemana().getIdOnline());
+			con.setParameter("tempo", designacao.getTempo());
+			
+			if (designacao.getEstudo()!= null) {
+				con.setParameter("estudo", designacao.getEstudo().getNrEstudo());
+			
+			} else {
+				con.setParameter("estudo", null);
+			}
 			
 			if (designacao.getAjudante() != null) {
 				con.setParameter("ajudante", designacao.getAjudante().getIdOnline());
@@ -116,6 +123,7 @@ public class DesignacaoSinc {
 				con.setParameter("status", designacao.getStatus());
 				con.setParameter("tema", designacao.getTema());
 				con.setParameter("fonte", designacao.getFonte());
+				con.setParameter("tempo", designacao.getTempo());
 				
 				if (designacao.getEstudante() != null) {
 					con.setParameter("estudante", designacao.getEstudante().getIdOnline());
@@ -205,6 +213,7 @@ public class DesignacaoSinc {
 						designacao.setFonte(URLDecoder.decode(item.getString("fonte"), "UTF-8"));
 						designacao.setObservacao(URLDecoder.decode(item.getString("observacao"), "UTF-8"));
 						designacao.setObsFolha(URLDecoder.decode(item.getString("obsfolha"), "UTF-8"));
+						designacao.setTempo(item.getString("tempo"));
 						
 						designacao.setSemana(this.gerenciador.obterSemanaDesignacao(item.getString("semana_id")));
 						designacao.setData(LocalDate.parse(item.getString("data"), Params.dateFormate()));
