@@ -34,6 +34,7 @@ public class Designacao implements Comparable<Designacao>, Entidade {
 	private String ObsFolha;
 	private boolean copiar;
 	private String idOnline;
+	private String tempo;
 	private LocalDateTime dtUltimaAtualiza;
 	private SemanaDesignacao semana;
 	
@@ -50,6 +51,13 @@ public class Designacao implements Comparable<Designacao>, Entidade {
 	}
 	public void setIdOnline(String idOnline) {
 		this.idOnline = idOnline;
+	}
+	
+	public String getTempo() {
+		return tempo;
+	}
+	public void setTempo(String tempo) {
+		this.tempo = tempo;
 	}
 	
 	@Temporal(TemporalType.TIMESTAMP)

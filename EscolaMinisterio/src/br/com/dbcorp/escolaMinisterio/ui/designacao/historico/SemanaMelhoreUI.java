@@ -395,8 +395,12 @@ public class SemanaMelhoreUI extends ASemanaMelhoreUI {
 	}
 	
 	private void abrirObservacao(Designacao designacao) {
-		ObservacaoDialog dialog = new ObservacaoDialog(designacao.getObservacao(), false);
-		designacao.setObservacao(dialog.exibir());
+		ObservacaoDialog dialog = new ObservacaoDialog(designacao.getObservacao(), designacao.getTempo(), false);
+		
+		String[] dados = dialog.exibir();
+		
+		designacao.setObservacao(dados[0]);
+		designacao.setTempo(dados[1]);
 	}
 
 	@Override

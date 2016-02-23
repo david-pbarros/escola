@@ -354,7 +354,7 @@ public class SemanaUI extends ASemanaUI {
 	
 	private void abrirObservacao(Designacao designacao) {
 		ObservacaoDialog dialog = new ObservacaoDialog(designacao.getObservacao(), false);
-		designacao.setObservacao(dialog.exibir());
+		designacao.setObservacao(dialog.exibir()[0]);
 	}
 
 	@Override
