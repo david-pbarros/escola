@@ -28,6 +28,10 @@ public class DesignacaoGerenciador extends Gerenciador {
 	
 	@SuppressWarnings("unchecked")
 	public List<MesDesignacao> meses(char tipo) {
+		if (tipo == NOVO) {
+			this.limparSemEstudantes();
+		}
+
 		Query query = DataBaseHelper.createQuery("FROM MesDesignacao d WHERE d.status = :status ORDER BY d.ano, d.mes")
 				.setParameter("status", tipo);
 		

@@ -788,7 +788,7 @@ public class SemanaMelhoreUI extends ASemanaMelhoreUI {
 				if (designacao.getEstudante() != null) {
 					System.out.println(designacao.getId());
 					
-					ajudantes = ajudantes.stream().filter(p->!designacao.getEstudante().getNome().equals(p)).collect(Collectors.toList());
+					ajudantes = ajudantes.stream().filter(p->!p.equals(designacao.getEstudante().getNome())).collect(Collectors.toList());
 				}
 			
 				cbAjudantes.setModel(new DefaultComboBoxModel(ajudantes.toArray()));

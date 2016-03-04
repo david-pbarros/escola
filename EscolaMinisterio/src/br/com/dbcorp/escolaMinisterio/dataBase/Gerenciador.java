@@ -175,6 +175,13 @@ public class Gerenciador {
 		this.limpaIndevidos();
 		this.limparDuplicados();
 		this.ordenaDesignacoes();
+		this.limparSemEstudantes();
+	}
+	
+	protected void limparSemEstudantes() {
+		DataBaseHelper.executeDeleteQuery("DELETE FROM Designacao d WHERE d.estudante in (SELECT e FROM Estudante e WHERE e.nome = null OR e.nome = '')");
+
+		DataBaseHelper.executeDeleteQuery("DELETE FROM Estudante e WHERE e.nome = null OR e.nome = ''");
 	}
 	
 	//apaga designações que não tem vinculo com uma semana de reunião.

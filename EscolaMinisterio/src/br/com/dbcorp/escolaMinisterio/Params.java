@@ -29,8 +29,8 @@ public class Params {
 					props.put("logPath", props.getProperty("logPath") + "/");
 				}
 	
-				props.put("verionNumber", 420);
-				props.put("versionName", "4.2.0");
+				props.put("verionNumber", 421);
+				props.put("versionName", "4.2.1");
 				
 			} catch (Exception e) {
 				Log.getInstance().error("Erro Lendo parametros de inicialização", e);
