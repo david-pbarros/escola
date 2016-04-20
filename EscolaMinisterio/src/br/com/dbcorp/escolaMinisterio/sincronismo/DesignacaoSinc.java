@@ -111,7 +111,7 @@ public class DesignacaoSinc {
 	}
 	
 	public String atualizarWeb() throws IOException {
-		List<Designacao> designacoes = this.gerenciador.obterDesignacoessAtualizadas(this.ultimaSincronia.getData());
+		List<Designacao> designacoes = this.gerenciador.obterDesignacoessAtualizadas(this.ultimaSincronia.getDateTime());
 		
 		StringBuffer sb = new StringBuffer();
 		
@@ -183,7 +183,7 @@ public class DesignacaoSinc {
 	public String obterNovos() throws IOException, JSONException {
 		PHPConnection con = new PHPConnection(this.url, HTTP_METHOD.GET, this.hash);
 		
-		con.setParameter("data_ultima", this.ultimaSincronia.getData().format(Params.dateTimeFormate()));
+		con.setParameter("data_ultima", this.ultimaSincronia.getDateTime().format(Params.dateTimeFormate()));
 		con.connect();
 		
 		if (con.getResponseCode() != 200) {

@@ -7,8 +7,9 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.PublicKey;
 import java.security.Security;
-import java.time.LocalDateTime;
+import java.text.SimpleDateFormat;
 import java.util.Base64;
+import java.util.Date;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -78,9 +79,11 @@ public class Sincronizador {
 			
 			if (obj != null) {
 				if ("existente".equalsIgnoreCase(obj.getString("response"))) {
-					LocalDateTime temp = LocalDateTime.parse(obj.getString("data"), br.com.dbcorp.escolaMinisterio.ui.Params.dateTimeFormate());
+					Date temp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(obj.getString("data"));
 					
-					Params.propriedades().put("doSinc", this.gerenciador.pegarUltimo().getData().isBefore(temp));
+					//LocalDateTime temp = LocalDateTime.parse(obj.getString("data"), br.com.dbcorp.escolaMinisterio.ui.Params.dateTimeFormate());
+					
+					Params.propriedades().put("doSinc", this.gerenciador.pegarUltimo().getData().getTime() < temp.getTime());
 					
 				} else {
 					Params.propriedades().put("doSinc", true);
@@ -237,7 +240,7 @@ public class Sincronizador {
 			sinc.setSucesso(false);
 		}
 		
-		sinc.setData(LocalDateTime.now());
+		sinc.setData(new Date());
 		this.gerenciador.salvar(sinc);
 	}
 	
@@ -296,7 +299,7 @@ public class Sincronizador {
 			hasErro = true;
 		}
 		
-		sinc.setData(LocalDateTime.now());
+		sinc.setData(new Date());
 		sinc.setSucesso(!hasErro);
 		
 		this.gerenciador.salvar(sinc);

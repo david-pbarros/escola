@@ -36,7 +36,7 @@ public class EstudoSinc {
 	}
 	
 	public String enviar() throws IOException {
-		List<Estudo> estudos = this.gerenciador.obterEstudosNovos(ultimaSincronia.getData());
+		List<Estudo> estudos = this.gerenciador.obterEstudosNovos(ultimaSincronia.getDateTime());
 		
 		StringBuffer sb = new StringBuffer();
 		
@@ -72,7 +72,7 @@ public class EstudoSinc {
 	public String obterNovos() throws IOException, JSONException {
 		PHPConnection con = new PHPConnection(this.url, HTTP_METHOD.GET, this.hash);
 		
-		con.setParameter("data_ultima", this.ultimaSincronia.getData().format(Params.dateTimeFormate()));
+		con.setParameter("data_ultima", this.ultimaSincronia.getDateTime().format(Params.dateTimeFormate()));
 		con.connect();
 		
 		if (con.getResponseCode() != 200) {

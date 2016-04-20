@@ -125,7 +125,7 @@ public class Gerenciador {
 		if (itens.isEmpty() || (tipo == 1 && itens.size() == 1)) {
 			ultimaSincronia = new Sincronismo();
 			ultimaSincronia.setSucesso(true);
-			ultimaSincronia.setData(LocalDateTime.of(1900, Month.JANUARY, 1, 0, 0));
+			ultimaSincronia.setDateTime(LocalDateTime.of(1900, Month.JANUARY, 1, 0, 0));
 			ultimaSincronia.setCriado(true);
 			
 		} else {

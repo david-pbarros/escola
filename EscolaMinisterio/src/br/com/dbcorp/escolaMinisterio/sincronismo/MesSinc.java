@@ -73,7 +73,7 @@ public class MesSinc {
 	}
 	
 	public String atualizarWeb() throws IOException {
-		List<MesDesignacao> meses = this.gerenciador.obterMesesAtualizados(this.ultimaSincronia.getData());
+		List<MesDesignacao> meses = this.gerenciador.obterMesesAtualizados(this.ultimaSincronia.getDateTime());
 		
 		StringBuffer sb = new StringBuffer();
 		
@@ -108,7 +108,7 @@ public class MesSinc {
 	public String obterNovos() throws IOException {
 		PHPConnection con = new PHPConnection(this.url, HTTP_METHOD.GET, this.hash);
 		
-		con.setParameter("data_ultima", this.ultimaSincronia.getData().format(Params.dateTimeFormate()));
+		con.setParameter("data_ultima", this.ultimaSincronia.getDateTime().format(Params.dateTimeFormate()));
 		con.connect();
 		
 		if (con.getResponseCode() != 200) {

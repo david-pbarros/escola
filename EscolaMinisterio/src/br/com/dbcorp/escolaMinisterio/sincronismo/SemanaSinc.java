@@ -78,7 +78,7 @@ public class SemanaSinc {
 	}
 	
 	public String atualizarWeb() throws IOException {
-		List<SemanaDesignacao> semanas = this.gerenciador.obterSemanasAtualizadas(this.ultimaSincronia.getData());
+		List<SemanaDesignacao> semanas = this.gerenciador.obterSemanasAtualizadas(this.ultimaSincronia.getDateTime());
 		
 		StringBuffer sb = new StringBuffer();
 		
@@ -117,7 +117,7 @@ public class SemanaSinc {
 	public String obterNovos() throws IOException {
 		PHPConnection con = new PHPConnection(this.url, HTTP_METHOD.GET, this.hash);
 		
-		con.setParameter("data_ultima", this.ultimaSincronia.getData().format(Params.dateTimeFormate()));
+		con.setParameter("data_ultima", this.ultimaSincronia.getDateTime().format(Params.dateTimeFormate()));
 		con.connect();
 		
 		if (con.getResponseCode() != 200) {
