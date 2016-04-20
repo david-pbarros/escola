@@ -49,7 +49,6 @@ public class EscolhaEstudanteDialog extends JDialog implements ActionListener, L
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 		this.gerenciador = gerenciador;
-		this.estudante = new Estudante();
 		this.nomeFl = new JTextField();
 		this.btnOK = new JButton("Confirmar");
 		this.btnFiltro = new JButton("Procurar...");

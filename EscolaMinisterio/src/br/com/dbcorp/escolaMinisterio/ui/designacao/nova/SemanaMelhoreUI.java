@@ -265,44 +265,46 @@ public class SemanaMelhoreUI extends ASemanaMelhoreUI {
 	
 	@SuppressWarnings("unchecked")
 	private void estudanteSet(Estudante estudante, JLabel estudanteLB) {
-		estudanteLB.setText(estudante.getNome());
-		
-		if (!estudanteLB.equals(SELECIONE)) {
-			if (estudanteLB == this.lbEstudante1) {
-				if (this.designacao1 == null) {
-					this.designacao1 = new Designacao();
-					this.designacao1.setNumero(1);
-					this.semanaDesignacao.getDesignacoes().add(this.designacao1);
-				}
-				
-				this.carregaDadosProcurar(this.designacao1, estudante, this.lblUldDes1, this.lblDtUldDes1, this.cbAjudante1);
+		if (estudante != null) { 
+			estudanteLB.setText(estudante.getNome());
 			
-			} else if (estudanteLB == this.lbEstudante2) {
-				if (this.designacao2 == null) {
-					this.designacao2 = new Designacao();
-					this.designacao2.setNumero(2);
-					this.semanaDesignacao.getDesignacoes().add(this.designacao2);
-				}
+			if (!estudanteLB.equals(SELECIONE)) {
+				if (estudanteLB == this.lbEstudante1) {
+					if (this.designacao1 == null) {
+						this.designacao1 = new Designacao();
+						this.designacao1.setNumero(1);
+						this.semanaDesignacao.getDesignacoes().add(this.designacao1);
+					}
+					
+					this.carregaDadosProcurar(this.designacao1, estudante, this.lblUldDes1, this.lblDtUldDes1, this.cbAjudante1);
 				
-				this.carregaDadosProcurar(this.designacao2, estudante, this.lblUldDes2, this.lblDtUldDes2, this.cbAjudante2);
-			
-			} else if (estudanteLB == this.lbEstudante3) {
-				if (this.designacao3 == null) {
-					this.designacao3 = new Designacao();
-					this.designacao3.setNumero(3);
-					this.semanaDesignacao.getDesignacoes().add(this.designacao3);
-				}
+				} else if (estudanteLB == this.lbEstudante2) {
+					if (this.designacao2 == null) {
+						this.designacao2 = new Designacao();
+						this.designacao2.setNumero(2);
+						this.semanaDesignacao.getDesignacoes().add(this.designacao2);
+					}
+					
+					this.carregaDadosProcurar(this.designacao2, estudante, this.lblUldDes2, this.lblDtUldDes2, this.cbAjudante2);
 				
-				this.carregaDadosProcurar(this.designacao3, estudante, this.lblUldDes3, this.lblDtUldDes3, this.cbAjudante3);
-			
-			} else if (estudanteLB == this.lbEstudante4) {
-				if (this.designacao4 == null) {
-					this.designacao4 = new Designacao();
-					this.designacao4.setNumero(4);
-					this.semanaDesignacao.getDesignacoes().add(this.designacao4);
-				}
+				} else if (estudanteLB == this.lbEstudante3) {
+					if (this.designacao3 == null) {
+						this.designacao3 = new Designacao();
+						this.designacao3.setNumero(3);
+						this.semanaDesignacao.getDesignacoes().add(this.designacao3);
+					}
+					
+					this.carregaDadosProcurar(this.designacao3, estudante, this.lblUldDes3, this.lblDtUldDes3, this.cbAjudante3);
 				
-				this.carregaDadosProcurar(this.designacao4, estudante, this.lblUldDes4, this.lblDtUldDes4, this.cbAjudante4);
+				} else if (estudanteLB == this.lbEstudante4) {
+					if (this.designacao4 == null) {
+						this.designacao4 = new Designacao();
+						this.designacao4.setNumero(4);
+						this.semanaDesignacao.getDesignacoes().add(this.designacao4);
+					}
+					
+					this.carregaDadosProcurar(this.designacao4, estudante, this.lblUldDes4, this.lblDtUldDes4, this.cbAjudante4);
+				}
 			}
 		}
 	}
