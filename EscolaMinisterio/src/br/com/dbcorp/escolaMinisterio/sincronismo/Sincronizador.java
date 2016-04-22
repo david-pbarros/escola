@@ -81,9 +81,7 @@ public class Sincronizador {
 				if ("existente".equalsIgnoreCase(obj.getString("response"))) {
 					Date temp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(obj.getString("data"));
 					
-					//LocalDateTime temp = LocalDateTime.parse(obj.getString("data"), br.com.dbcorp.escolaMinisterio.ui.Params.dateTimeFormate());
-					
-					Params.propriedades().put("doSinc", this.gerenciador.pegarUltimo().getData().getTime() < temp.getTime());
+					Params.propriedades().put("doSinc", this.gerenciador.pegarUltimo().getData() == null ? true : this.gerenciador.pegarUltimo().getData().getTime() < temp.getTime());
 					
 				} else {
 					Params.propriedades().put("doSinc", true);

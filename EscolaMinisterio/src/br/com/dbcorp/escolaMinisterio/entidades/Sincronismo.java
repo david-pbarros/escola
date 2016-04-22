@@ -32,6 +32,7 @@ public class Sincronismo {
 		this.data = data;
 	}
 	
+	@Transient
 	public LocalDateTime getDateTime() {
 		return LocalDateTime.ofInstant(this.data.toInstant(), ZoneId.systemDefault());
 	}
